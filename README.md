@@ -1,7 +1,7 @@
-Run it simply:
-python crossrefdownload.py
-
-or add args
--l Limit (default=5)
--f Citeproc json save file (default="defaultsave.json")
--b Bibtex save file (default="citations.bibtex")
+Run it simply:<br />
+python crossrefdownload.py<br />
+<br />
+or add args<br />
+-l Limit (default=5)<br />
+-f Citeproc json save file (default="defaultsave.json")<br />
+-b Bibtex save file (default="citations.bibtex")<br />
