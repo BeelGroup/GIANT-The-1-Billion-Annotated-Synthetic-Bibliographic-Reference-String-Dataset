@@ -1,0 +1,324 @@
+{
+  "_id": {
+    "$oid": "58d1a8180c62134f84669ce1"
+  },
+  "indexed": {
+    "date-parts": [
+      [
+        2016,
+        11,
+        22
+      ]
+    ],
+    "date-time": "2016-11-22T16:11:09Z",
+    "timestamp": {
+      "$numberLong": "1479831069779"
+    }
+  },
+  "reference-count": 0,
+  "publisher": "American Medical Association (AMA)",
+  "issue": "1",
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [],
+  "cited-count": 0,
+  "published-print": {
+    "date-parts": [
+      [
+        1984,
+        1,
+        1
+      ]
+    ]
+  },
+  "DOI": "10.1001/archderm.120.1.87",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2003,
+        3,
+        18
+      ]
+    ],
+    "date-time": "2003-03-18T17:52:42Z",
+    "timestamp": {
+      "$numberLong": "1048009962000"
+    }
+  },
+  "page": "87-92",
+  "source": "CrossRef",
+  "title": [
+    "Necrotic cellulitis. A localized form of septic vasculitis"
+  ],
+  "prefix": "http://id.crossref.org/prefix/10.1001",
+  "volume": "120",
+  "author": [
+    {
+      "given": "R. M.",
+      "family": "Hurwitz",
+      "affiliation": []
+    }
+  ],
+  "member": "http://id.crossref.org/member/10",
+  "container-title": [
+    "Archives of Dermatology"
+  ],
+  "original-title": [],
+  "deposited": {
+    "date-parts": [
+      [
+        2007,
+        2,
+        13
+      ]
+    ],
+    "date-time": "2007-02-13T20:56:13Z",
+    "timestamp": {
+      "$numberLong": "1171400173000"
+    }
+  },
+  "score": 1,
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        1984,
+        1,
+        1
+      ]
+    ]
+  },
+  "URL": "http://dx.doi.org/10.1001/archderm.120.1.87",
+  "ISSN": [
+    "0003-987X"
+  ],
+  "citing-count": 0,
+  "subject": [
+    "Dermatology"
+  ]
+}
+
+
+{
+  "_id": {
+    "$oid": "58d1d0190c62134f8495f943"
+  },
+  "indexed": {
+    "date-parts": [
+      [
+        2016,
+        11,
+        7
+      ]
+    ],
+    "date-time": "2016-11-07T23:44:43Z",
+    "timestamp": {
+      "$numberLong": "1478562283618"
+    }
+  },
+  "reference-count": 0,
+  "publisher": "Wiley-Blackwell",
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [],
+  "cited-count": 0,
+  "DOI": "10.1002/9781444302462.ch9",
+  "type": "book-chapter",
+  "created": {
+    "date-parts": [
+      [
+        2009,
+        1,
+        30
+      ]
+    ],
+    "date-time": "2009-01-30T10:47:30Z",
+    "timestamp": {
+      "$numberLong": "1233312450000"
+    }
+  },
+  "page": "149-166",
+  "source": "CrossRef",
+  "title": [
+    "Web Services and aecXML-Based e-Business System for Construction Products Procurement"
+  ],
+  "prefix": "http://id.crossref.org/prefix/10.1002",
+  "author": [
+    {
+      "given": "Stephen C. W.",
+      "family": "Kong",
+      "affiliation": []
+    },
+    {
+      "given": "Heng",
+      "family": "Li",
+      "affiliation": []
+    },
+    {
+      "given": "Chimay J.",
+      "family": "Anumba",
+      "affiliation": []
+    }
+  ],
+  "member": "http://id.crossref.org/member/311",
+  "container-title": [
+    "e-Business in Construction"
+  ],
+  "original-title": [],
+  "deposited": {
+    "date-parts": [
+      [
+        2009,
+        1,
+        30
+      ]
+    ],
+    "date-time": "2009-01-30T10:38:45Z",
+    "timestamp": {
+      "$numberLong": "1233311925000"
+    }
+  },
+  "score": 1,
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        null
+      ]
+    ]
+  },
+  "ISBN": [
+    "http://id.crossref.org/isbn/9781444302462",
+    "http://id.crossref.org/isbn/9781405182348"
+  ],
+  "URL": "http://dx.doi.org/10.1002/9781444302462.ch9",
+  "citing-count": 0
+}
+
+
+
+
+{
+  "_id": {
+    "$oid": "58d33bba0c62134f84b445cf"
+  },
+  "indexed": {
+    "date-parts": [
+      [
+        2016,
+        10,
+        26
+      ]
+    ],
+    "date-time": "2016-10-26T07:33:31Z",
+    "timestamp": {
+      "$numberLong": "1477467211314"
+    }
+  },
+  "reference-count": 8,
+  "publisher": "Springer Nature",
+  "issue": "4",
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Chem Heterocycl Compd"
+  ],
+  "cited-count": 0,
+  "published-print": {
+    "date-parts": [
+      [
+        1980,
+        4
+      ]
+    ]
+  },
+  "DOI": "10.1007/bf00552780",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2004,
+        11,
+        19
+      ]
+    ],
+    "date-time": "2004-11-19T16:50:04Z",
+    "timestamp": {
+      "$numberLong": "1100883004000"
+    }
+  },
+  "page": "391-396",
+  "source": "CrossRef",
+  "title": [
+    "Hydroacridines and related compounds 19. Angular hydride reductions in the hydrobenz[c]acridine and hydroacridine series"
+  ],
+  "prefix": "http://id.crossref.org/prefix/10.1007",
+  "volume": "16",
+  "author": [
+    {
+      "given": "L. M.",
+      "family": "Eremeeva",
+      "affiliation": []
+    },
+    {
+      "given": "V. A.",
+      "family": "Kaminskii",
+      "affiliation": []
+    },
+    {
+      "given": "M. N.",
+      "family": "Tilichenko",
+      "affiliation": []
+    }
+  ],
+  "member": "http://id.crossref.org/member/297",
+  "container-title": [
+    "Chemistry of Heterocyclic Compounds"
+  ],
+  "original-title": [],
+  "deposited": {
+    "date-parts": [
+      [
+        2013,
+        1,
+        15
+      ]
+    ],
+    "date-time": "2013-01-15T17:22:17Z",
+    "timestamp": {
+      "$numberLong": "1358270537000"
+    }
+  },
+  "score": 1,
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        1980,
+        4
+      ]
+    ]
+  },
+  "alternative-id": [
+    "BF00552780"
+  ],
+  "URL": "http://dx.doi.org/10.1007/bf00552780",
+  "ISSN": [
+    "0009-3122",
+    "1573-8353"
+  ],
+  "citing-count": 8,
+  "subject": [
+    "Organic Chemistry"
+  ]
+}

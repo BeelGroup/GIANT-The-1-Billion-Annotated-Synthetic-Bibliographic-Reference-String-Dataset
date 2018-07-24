@@ -1,6 +1,6 @@
 //head -n1000 ~/Downloads/crossrefworks.json > cr1000.json
 
-var fileName = './cr20.json';
+var fileName = './cr3.json';
 var fs = require('fs');
 var citeproc = require("citeproc-js-node");
 function csvline(fields){
@@ -21,13 +21,28 @@ for (var i = 0; i < lines.length; i++) {
     //console.log(line);
     citations[i] = {
 	"id" : i,
-	"title":line["title"][0],
+	"title":"<title>"+line["title"][0]+"</title>",
 	"type":line["type"],
 	"publisher":line["publisher"],
 	"issue":line["issue"],
 	"URL":line["URL"],
-	"author":line["author"],
-	"issued":line["issued"],
+	"author":[
+    {
+      "given": "Stephen C. W.",
+      "family": "<family>Kong</fasdf>",
+      "affiliation": []
+    },
+    {
+      "given": "Heng",
+      "family": "Li",
+      "affiliation": []
+    },
+    {
+      "given": "Chimay J.",
+      "family": "Anumba",
+      "affiliation": []
+    }],//line["author"],
+	"issued":{"date-parts":[[ 2005, 4, 12 ]]},//line["issued"],
 	"page":line["page"],
   "DOI" : line["DOI"],
 	};
@@ -36,6 +51,8 @@ for (var i = 0; i < lines.length; i++) {
 //
 //ls *.csl | xargs grep "csl\" version=
 }
+
+
 var newFile = "cslciteproc.json";
 //console.log(citations);
 fs.writeFile(newFile, JSON.stringify(citations), function (err) {
@@ -81,9 +98,10 @@ for (var i = 0, len = csls.length; i < len; i++) {//
   bib = bib[1];
   if(bib != undefined){
   for (var c = 0;c < bib.length; c++) {
+
     //console.log(csvline([citations[c]["DOI"],citations[c]["type"],csls[i],bib[c]]));
     //output += csvline([citations[c]["DOI"],citations[c]["type"],csls[i],bib[c]]);
-    logger.write(csvline([citations[c]["DOI"],citations[c]["type"],csls[i],bib[c]],JSON.stringify(bib[c]))+"\n");
+    logger.write(csvline([citations[c]["DOI"],citations[c]["type"],csls[i],bib[c],JSON.stringify(citations[c])])+"\n");
   }
 }else {
   console.log("undefined");
