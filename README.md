@@ -1,11 +1,25 @@
-Run it simply:<br />
-python crossrefdownload.py<br />
-<br />
-or add args<br />
--l Limit (default=5)<br />
--f Citeproc json save file (default="defaultsave.json")<br />
--b Bibtex save file (default="citations.bibtex")<br />
+# citeproc-js
 
+Fork of *citeproc-js* 
+
+## Build
+
+    ./tools/populate.sh
+
+This will produce the top-level `citeproc.js` file.
+
+    uglifyjs citeproc.js --compress --mangle --comments -o citeproc.min.js
+
+This will produce the top-level `citeproc.min.js` file.
+
+
+## Documentation
+
+See `/manual/index.html` for comprehensive documentation.
+
+## License
+
+Common Public Attribution License (CPAL)
 
 generatecsljson2.js
 Run it "node generatecsljson2.js"
