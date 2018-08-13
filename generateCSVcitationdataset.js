@@ -82,314 +82,153 @@ var fieldTypes = {
   volume: ['string', 'number'],
   'year-suffix': 'string'
 };
-//console.log(JSON.stringify(fieldTypes));
-var fileName = './cr1000.json';
+//console.log(process.argv);
+console.time("script");
+if (process.argv[3]) {
+  var fileName = './' + process.argv[3];
+} else {
+  var fileName = './cr20.json';
+}
 var fs = require('fs');
 var citeproc = require("citeproc-js-node");
-function csvline(fields){
+
+function csvline(fields) {
   var string = "";
   for (var i = 0; i < fields.length; i++) {
-    string += '"'+fields[i].replace(/\n$/, '')+"\";";//  .replace(/[\""]/g, '\\"')
-}
-return string;
+    string += '"' + fields[i].replace(/\n$/, '').replace(/\"/g, '""') + "\","; //
+  }
+  return string;
 }
 
+console.time("readrawfile");
 var data = fs.readFileSync(fileName, 'utf8');
+console.timeEnd("readrawfile");
+
 var lines = data.split('\n');
-
+var count = lines.length;
 var citations = [];
+var unknowns=  [];
 for (var i = 0; i < lines.length; i++) {
-    if (lines[i] === '') continue
-    line = JSON.parse(lines[i]);
-    //lines[i]=line;
-    //console.log(line);
-    citations[i] = {id:i}
-    for(var prop in line) {
-        var newprop = prop.replace("short-title", 'shortTitle').replace("short-container-title", 'container-title-short');
-        //console.log(newprop);
-        if(fieldTypes.hasOwnProperty(newprop)){
-            var type = fieldTypes[newprop];
-            if(typeof type == "object"){type = "stringORnumber";}
-            //console.log(typeof type);
+  if (lines[i] === '') continue
+  line = JSON.parse(lines[i]);
+  citations[i] = {
+    id: i
+  }
+  for (var prop in line) {
+    var newprop = prop.replace("short-title", 'shortTitle').replace("short-container-title", 'container-title-short');
+    //console.log(newprop);
+    if (fieldTypes.hasOwnProperty(newprop)) {
+      var type = fieldTypes[newprop];
+      if (typeof type == "object") {
+        type = "stringORnumber";
+      }
+      //console.log(typeof type);
 
-            if(type == "string" && (typeof line[prop] == "string" || typeof line[prop] == "number") ){
-              citations[i][newprop] = line[prop]
-            }else if(type == "stringORnumber" && (typeof line[prop] == "string" || typeof line[prop] == "number")){
-              citations[i][newprop] == line[prop]
-            }else if(type == "string" && typeof line[prop] == "object"  ){//&& line[prop].length
-              citations[i][newprop] = line[prop][0]
-            }else if(type == DATE && typeof line[prop] == "object"){
-              citations[i][newprop] = line[prop]
-            }else if(type == NAME_LIST && typeof line[prop] == "object"){
-              citations[i][newprop] = line[prop]
-            }else{
-              console.log(type+";"+ typeof line[prop]+";"+newprop+";"+line[prop]);
-
-            }
-        }else{
-          console.log("notfound:"+newprop);
-        }
+      if (type == "string" && (typeof line[prop] == "string" || typeof line[prop] == "number")) {
+        citations[i][newprop] = line[prop]
+      } else if (type == "stringORnumber" && (typeof line[prop] == "string" || typeof line[prop] == "number")) {
+        citations[i][newprop] == line[prop]
+      } else if (type == "string" && typeof line[prop] == "object") { //&& line[prop].length
+        citations[i][newprop] = line[prop][0]
+      } else if (type == DATE && typeof line[prop] == "object") {
+        citations[i][newprop] = line[prop]
+      } else if (type == NAME_LIST && typeof line[prop] == "object") {
+        citations[i][newprop] = line[prop]
+      } else {
+        console.log(type + ";" + typeof line[prop] + ";" + newprop + ";" + line[prop]);
+      }
+      unknowns[newprop] = true;
+    } else {
+      unknowns[newprop] = "unknown";
     }
-    //
+  }
+  //
 
 }
-console.log(citations);
-//return;
-//
+console.log(unknowns);
 var newFile = "./cslciteproc.json";
-//console.log(citations);
-fs.writeFile(newFile, JSON.stringify(citations), function (err) {
-  if (err) return console.log(err);
+fs.writeFile(newFile, JSON.stringify(citations), function(err) {
+  if (err) return log(err);
   console.log('Saved JSON to ' + newFile);
 });
 
-var sys = new citeproc.simpleSys();
-//Wherever your locale and style files are. None are included with the package.
-var enUS = fs.readFileSync('./locales-en-US.xml', 'utf8');
-//var enUS = fs.readFileSync('./locales-en-US.xml', 'utf8');
+//This folder should have all the CSL files
+//csls = ["bibtex","modern-language-association","apa"];
 
-sys.addLocale('en-US', enUS);
 const cslFolder = './csl/';
-//const testFolder = 'citeproc-js/docs/_static/data/styles/';
-//http://citeproc-js.readthedocs.io/en/latest/testing.html
 var files = fs.readdirSync(cslFolder);
 var csls = [];
 for (var i in files) {
-  if(files[i].slice(-4) == ".csl"){
-    csls.push(files[i].slice(0,-4));
+  if (files[i].slice(-4) == ".csl") {
+    csls.push(files[i].slice(0, -4));
   }
 }
-//console.lo
-//csls = ["bibtex","modern-language-association","apa"];
-var output = "";
-fs.writeFileSync("output_strings.csv", "");
-var logger = fs.createWriteStream("output_strings.csv", {
-flags: 'a' // 'a' means appending (old data will be preserved)
-})
 
-var styleString = fs.readFileSync(cslFolder+'bibtex.csl', 'utf8');
+var output = "";
+//clear the file
+fs.writeFileSync("output_strings.csv", "");
+//Start creating the output file--
+var logger = fs.createWriteStream("output_strings.csv", {
+  flags: 'a' // 'a' means appending (old data will be preserved)
+})
+var citation_keys = Object.keys(citations);
+
+//create bibtex bibliography
+var sys = new citeproc.simpleSys();
+var enUS = fs.readFileSync('./locales/locales-en-US.xml', 'utf8');
+sys.addLocale('en-US', enUS);
+var styleString = fs.readFileSync(cslFolder + 'bibtex.csl', 'utf8').replace(/<sort>([\s\S]*?)<\/sort>/g,'');
 var engine = sys.newEngine(styleString, 'en-US');
 sys.items = citations;
 engine.setOutputFormat("text");
-engine.updateItems(Object.keys(citations));
+engine.updateItems(citation_keys);
 var bibtex = engine.makeBibliography();
 bibtex = bibtex[1];
+//bibtex done
 
-//console.log(bibtex);
-//return;
 logger.write("DOI;type;CitationType;CitationString;Json;BibTex\n");
-for (var i = 0, len = csls.length; i < len; i++) {//
-  console.log(i+". "+csls[i]);
+for (var i = 0, len = csls.length; i < len; i++) { //
+  console.log(i + ". " + csls[i]);
+  var styleString = fs.readFileSync(cslFolder + csls[i] + '.csl', 'utf8').replace(/<([^>]*)(\sdefault-locale=\".+?\"(\s|))(.*?)>/, '<$1$3>');
 
-
-  var styleString = fs.readFileSync(cslFolder+csls[i]+'.csl', 'utf8').replace(/<([^>]*)(\sdefault-locale=\".+?\"(\s|))(.*?)>/,'<$1$3>');
-  //console.log(styleString);
+  if (process.argv[2] == "tags") {
+    styleString = styleString.replace(/<text variable="(.*?)"( prefix="([^"]*)")?( suffix="([^"]*)")?/g, '<text variable="$1" prefix="$3&lt;$1&gt;" suffix="&lt;/$1&gt;$5"');
+    styleString = styleString.replace(/<date variable="(.*?)"( prefix="([^"]*)")?( suffix="([^"]*)")?/g, '<date variable="$1" prefix="$3&lt;$1&gt;" suffix="&lt;/$1&gt;$5"');
+    styleString = styleString.replace(/<names variable="(.*?)"( prefix="([^"]*)")?( suffix="([^"]*)")?/g, '<names variable="$1" prefix="$3&lt;$1&gt;" suffix="&lt;/$1&gt;$5"');
+  }
+  if(true || removesorting){
+    styleString = styleString.replace(/<sort>([\s\S]*?)<\/sort>/g,'');
+  }
+  //console.log(styleString);return;
   var engine = sys.newEngine(styleString, 'en-US');
-  sys.items = citations;
+  //sys.items = citations;
   engine.setOutputFormat("text");
-
-  engine.updateItems(Object.keys(citations));
+  engine.updateItems(citation_keys);
   var bib = engine.makeBibliography();
   bib = bib[1];
-  if(bib != undefined){
-  for (var c = 0;c < bib.length; c++) {
-
-    //console.log(csvline([citations[c]["DOI"],citations[c]["type"],csls[i],bib[c]]));
-    //output += csvline([citations[c]["DOI"],citations[c]["type"],csls[i],bib[c]]);
-    logger.write(csvline([citations[c]["DOI"],citations[c]["type"],csls[i],bib[c],JSON.stringify(citations[c]),bibtex[c]])+"\n");
+  var failedbibliographies = [];
+  if (bib != undefined) {
+    for (var c = 0; c < bib.length; c++) {
+      //console.log(bib[c]);
+      //output += csvline([citations[c]["DOI"],citations[c]["type"],csls[i],bib[c]]);
+      logger.write(csvline([citations[c]["DOI"], citations[c]["type"], csls[i], bib[c], JSON.stringify(citations[c]), bibtex[c]]) + "\n");
+    }
+  } else {
+    failedbibliographies.push(i + ". " + csls[i]);
+    //console.log("undefined - couldnt create bibliography");
   }
-}else {
-  console.log("undefined");
+  //if(i==20){break;}
 }
-
-}
-
-//JSON.stringify(bib[1])
-return;
-fs.writeFile("output_strings.csv", output, function (err) {
+console.log("Failed ones:");
+console.log(failedbibliographies.join("\n"));
+console.log();
+var output_file = "output_strings_"+count+".csv";
+fs.writeFile(output_file, output, function(err) {
   if (err) return console.log(err);
-  console.log("Saved CSV");
+  console.log('Saved CSV to ' + output_file);
 });
+console.timeEnd("script");
 
-//ls *.csl | xargs grep "default-locale" | sed -e "s/.*default-locale..//" | sed -e "s/\".*//" | sort | uniq -c | sort -n
-
-/*
-
-
-
-    citations[i] = {
-	"id" : i,                  //Required. The id field is a simple field containing any string or numeric value
-	"title":line["title"][0],
-  "shortTitle":line["short-title"][0],
-	"type":line["type"],       //Required. The type field is a simple field containing a string value
-	"publisher":line["publisher"],
-	"issue":line["issue"],
-	"URL":line["URL"],
-	"author":line["author"],
-	"issued":line["issued"],
-	"page":line["page"],
-  "DOI" : line["DOI"],
-	};
-
-
-//ls *.csl | xargs grep "csl\" version=
-
-
-var c = new citeproc.default.Engine({
-   retrieveLocale: function (lang){
-       return fs.readFileSync('locales-' + lang + '.xml' ,'utf8');
-   },
-   retrieveItem: function(id){
-       return citations[id];
-   }
-},
- function(){
-   return fs.readFileSync('chicago-fullnote-bibliography.csl');
- });
-
-citeproc.previewCitationCluster({
-  citationItems: citations.map(function (id) {
-    return {
-      id: id
-    };
-  }),
-  properties: {
-    noteIndex: 0
-  }
-}, [], [], "text");
-
-/*
-const testFolder = './cslstyles/';
-var template;
-var files = fs.readdirSync(testFolder);
-var csls = [];
-var cslname;
-for (var i in files) {
-  cslname = files[i];
-  if(cslname.slice(-4) == ".csl"){
-    template = fs.readFileSync(testFolder+files[i], 'utf8');
-    csls[i] = template;
-    //config.templates.add(cslname, template)
-  console.log('Model Loaded: ' + cslname);
-  }
-}
-fs.writeFileSync("allcsl.json", JSON.stringify(csls));
-console.log('file saved');
-
-
-
-var example = new Cite(citations)
-//var ex = Cite.parseDoiJson(lines);
-
-//doi/object
-var output = example.format('bibliography', {
-  format: 'text',
-  template: 10,
-  lang: 'en-US'
-})
-
-console.log(output)
-*/
-
-/*
-var citeproc = CSL.Engine({
-    retrieveLocale: function (lang){
-        return fs.readFileSync('locales-' + lang + '.xml' ,'utf8');
-    },
-    retrieveItem: function(id){
-        return citations[id];
-    }
-},
-  function(){
-    return fs.readFileSync('chicago-fullnote-bibliography.csl');
-  });
-
-*/
-
-/*
-renderBib();
-
-citeprocSys = {
-    // Given a language tag in RFC-4646 form, this method retrieves the
-    // locale definition file.  This method must return a valid *serialized*
-    // CSL locale. (In other words, an blob of XML as an unparsed string.  The
-    // processor will fail on a native XML object or buffer).
-    retrieveLocale: function (lang){
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'locales-' + lang + '.xml', false);
-        xhr.send(null);
-        return xhr.responseText;
-    },
-
-    // Given an identifier, this retrieves one citation item.  This method
-    // must return a valid CSL-JSON object.
-    retrieveItem: function(id){
-        return citations[id];
-    }
-};
-
-// Given the identifier of a CSL style, this function instantiates a CSL.Engine
-// object that can render citations in that style.
-function getProcessor(styleID) {
-    // Get the CSL style as a serialized string of XML
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', styleID + '.csl', false);
-    xhr.send(null);
-    var styleAsText = xhr.responseText;
-
-    // Instantiate and return the engine
-    var citeproc = new CSL.Engine(citeprocSys, styleAsText);
-    return citeproc;
-};
-
-
-// This runs at document ready, and renders the bibliography
-function renderBib() {
-    var bibDivs = ["chicago-fullnote-bibliography"];
-    for (var i = 0, ilen = bibDivs.length; i < ilen; ++i) {
-        var bibDiv = bibDivs[i];
-        var citeproc = getProcessor(bibDiv[i]);
-        var itemIDs = [];
-        for (var key in citations) {
-            itemIDs.push(key);
-        }
-        citeproc.updateItems(itemIDs);
-        var bibResult = citeproc.makeBibliography();
-	console.log(bibResult);
-        bibDiv.innerHTML = bibResult[1].join('\n');
-    }
-}
-
-
-
-
-fs.writeFile(fileName, JSON.stringify(file), function (err) {
-  if (err) return console.log(err);
-  console.log(JSON.stringify(file));
-  console.log('writing to ' + fileName);
-});
-"id": "Item-1",
-    "type": "journal-article",
-    "title": "Digital Typography",
-    "publisher": "Center for the Study of Language and Information",
-    "number-of-pages": "685",
-    "source": "Amazon.com",
-    "ISBN": "1575860104",
-    "issue": "4",
-    "URL": "http://dx.doi.org/10.1001/.387",
-    "author": [
-      {
-        "family": "Knuth",
-        "given": "Donald E."
-      }
-    ],
-    "issued": {
-       "date-parts": [
-        [
-          2006,
-          2,
-          27
-        ]
-      ]
-
-*/
+output = '<?xml version="1.0" encoding="UTF-8"?>'+
+'<tei xmlns="http://www.tei-c.org/ns/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML">'+
+'<listBibl>';
