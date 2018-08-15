@@ -95,7 +95,7 @@ var citeproc = require("citeproc-js-node");
 function csvline(fields) {
   var string = "";
   for (var i = 0; i < fields.length; i++) {
-    string += '"' + fields[i].replace(/\n$/, '').replace(/\"/g, '""') + "\","; //
+    string += '"' + fields[i] + "\","; //
   }
   return string;
 }
@@ -107,12 +107,13 @@ console.timeEnd("readrawfile");
 var lines = data.split('\n');
 var count = lines.length;
 var citations = [];
-var unknowns=  [];
+var unknowns = [];
 for (var i = 0; i < lines.length; i++) {
   if (lines[i] === '') continue
   line = JSON.parse(lines[i]);
   citations[i] = {
-    id: i
+    id: i,
+    zotero2bibtexType : line["type"]
   }
   for (var prop in line) {
     var newprop = prop.replace("short-title", 'shortTitle').replace("short-container-title", 'container-title-short');
@@ -164,11 +165,12 @@ for (var i in files) {
   }
 }
 
+var output_file = "output_strings_" + count + ".csv";
 var output = "";
 //clear the file
-fs.writeFileSync("output_strings.csv", "");
+fs.writeFileSync(output_file, "");
 //Start creating the output file--
-var logger = fs.createWriteStream("output_strings.csv", {
+var logger = fs.createWriteStream(output_file, {
   flags: 'a' // 'a' means appending (old data will be preserved)
 })
 var citation_keys = Object.keys(citations);
@@ -177,7 +179,7 @@ var citation_keys = Object.keys(citations);
 var sys = new citeproc.simpleSys();
 var enUS = fs.readFileSync('./locales/locales-en-US.xml', 'utf8');
 sys.addLocale('en-US', enUS);
-var styleString = fs.readFileSync(cslFolder + 'bibtex.csl', 'utf8').replace(/<sort>([\s\S]*?)<\/sort>/g,'');
+var styleString = fs.readFileSync(cslFolder + 'bibtex.csl', 'utf8').replace(/<sort>([\s\S]*?)<\/sort>/g, '');
 var engine = sys.newEngine(styleString, 'en-US');
 sys.items = citations;
 engine.setOutputFormat("text");
@@ -186,19 +188,54 @@ var bibtex = engine.makeBibliography();
 bibtex = bibtex[1];
 //bibtex done
 
-logger.write("DOI;type;CitationType;CitationString;Json;BibTex\n");
+//remove zotero2
+for (var i = 0; i < citations.length; i++) {
+delete citations[i]["zotero2bibtexType"];
+}
+
+logger.write(csvline(["DOI", "type", "CitationType", "CitationString", "Json", "BibTex"])+ "\n");//.join(",")
+var failedbibliographies = [];
+
+var grobid_replace = {
+  page: 'biblScope unit="page"',
+  volume: 'biblScope unit="volume"',
+  issue: 'biblScope unit="issue"',
+  "publisher-place": 'pubPlace',
+  DOI: 'idno type="doi"',
+  URL: 'ptr type="web"',
+
+};
+
 for (var i = 0, len = csls.length; i < len; i++) { //
   console.log(i + ". " + csls[i]);
-  var styleString = fs.readFileSync(cslFolder + csls[i] + '.csl', 'utf8').replace(/<([^>]*)(\sdefault-locale=\".+?\"(\s|))(.*?)>/, '<$1$3>');
+  var styleString = fs.readFileSync(cslFolder + csls[i] + '.csl', 'utf8');
+//fs.readFile(cslFolder + csls[i] + '.csl', 'utf8',function (err, styleString)  {
+//  if (err) throw err;
+
+
+ styleString = styleString.replace(/<([^>]*)(\sdefault-locale=\".+?\"(\s|))(.*?)>/, '<$1$3>');
 
   if (process.argv[2] == "tags") {
+    //fucked             <text variable="DOI" form="long" prefix="DOI:"/> https://regexr.com/3tvbl
     styleString = styleString.replace(/<text variable="(.*?)"( prefix="([^"]*)")?( suffix="([^"]*)")?/g, '<text variable="$1" prefix="$3&lt;$1&gt;" suffix="&lt;/$1&gt;$5"');
     styleString = styleString.replace(/<date variable="(.*?)"( prefix="([^"]*)")?( suffix="([^"]*)")?/g, '<date variable="$1" prefix="$3&lt;$1&gt;" suffix="&lt;/$1&gt;$5"');
     styleString = styleString.replace(/<names variable="(.*?)"( prefix="([^"]*)")?( suffix="([^"]*)")?/g, '<names variable="$1" prefix="$3&lt;$1&gt;" suffix="&lt;/$1&gt;$5"');
   }
-  if(true || removesorting){
-    styleString = styleString.replace(/<sort>([\s\S]*?)<\/sort>/g,'');
+  if (true || removesorting) {
+    styleString = styleString.replace(/<sort>([\s\S]*?)<\/sort>/g, '');
+    //layout , remove citation numbers
+    //    styleString = styleString.replace(/<layout prefix=\"(.*?)\" suffix=\"(.*?)\"/g,'<layout');
+    styleString = styleString.replace(/<text variable=\"citation-number\"(.*?)\/>/g, '');
+    styleString = styleString.replace(/disambiguate-add-year-suffix=\"true\"/g, '');
   }
+  if (false) {
+    for (var j in grobid_replace) {
+      styleString = styleString.replace(new RegExp('&lt;'+j+'&gt;','g'), '&lt;'+grobid_replace[j].replace(/\"/g,'&quot;')+'&gt;');
+      styleString = styleString.replace(new RegExp('&lt;/'+j+'&gt;','g'), '&lt;/'+grobid_replace[j].match(/\w+/)[0]+'&gt;');
+    }
+  }
+  //console.log(styleString);
+
   //console.log(styleString);return;
   var engine = sys.newEngine(styleString, 'en-US');
   //sys.items = citations;
@@ -206,29 +243,32 @@ for (var i = 0, len = csls.length; i < len; i++) { //
   engine.updateItems(citation_keys);
   var bib = engine.makeBibliography();
   bib = bib[1];
-  var failedbibliographies = [];
   if (bib != undefined) {
     for (var c = 0; c < bib.length; c++) {
       //console.log(bib[c]);
+      //return;
       //output += csvline([citations[c]["DOI"],citations[c]["type"],csls[i],bib[c]]);
-      logger.write(csvline([citations[c]["DOI"], citations[c]["type"], csls[i], bib[c], JSON.stringify(citations[c]), bibtex[c]]) + "\n");
+      logger.write(csvline([citations[c]["DOI"], citations[c]["type"], csls[i], bib[c], JSON.stringify(citations[c]), bibtex[c].trim()]) + "\n");
     }
   } else {
     failedbibliographies.push(i + ". " + csls[i]);
-    //console.log("undefined - couldnt create bibliography");
+    console.log("undefined - couldnt create bibliography");
   }
+//return;
+
   //if(i==20){break;}
 }
 console.log("Failed ones:");
 console.log(failedbibliographies.join("\n"));
 console.log();
-var output_file = "output_strings_"+count+".csv";
+/*
 fs.writeFile(output_file, output, function(err) {
   if (err) return console.log(err);
   console.log('Saved CSV to ' + output_file);
 });
+*/
 console.timeEnd("script");
 
-output = '<?xml version="1.0" encoding="UTF-8"?>'+
-'<tei xmlns="http://www.tei-c.org/ns/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML">'+
-'<listBibl>';
+output = '<?xml version="1.0" encoding="UTF-8"?>' +
+  '<tei xmlns="http://www.tei-c.org/ns/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mml="http://www.w3.org/1998/Math/MathML">' +
+  '<listBibl>';
