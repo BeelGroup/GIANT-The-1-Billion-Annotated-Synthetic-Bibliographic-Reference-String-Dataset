@@ -16,7 +16,9 @@ Open the Terminal and run:
 
 Or specify the file name
 
-    node generateCSVcitationdataset.js cr20.json
+    node generateCSVcitationdataset.js notags cr20.json
+    node generateCSVcitationdataset.js tags cr20.json
+
  
 This script will generate `cslciteproc.json` and `output_strings.csv` file
 
