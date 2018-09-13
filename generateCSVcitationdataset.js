@@ -143,9 +143,17 @@ var serializer = new XMLSerializer();
 //This folder should have all the CSL files
 const cslFolder = './csl/';
 //the output
-var annotated = "grobid";
-
-
+var stats = true;
+if(stats){
+  stats = {
+    types : {},
+    author: {},
+    authorfamily: {},
+    authorgiven: {},
+    authortotal: 0,
+    authorunique: 0,
+  };
+}
 //1. Start reading input file
 if (process.argv[3]) {
   var fileName = './' + process.argv[3];
@@ -188,14 +196,37 @@ for (var i = 0; i < lines.length; i++) {
   if(skiptypes.indexOf(line.type) !== -1){
     continue;
   }
+  if(stats){
+    if(!stats.types[line.type]){
+      stats.types[line.type] = 0;
+    }
+    stats.types[line.type]++;
+  }
   citations[citationcounter] = {
     id: citationcounter,
    // zotero2bibtexType : line["type"],//I know it looks strange but it's needed for the bibtex.csl
   };
 
   //delete empty authors
-  if(line["author"] != undefined){
+  if(line.author != undefined){
     for(var a = 0; a < line["author"].length; a++){
+      if(stats || true){
+          stats.authortotal++;
+          if(!stats.author[line.author[a].family+", "+line.author[a].given]){
+            stats.author[line.author[a].family+", "+line.author[a].given] = 0;
+          }
+          stats.author[line.author[a].family+", "+line.author[a].given]++;
+          
+          if(!stats.authorfamily[line.author[a].family]){
+            stats.authorfamily[line.author[a].family] = 0;
+          }
+          stats.authorfamily[line.author[a].family]++;
+          
+          if(!stats.authorgiven[line.author[a].given]){
+            stats.authorgiven[line.author[a].given] = 0;
+          }
+          stats.authorgiven[line.author[a].given]++;
+        }
 
       //delete affiliation if it's empty
       if(line["author"][a]["affiliation"].length == 0){
@@ -243,6 +274,12 @@ for (var i = 0; i < lines.length; i++) {
   }
   citationcounter++;
 }
+
+if(stats){
+ fs.writeFileSync("stats.js", JSON.stringify(stats));
+  return;
+}
+
 //console.log(citations);
 console.log(unknowns);
 var newFile = "./output/cslciteproc.json";
