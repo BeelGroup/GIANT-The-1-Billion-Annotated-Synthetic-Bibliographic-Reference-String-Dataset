@@ -66,7 +66,6 @@ for (var i = 0; i < lines.length; i++) {
       } else if (type == field.NAME_LIST && typeof line[prop] == "object") {
         citations[citationcounter][newprop] = line[prop]
       } else {
-        //console.log(line);
         console.log("Unknown format: "+type + ";" + typeof line[prop] + ";" + newprop + ";" + line[prop]);
       }
 
@@ -80,7 +79,7 @@ for (var i = 0; i < lines.length; i++) {
 
 //console.log(unknowns);
 var newFile = "./output/cslciteproc.json";
-fs.writeFileSync(newFile, JSON.stringify(citations));
-console.log('Saved JSON to ' + newFile);
+//fs.writeFileSync(newFile, JSON.stringify(citations));
+//console.log('Saved JSON to ' + newFile);
 return citations;
 }}
