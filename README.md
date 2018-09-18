@@ -7,7 +7,7 @@
 
 ## Used libraries
 
-Please check out the [WIKI](https://github.com/BeelGroup/1-Billion-Citation-Dataset/wiki
+Please check out the WIKI
 
 ## Build
 
