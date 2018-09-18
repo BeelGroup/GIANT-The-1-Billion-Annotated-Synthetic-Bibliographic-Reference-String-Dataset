@@ -11,17 +11,7 @@ xmldom
 
 ## Build
 
-Open the Terminal and run:
-
-    node generateCSVcitationdataset.js
-
-Or specify the file name
-
-    node generateCSVcitationdataset.js notags cr20.json
-    node generateCSVcitationdataset.js tags cr20.json
-
- 
-This script will generate `cslciteproc.json` and `output_strings.csv` file
+Please check out the WIKI
 
 ## Documentation
 
