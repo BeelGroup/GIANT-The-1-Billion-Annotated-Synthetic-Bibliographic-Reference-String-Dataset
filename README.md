@@ -15,12 +15,12 @@ Please check out the WIKI
 
 ## Documentation
 
-To be extended
+Please check out the WIKI
 
 ## Stats
- types
 
-https://docs.google.com/spreadsheets/d/e/2PACX-1vQ38jcvyj96lo1aGAtQeTY52HfdLqA6R15ngrzgpnUF0fR19mv8mQnNfsj9jj-vm_AbdtvmC9ZcgdtZ/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false
+Please check out the WIKI
+
 
 ## License
 
