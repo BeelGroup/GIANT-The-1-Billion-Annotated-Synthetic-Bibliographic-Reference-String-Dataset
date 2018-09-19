@@ -1,3 +1,16 @@
+var fs = require('fs');
+//THIS FILE IS STILL IN PRODUCTION
+
+
+//1. Start reading input file
+if (process.argv[2]) {
+  var fileName = process.argv[2];
+} else {
+  return "Please provid input file";
+}
+var data = fs.readFileSync(fileName, 'utf8');
+
+
 var stats = true;
 if(stats){
   stats = {
