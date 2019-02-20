@@ -60,7 +60,7 @@ var XMLSerializer = require('xmldom').XMLSerializer;
 var serializer = new XMLSerializer();
 
 //This folder should have all the CSL files
-const cslFolder = './csl/';
+const cslFolder = './citation-styles/';
 //the output
 
 //1. Start reading input file
