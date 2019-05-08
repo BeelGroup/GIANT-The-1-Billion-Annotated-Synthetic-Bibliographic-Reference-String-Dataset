@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>RTF Scan</title>
+    <id>http://www.zotero.org/styles/rtf-scan</id>
+    <link href="http://www.zotero.org/styles/rtf-scan" rel="self"/>
+    <link href="http://www.zotero.org/support/rtf_scan" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <contributor>
+      <name>Jakob Behrends</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="generic-base"/>
+    <summary>Style to work with Zotero's RTF Scan feature</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="short" and="text" delimiter=", " initialize-with=". " sort-separator=", "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+        <text macro="title" prefix="" suffix=""/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <text value="&amp;amp;quot;" prefix="" suffix=""/>
+    <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+    <text value="&amp;amp;quot;" prefix="" suffix=""/>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <citation et-al-min="2" et-al-use-first="1" disambiguate-add-names="true" disambiguate-add-givenname="true">
+    
+    <layout prefix="{" suffix="}" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short" prefix="" suffix=""/>
+        <text macro="title" prefix="" suffix=""/>
+        <text macro="year-date" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true" et-al-min="2" et-al-use-first="1">
+    
+    <layout prefix="{" suffix="}">
+      <group delimiter=", ">
+        <text macro="author-short" prefix="" suffix=""/>
+        <text macro="title" prefix="" suffix=""/>
+        <text macro="year-date" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

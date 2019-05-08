@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Nature</title>
+    <id>http://www.zotero.org/styles/nature</id>
+    <link href="http://www.zotero.org/styles/nature" rel="self"/>
+    <link href="http://www.nature.com/nature/authors/gta/index.html#a5.4" rel="documentation"/>
+    <link href="http://www.nature.com/srep/publish/guidelines#references" rel="documentation"/>
+    <author>
+      <name>Michael Berkowitz</name>
+      <email>mberkowi@gmu.edu</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="science"/>
+    <category field="generic-base"/>
+    <issn>0028-0836</issn>
+    <eissn>1476-4687</eissn>
+    <updated>2014-09-10T06:11:43+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="title">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+        <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </if>
+      <else>
+        <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name sort-separator=", " delimiter=", " and="symbol" initialize-with=". " delimiter-precedes-last="never" name-as-sort-order="all"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=", "/>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="volume"/>
+      <else-if variable="DOI">
+        <text variable="DOI" prefix="doi:&lt;DOI>" suffix="&lt;/DOI>"/>
+      </else-if>
+      <else-if type="webpage" variable="URL" match="all">
+        <text term="available at" text-case="capitalize-first" suffix=": " prefix=""/>
+        <text variable="URL" suffix="&lt;/URL>. " prefix="&lt;URL>"/>
+        <group prefix="(" suffix=")" delimiter=": ">
+          <text term="accessed" text-case="capitalize-first" prefix="" suffix=""/>
+          <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+            <date-part name="day" suffix="&lt;/day> " form="ordinal" prefix="&lt;day>"/>
+            <date-part name="month" suffix="&lt;/month> " prefix="&lt;month>"/>
+            <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="issuance">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture report song thesis chapter paper-conference" match="any">
+        <group delimiter=", " prefix="(" suffix=").">
+          <text variable="publisher" form="long" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+          <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+            <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+        </group>
+      </if>
+      <else>
+        <date prefix="(&lt;issued>" suffix="&lt;/issued>)." variable="issued">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if type="article-journal">
+        <text variable="container-title" font-style="italic" form="short" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+      </if>
+      <else>
+        <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="editor">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <names variable="editor" prefix="(&lt;editor>" suffix="&lt;/editor>)">
+          <label form="short" suffix=" "/>
+          <name and="symbol" delimiter-precedes-last="never" initialize-with=". " name-as-sort-order="all"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        </names>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout vertical-align="sup" delimiter=",">
+      
+    </layout>
+  </citation>
+  <bibliography et-al-min="6" et-al-use-first="1" second-field-align="flush" entry-spacing="0" line-spacing="2">
+    <layout>
+      
+      <group delimiter=" ">
+        <text macro="author" suffix="." prefix=""/>
+        <text macro="title" suffix="." prefix=""/>
+        <choose>
+          <if type="chapter paper-conference" match="any">
+            <text term="in" prefix="" suffix=""/>
+          </if>
+        </choose>
+        <text macro="container-title" prefix="" suffix=""/>
+        <text macro="editor" prefix="" suffix=""/>
+        <group font-weight="bold">
+          <text variable="volume" suffix="&lt;/volume>," prefix="&lt;volume>"/>
+        </group>
+        <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+        <text macro="issuance" prefix="" suffix=""/>
+        <text macro="access" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

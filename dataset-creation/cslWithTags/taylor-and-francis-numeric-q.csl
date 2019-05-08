@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Taylor &amp; Francis - Numeric Q</title>
+    <title-short>Taylor &amp; Francis - Numeric Q</title-short>
+    <id>http://www.zotero.org/styles/taylor-and-francis-numeric-q</id>
+    <link href="http://www.zotero.org/styles/taylor-and-francis-numeric-q" rel="self"/>
+    <link href="http://www.zotero.org/styles/elsevier-without-titles" rel="template"/>
+    <link href="http://www.tandf.co.uk/journals/authors/style/reference/ref_gsar.pdf" rel="documentation"/>
+    <author>
+      <name>David Bajusz</name>
+    </author>
+    <contributor>
+      <name>Richard Karnesky</name>
+      <email>karnesky+zotero@gmail.com</email>
+      <uri>http://arc.nucapt.northwestern.edu/Richard_Karnesky</uri>
+    </contributor>
+    <contributor>
+      <name>Rintze Zelle</name>
+      <uri>http://twitter.com/rintzezelle</uri>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="generic-base"/>
+    <summary>A style for SAR and QSAR in Environmental Science and possibly other journals of Taylor and Francis.</summary>
+    <updated>2015-06-01T15:26:07+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" suffix="&lt;/author>, " prefix="&lt;author>">
+      <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never" initialize-with="."><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name and="text" delimiter-precedes-last="never" initialize-with="."><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" text-case="lowercase" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" prefix="&lt;edition>" suffix="&lt;/edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout prefix="[" suffix="]" delimiter=",">
+      
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" second-field-align="flush" et-al-min="7" et-al-use-first="6">
+    <layout suffix=".">
+      
+      <choose>
+        <if type="article-journal" match="any">
+          <text macro="author" prefix="" suffix=""/>
+          <text variable="title" font-style="italic" suffix="&lt;/title>, " prefix="&lt;title>"/>
+          <text variable="container-title" form="short" suffix="&lt;/container-title> " prefix="&lt;container-title>"/>
+          <number suffix=" " variable="volume"/>
+          <date date-parts="year" form="text" variable="issued" prefix="(&lt;issued>" suffix="&lt;/issued>), "/>
+          <text variable="page" prefix="pp. &lt;page>" suffix="&lt;/page>"/>
+        </if>
+        <else-if type="book" match="any">
+          <text macro="author" prefix="" suffix=""/>
+          <text variable="title" text-case="title" font-style="italic" suffix="&lt;/title>, " prefix="&lt;title>"/>
+          <text macro="edition" prefix="" suffix=""/>
+          <group delimiter=" " suffix=", ">
+            <text term="volume" form="short" text-case="capitalize-first" prefix="" suffix=""/>
+            <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+          </group>
+          <choose>
+            <if match="any" variable="collection-title">
+              <text variable="collection-title" prefix="&lt;collection-title>" suffix="&lt;/collection-title>"/>
+              <number prefix=" Vol. " suffix="," variable="collection-number"/>
+            </if>
+          </choose>
+          <text variable="publisher" suffix="&lt;/publisher>, " prefix="&lt;publisher>"/>
+          <text variable="publisher-place" suffix="&lt;/publisher-place>, " prefix="&lt;publisher-place>"/>
+          <date date-parts="year" form="text" variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+        </else-if>
+        <else-if type="chapter" match="any">
+          <text macro="author" prefix="" suffix=""/>
+          <text variable="title" font-style="italic" suffix="&lt;/title>, " prefix="&lt;title>"/>
+          <group delimiter=" " suffix=", ">
+            <text term="in" prefix="" suffix=""/>
+            <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          </group>
+          <text macro="editor" suffix=", " prefix=""/>
+          <text variable="publisher" suffix="&lt;/publisher>, " prefix="&lt;publisher>"/>
+          <text variable="publisher-place" suffix="&lt;/publisher-place>, " prefix="&lt;publisher-place>"/>
+          <date date-parts="year" form="text" variable="issued" suffix="&lt;/issued>, " prefix="&lt;issued>"/>
+          <text variable="page" prefix="pp. &lt;page>" suffix="&lt;/page>"/>
+        </else-if>
+        <else-if type="thesis" match="any">
+          <text macro="author" prefix="" suffix=""/>
+          <text variable="title" font-style="italic" suffix="&lt;/title>, " prefix="&lt;title>"/>
+          <text variable="genre" suffix="&lt;/genre>, " prefix="&lt;genre>"/>
+          <text variable="publisher" suffix="&lt;/publisher>, " prefix="&lt;publisher>"/>
+          <date date-parts="year" form="text" variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+        </else-if>
+        <else-if type="webpage" match="any">
+          <text variable="publisher" suffix="&lt;/publisher>, " prefix="&lt;publisher>"/>
+          <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+          <text variable="URL" prefix=". Available at &lt;URL>" suffix="&lt;/URL>"/>
+        </else-if>
+        <else-if type="article" match="any">
+          <text variable="title" font-style="italic" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <text variable="publisher" suffix="&lt;/publisher>, " prefix="&lt;publisher>"/>
+          <text variable="publisher-place" suffix="&lt;/publisher-place>, " prefix="&lt;publisher-place>"/>
+          <date date-parts="year" form="text" variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+        </else-if>
+        <else-if type="paper-conference" match="any">
+          <text macro="author" prefix="" suffix=""/>
+          <text variable="title" suffix="&lt;/title>, " prefix="&lt;title>"/>
+          <text variable="container-title" prefix="in &lt;container-title>" suffix="&lt;/container-title>, "/>
+          <choose>
+            <if match="any" variable="volume">
+              <text variable="volume" suffix="&lt;/volume> " prefix="&lt;volume>"/>
+              <date date-parts="year" form="text" variable="issued" prefix="(&lt;issued>" suffix="&lt;/issued>)"/>
+            </if>
+            <else>
+              <date date-parts="year" form="text" variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+            </else>
+          </choose>
+          <text variable="page" prefix=", pp. &lt;page>" suffix="&lt;/page>"/>
+        </else-if>
+        <else-if type="report" match="any">
+          <text macro="author" prefix="" suffix=""/>
+          <text variable="title" font-style="italic" suffix="&lt;/title>, " prefix="&lt;title>"/>
+          <text variable="container-title" suffix="&lt;/container-title>/" prefix="&lt;container-title>"/>
+          <text variable="number" suffix="&lt;/number>, " prefix="&lt;number>"/>
+          <text variable="publisher" suffix="&lt;/publisher>, " prefix="&lt;publisher>"/>
+          <text variable="publisher-place" suffix="&lt;/publisher-place>, " prefix="&lt;publisher-place>"/>
+          <date date-parts="year" form="text" variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+        </else-if>
+        <else>
+          <text macro="author" prefix="" suffix=""/>
+          <text variable="title" font-style="italic" suffix="&lt;/title>, " prefix="&lt;title>"/>
+          <text variable="container-title" suffix="&lt;/container-title>, " prefix="&lt;container-title>"/>
+          <choose>
+            <if match="any" variable="volume">
+              <text variable="volume" suffix="&lt;/volume> " prefix="&lt;volume>"/>
+              <date date-parts="year" form="text" variable="issued" prefix="(&lt;issued>" suffix="&lt;/issued>)"/>
+            </if>
+            <else>
+              <date date-parts="year" form="text" variable="issued" suffix="&lt;/issued>, " prefix="&lt;issued>"/>
+            </else>
+          </choose>
+          <choose>
+            <if match="any" variable="page">
+              <text variable="page" prefix=", pp. &lt;page>" suffix="&lt;/page>"/>
+            </if>
+          </choose>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

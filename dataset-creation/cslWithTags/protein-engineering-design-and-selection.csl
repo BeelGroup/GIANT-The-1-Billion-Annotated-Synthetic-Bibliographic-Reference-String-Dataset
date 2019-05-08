@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text">
+  <info>
+    <title>Protein Engineering Design and Selection</title>
+    <title-short>PEDS</title-short>
+    <id>http://www.zotero.org/styles/protein-engineering-design-and-selection</id>
+    <link href="http://www.zotero.org/styles/protein-engineering-design-and-selection" rel="self"/>
+    <link href="http://www.zotero.org/styles/international-union-of-crystallography" rel="template"/>
+    <link href="http://www.oxfordjournals.org/our_journals/proeng/for_authors/manuscript.html" rel="documentation"/>
+    <author>
+      <name>James W. Gillespie</name>
+      <email>gillejw@auburn.edu</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="chemistry"/>
+    <issn>1741-0126</issn>
+    <eissn>1741-0134</eissn>
+    <published>2014-09-06T21:00:00-06:00</published>
+    <updated>2016-09-21T20:45:00-04:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="short" and="text"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name name-as-sort-order="all" sort-separator="," initialize-with="." and="text" delimiter-precedes-last="never"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")" strip-periods="true"/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name name-as-sort-order="all" sort-separator="," initialize-with="." and="text" delimiter-precedes-last="never"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")" strip-periods="true"/>
+    </names>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1" and="text" collapse="year-suffix">
+    
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short" prefix="" suffix=""/>
+        <text macro="issued" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="10" et-al-use-first="3">
+    
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix="" suffix=""/>
+        <text macro="issued" prefix="(" suffix=")"/>
+        <choose>
+          <if type="article article-magazine article-newspaper article-journal review" match="any">
+            <group delimiter=", ">
+              <text variable="container-title" form="short" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+              <text variable="volume" font-weight="bold" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+              <text variable="page" suffix="&lt;/page>." prefix="&lt;page>"/>
+            </group>
+          </if>
+          <else-if type="chapter paper-conference" match="any">
+            <text term="in" text-case="capitalize-first" prefix="" suffix=""/>
+            <text macro="editor" suffix="," prefix=""/>
+            <text variable="container-title" suffix="&lt;/container-title>." text-case="title" font-style="italic" prefix="&lt;container-title>"/>
+            <text macro="publisher" suffix="," prefix=""/>
+            <label variable="page" form="short"/>
+            <text variable="page" suffix="&lt;/page>." prefix="&lt;page>"/>
+          </else-if>
+          <else-if type="thesis">
+            <text variable="title" suffix="&lt;/title>." prefix="&lt;title>"/>
+            <text variable="genre" suffix="&lt;/genre>." prefix="&lt;genre>"/>
+            <text variable="publisher" suffix="&lt;/publisher>." prefix="&lt;publisher>"/>
+          </else-if>
+          <else>
+            <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+            <text macro="publisher" suffix="." prefix=""/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

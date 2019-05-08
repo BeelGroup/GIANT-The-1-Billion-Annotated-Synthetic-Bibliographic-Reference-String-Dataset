@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text">
+  <info>
+    <title>Успехи геронтологии (Russian)</title>
+    <id>http://www.zotero.org/styles/uspekhi-gerontologii</id>
+    <link href="http://www.zotero.org/styles/uspekhi-gerontologii" rel="self"/>
+    <link href="http://www.zotero.org/styles/gost-r-7-0-5-2008-numeric-alphabetical" rel="template"/>
+    <link href="http://www.gersociety.ru/information/uspexi/" rel="documentation"/>
+    <author>
+      <name>Valery Mukhin</name>
+      <email>Valery.Mukhin@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>1561-9125</issn>
+    <summary>This style is based on the "Russian GOST-2008 style" by Rybakov Dmitriy. Стиль использует поле "дополнительно" для сортировки на русские и английские источники. Поэтому все символы из поля "дополнительно" нужно удалить. А чтобы в списке литературы сначала шли русские, затем английские источники, нужно в поле "дополнительно" поставить для русских один символ, для английских -- другой. Например "1" и "2". В соответствии с требованиями журнала в английских источниках нужно сокращение "et al.", а в русских "и др." В данной версии CSL так сделать нельзя. Поэтому везде будет "и др.". При подготовке статьи к представлению в редакию предлагаю заменить "и др." на "et al." в английских источниках автозаменой.</summary>
+    <updated>2016-09-28T10:25:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="ru">
+    <terms>
+      <term name="et-al">и др.</term>
+      <term name="editor">под ред.</term>
+      <term name="accessed">дата обращения</term>
+      <term name="page" form="short">с.</term>
+      <term name="translator">перевод</term>
+    </terms>
+  </locale>
+  <macro name="editor">
+    <names variable="editor" delimiter=", " suffix="&lt;/editor>," prefix="&lt;editor>">
+      <label prefix=" " suffix=" "/>
+      <name initialize-with="."><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" delimiter="," prefix=" / &lt;author>" suffix="&lt;/author>,">
+      <name et-al-min="6" et-al-use-first="5" initialize-with="."><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" strip-periods="true"/>
+    </names>
+  </macro>
+  <macro name="access">
+    <group>
+      <text value="[Электронный ресурс]. " prefix="" suffix=""/>
+      <text variable="URL" prefix="URL: &lt;URL>" suffix="&lt;/URL>"/>
+      <group prefix=" (" suffix=").">
+        <text term="accessed" suffix=": " prefix=""/>
+        <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+          <date-part name="day" suffix="&lt;/day>." form="numeric-leading-zeros" prefix="&lt;day>"/>
+          <date-part name="month" suffix="&lt;/month>." form="numeric-leading-zeros" prefix="&lt;month>"/>
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </group>
+    </group>
+  </macro>
+  <macro name="title">
+    <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+  </macro>
+  <macro name="translator">
+    <names variable="translator" delimiter="," suffix="&lt;/translator>," prefix="&lt;translator>">
+      <label prefix=" " suffix=" "/>
+      <name initialize-with="."><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <group suffix=",">
+      <text variable="publisher-place" suffix="&lt;/publisher-place>:" prefix="&lt;publisher-place>"/>
+      <text variable="publisher" prefix=" &lt;publisher>" suffix="&lt;/publisher>"/>
+    </group>
+    <text macro="year-date" prefix=" " suffix="."/>
+  </macro>
+  <macro name="year-date">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="language-sort">
+    <text variable="note" prefix="&lt;note>" suffix="&lt;/note>"/>
+    <text value="Z999" prefix="" suffix=""/>
+  </macro>
+  <macro name="citation-number">
+    
+  </macro>
+  <macro name="author-first">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name delimiter-precedes-last="always" initialize-with="." name-as-sort-order="all" sort-separator=" "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" strip-periods="true" prefix=" " suffix="."/>
+    </names>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout prefix="[" suffix="]" delimiter=", ">
+      
+      <group prefix=",">
+        <label plural="never" prefix=" " variable="locator" form="short"/>
+        <text variable="locator" form="short" prefix=" &lt;locator>" suffix="&lt;/locator>"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="3">
+    
+    <layout suffix=".">
+      <text macro="citation-number" prefix="" suffix=""/>
+      <text macro="author-first" suffix=" " prefix=""/>
+      <choose>
+        <if type="book" match="any">
+          <group>
+            <group delimiter=" ">
+              <text macro="title" prefix="" suffix=""/>
+              <text macro="author" prefix="" suffix=""/>
+              <text macro="editor" prefix="" suffix=""/>
+              <text macro="translator" prefix="" suffix=""/>
+              <text variable="edition" suffix="&lt;/edition>-е изд.," prefix="&lt;edition>"/>
+            </group>
+            <text macro="publisher" prefix=" " suffix=""/>
+            <text variable="number-of-pages" prefix=" &lt;number-of-pages>" suffix="&lt;/number-of-pages> c."/>
+          </group>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <group>
+            <group delimiter=" ">
+              <text macro="title" prefix="" suffix=""/>
+              <text variable="collection-title" suffix="&lt;/collection-title> /" prefix="&lt;collection-title>"/>
+              <text macro="editor" prefix="" suffix=""/>
+            </group>
+            <text macro="publisher" prefix=" " suffix=""/>
+            <text variable="page" prefix=" &lt;page>" suffix="&lt;/page> с."/>
+          </group>
+        </else-if>
+        <else-if type="webpage">
+          <text macro="title" prefix="" suffix=""/>
+          <text variable="container-title" prefix=" // &lt;container-title>" suffix="&lt;/container-title>"/>
+          <text prefix=" " macro="access" suffix=""/>
+        </else-if>
+        <else-if type="article-journal article-magazine article-newspaper broadcast interview manuscript personal_communication speech thesis" match="any">
+          <text macro="title" prefix="" suffix=""/>
+          <group delimiter=" " prefix=" ">
+            <text variable="container-title" prefix=" // &lt;container-title>" suffix="&lt;/container-title>."/>
+            <text macro="year-date" suffix="." prefix=""/>
+            <group suffix=".">
+              <text variable="issue" prefix="№ &lt;issue>" suffix="&lt;/issue>"/>
+              <text variable="volume" prefix=" (&lt;volume>" suffix="&lt;/volume>)"/>
+            </group>
+            <text variable="page" prefix="C. &lt;page>" suffix="&lt;/page>."/>
+          </group>
+        </else-if>
+        <else-if type="report">
+          <group suffix=".">
+            <text variable="publisher" suffix="&lt;/publisher>. " prefix="&lt;publisher>"/>
+            <text macro="title" prefix="" suffix=""/>
+          </group>
+          <text variable="publisher-place" prefix=" &lt;publisher-place>" suffix="&lt;/publisher-place>,"/>
+          <text macro="year-date" prefix=" " suffix=""/>
+        </else-if>
+        <else>
+          <text macro="title" prefix=" " suffix=""/>
+          <group delimiter=". " prefix=" " suffix=".">
+            <group prefix="// " delimiter=". ">
+              <text variable="container-title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+              <text macro="year-date" prefix="" suffix=""/>
+              <text variable="volume" prefix="Т. &lt;volume>" suffix="&lt;/volume>"/>
+              <text variable="issue" prefix="№ &lt;issue>" suffix="&lt;/issue>"/>
+            </group>
+            <text variable="page" suffix="&lt;/page> с." prefix="&lt;page>"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

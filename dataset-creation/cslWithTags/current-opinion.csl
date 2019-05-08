@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Current Opinion journals</title>
+    <id>http://www.zotero.org/styles/current-opinion</id>
+    <link href="http://www.zotero.org/styles/current-opinion" rel="self"/>
+    <link href="http://www.elsevier.com/journals/current-opinion-in-biotechnology/0958-1669/guide-for-authors" rel="documentation"/>
+    <author>
+      <name>David M. Kaplan</name>
+      <email>david.kaplan@ird.fr</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="generic-base"/>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="no date" form="long">date unknown</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")" text-case="capitalize-first" strip-periods="true"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <label form="verb" text-case="capitalize-first" suffix=" "/>
+      <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <group delimiter="; ">
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      <text macro="date" prefix="" suffix=""/>
+    </group>
+  </macro>
+  <macro name="date">
+    <choose>
+      <if variable="issued">
+        <choose>
+          <if type="article-journal">
+            <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+              <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+            </date>
+          </if>
+          <else>
+            <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+              <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+            </date>
+          </else>
+        </choose>
+      </if>
+      <else>
+        <text term="no date" prefix="[" suffix="]"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title">
+    <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+  </macro>
+  <macro name="volume-page">
+    <choose>
+      <if variable="volume">
+        <text variable="volume" font-weight="bold" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+        <text variable="page" prefix=":&lt;page>" suffix="&lt;/page>"/>
+      </if>
+      <else-if variable="DOI">
+        <text variable="DOI" prefix="doi:&lt;DOI>" suffix="&lt;/DOI>"/>
+      </else-if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout prefix="[" suffix="]" delimiter=",">
+      
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="10" second-field-align="flush">
+    <layout>
+      
+      <text macro="author" suffix=": " prefix=""/>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <text macro="title" suffix=". " font-style="italic" prefix=""/>
+          <text macro="publisher" suffix="." prefix=""/>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <text macro="title" suffix=". " font-weight="bold" prefix=""/>
+          <group suffix=". ">
+            <text term="in" suffix=" " text-case="capitalize-first" prefix=""/>
+            <text variable="container-title" font-style="italic" suffix="&lt;/container-title>. " prefix="&lt;container-title>"/>
+            <text macro="editor" prefix="" suffix=""/>
+          </group>
+          <group suffix=".">
+            <text macro="publisher" prefix=" " suffix=""/>
+            <text variable="page" prefix=":&lt;page>" suffix="&lt;/page>"/>
+          </group>
+        </else-if>
+        <else>
+          <text macro="title" suffix=". " font-weight="bold" prefix=""/>
+          <text variable="container-title" suffix="&lt;/container-title> " form="short" font-style="italic" strip-periods="true" prefix="&lt;container-title>"/>
+          <text macro="date" suffix=", " prefix=""/>
+          <text macro="volume-page" suffix="." prefix=""/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

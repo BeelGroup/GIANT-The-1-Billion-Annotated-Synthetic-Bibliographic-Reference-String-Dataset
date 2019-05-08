@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never" page-range-format="expanded" demote-non-dropping-particle="never">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Biuletyn Polskiego Towarzystwa Językoznawczego (Polish)</title>
+    <title-short>Biuletyn PTJ</title-short>
+    <id>http://www.zotero.org/styles/biuletyn-polskiego-towarzystwa-jezykoznawczego</id>
+    <link href="http://www.zotero.org/styles/biuletyn-polskiego-towarzystwa-jezykoznawczego" rel="self"/>
+    <link href="http://www.zotero.org/styles/archivum-latinitatis-medii-aevi" rel="template"/>
+    <link href="http://ptj.civ.pl/download/polskie/biuletyn_ptj/Zalecenia-edytorskie_2.pdf" xml:lang="pl" rel="documentation"/>
+    <author>
+      <name>Krzysztof Nowak</name>
+      <email>krzysztof.nowak@ijp-pan.krakow.pl</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="linguistics"/>
+    <issn>0032-3802</issn>
+    <summary>Style for the Biuletyn PTJ</summary>
+    <updated>2017-01-28T21:41:14+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="pl">
+    <terms>
+      <term name="et-al">et al.</term>
+      <term name="and others">[et al.]</term>
+      <term name="editor" form="short">red.</term>
+      <term name="online">Dostępne pod adresem</term>
+      <term name="in">w</term>
+      <term name="and">i</term>
+    </terms>
+  </locale>
+  <macro name="creator-year-long">
+    <group delimiter=" ">
+      <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+        <name font-variant="normal" and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="2" name-as-sort-order="all">
+          <name-part name="family" font-variant="small-caps" prefix="&lt;family>" suffix="&lt;/family>"/>
+        <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        <label form="short" prefix=", "/>
+        <et-al term="and others" font-style="normal"/>
+        <substitute>
+          <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        </substitute>
+      </names>
+      <date date-parts="year" form="text" variable="issued" prefix="(&lt;issued>" suffix="&lt;/issued>)"/>
+    </group>
+  </macro>
+  <macro name="editor-container-title">
+    <group delimiter=" " prefix=" – ">
+      <text term="in" text-case="lowercase" prefix="[" suffix=":]"/>
+      <group delimiter=": " suffix=".">
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+          <name font-variant="normal" and="text">
+            <name-part name="family" font-variant="small-caps" prefix="&lt;family>" suffix="&lt;/family>"/>
+          <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          <label form="short" prefix=" (" suffix=")"/>
+        </names>
+        <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+      </group>
+    </group>
+  </macro>
+  <macro name="publication-place-publisher">
+    <group delimiter=": " prefix=" – ">
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+    </group>
+  </macro>
+  <macro name="creator-year-short">
+    <group delimiter=" ">
+      <text macro="creator-short" prefix="" suffix=""/>
+      <date date-parts="year" form="text" variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if match="any" is-numeric="edition"/>
+      <else>
+        <text variable="edition" prefix="&lt;edition>" suffix="&lt;/edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="collection-title-number">
+    <group delimiter=" " prefix="(= " suffix=")">
+      <text variable="collection-title" prefix="&lt;collection-title>" suffix="&lt;/collection-title>"/>
+      <text variable="collection-number" prefix="&lt;collection-number>" suffix="&lt;/collection-number>"/>
+    </group>
+  </macro>
+  <macro name="page-range">
+    <group delimiter=" ">
+      <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+    </group>
+  </macro>
+  <macro name="online-url">
+    <group delimiter=": ">
+      <text term="online" text-case="capitalize-first" prefix="" suffix=""/>
+      <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+    </group>
+  </macro>
+  <macro name="container-title-volume">
+    <group delimiter=" ">
+      <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+      <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+    </group>
+  </macro>
+  <macro name="creator-short">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="short" and="text" et-al-min="3" et-al-use-first="2"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="book" match="any">
+        <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </if>
+      <else>
+        <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </else>
+    </choose>
+  </macro>
+  <citation et-al-min="4" et-al-use-first="1" collapse="year-suffix">
+    <layout delimiter="; " prefix="(" suffix=")">
+      <group delimiter=": ">
+        <text macro="creator-year-short" prefix="" suffix=""/>
+        <group delimiter=" ">
+          <text variable="locator" prefix="&lt;locator>" suffix="&lt;/locator>"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography delimiter-precedes-et-al="never" et-al-min="3" et-al-use-first="2" hanging-indent="true">
+    
+    <layout>
+      <group delimiter=". " suffix=".">
+        <group delimiter=": ">
+          <text macro="creator-year-long" prefix="" suffix=""/>
+          <text macro="title" prefix="" suffix=""/>
+        </group>
+        <choose>
+          <if type="book" match="any">
+            <group delimiter=". ">
+              <text macro="edition" prefix="" suffix=""/>
+              <text macro="publication-place-publisher" prefix="" suffix=""/>
+            </group>
+          </if>
+          <else-if type="article-journal article-magazine article-newspaper" match="any">
+            <group delimiter=", " prefix=" – ">
+              <group delimiter=" ">
+                <text macro="container-title-volume" prefix="" suffix=""/>
+              </group>
+              <text macro="page-range" prefix="" suffix=""/>
+            </group>
+          </else-if>
+          <else-if type="chapter" match="any">
+            <group delimiter=". ">
+              <text macro="editor-container-title" prefix="" suffix=""/>
+              <group delimiter=", ">
+                <text macro="publication-place-publisher" prefix="" suffix=""/>
+                <text macro="page-range" prefix="" suffix=""/>
+              </group>
+            </group>
+          </else-if>
+          <else>
+            <group delimiter=". ">
+              <choose>
+                <if match="any" variable="container-title">
+                  <text macro="editor-container-title" prefix="" suffix=""/>
+                </if>
+              </choose>
+              <text macro="publication-place-publisher" prefix="" suffix=""/>
+              <text macro="page-range" prefix="" suffix=""/>
+              <text macro="collection-title-number" prefix="" suffix=""/>
+              <text macro="online-url" prefix="" suffix=""/>
+            </group>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

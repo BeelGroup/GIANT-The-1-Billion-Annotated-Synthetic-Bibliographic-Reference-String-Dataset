@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>The Journal of Biological Chemistry</title>
+    <title-short>JBC</title-short>
+    <id>http://www.zotero.org/styles/journal-of-biological-chemistry</id>
+    <link href="http://www.zotero.org/styles/journal-of-biological-chemistry" rel="self"/>
+    <link href="http://www.jbc.org/site/misc/ifora.xhtml#references" rel="documentation"/>
+    <author>
+      <name>Julian Onions</name>
+      <email>julian.onions@gmail.com</email>
+    </author>
+    <contributor>
+      <name>Rintze Zelle</name>
+      <uri>http://twitter.com/rintzezelle</uri>
+    </contributor>
+    <contributor>
+      <name>Eddy yobo</name>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <issn>0021-9258</issn>
+    <eissn>1083-351X</eissn>
+    <summary>Style for Journal of Biological Chemistry</summary>
+    <updated>2014-12-04T15:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <!-- For future improvements:
+    From http://www.jbc.org/content/289/44/30198.full.pdf
+    Thomsen, W. (Lord Kelvin) (1871) On the origin of life. Presidential Address to the British Association for the Advancement of Science, Edinburgh, August 1871; reprinted in Kelvin’s Popular Lectures and Addresses (2010), pp. 132&#8211;205, Nabu Press, Charleston, SC
+  -->
+  <macro name="editor">
+    <names variable="editor" prefix="(&lt;editor>" suffix="&lt;/editor>)">
+      <name name-as-sort-order="all" and="text" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" " strip-periods="true"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name name-as-sort-order="all" and="text" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <text macro="title" prefix="" suffix=""/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL accessed" match="all">
+        <group delimiter=" ">
+          <text term="online" prefix="[" suffix="]"/>
+          <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+          <group prefix="(" suffix=")" delimiter=" ">
+            <text term="accessed" text-case="capitalize-first" prefix="" suffix=""/>
+            <date variable="accessed" form="text" prefix="&lt;accessed>" suffix="&lt;/accessed>"/>
+          </group>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture report song thesis" match="any">
+        <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </if>
+      <else>
+        <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" text-case="capitalize-first" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" prefix="&lt;edition>" suffix="&lt;/edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="locator">
+    <choose>
+      <if variable="page volume" match="all">
+        <group delimiter=", ">
+          <text variable="volume" font-weight="bold" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+          <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+        </group>
+      </if>
+      <else-if variable="DOI">
+        <text variable="DOI" prefix="&lt;DOI>" suffix="&lt;/DOI>"/>
+      </else-if>
+      <else>
+        <text macro="access" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout prefix="(" suffix=")" delimiter=", ">
+      
+    </layout>
+  </citation>
+  <bibliography second-field-align="flush" entry-spacing="0">
+    <layout>
+      
+      <group delimiter=" " suffix=" ">
+        <text macro="author" prefix="" suffix=""/>
+        <date variable="issued" prefix="(&lt;issued>" suffix="&lt;/issued>)">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </group>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture report song chapter paper-conference" match="any">
+          <group delimiter=", ">
+            <group delimiter=" ">
+              <group delimiter=", ">
+                <choose>
+                  <if type="chapter paper-conference" match="any">
+                    <!-- From http://www.jbc.org/content/289/44/30221.full.pdf
+                      Hicks, M. A., Barber II, A. E., and Babbitt, P. C. (2014) The nucleophilic attack 6-bladed β-propeller (N6P) superfamily. in Protein Families: Relating Protein Sequence, Structure, and Function (Orengo, C., and Bateman, A. eds), pp. 127&#8211;158, John Wiley & Sons, New York
+                    -->
+                    <group delimiter=". ">
+                      <text macro="title" prefix="" suffix=""/>
+                      <group>
+                        <text term="in" suffix=" " prefix=""/>
+                        <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+                      </group>
+                    </group>
+                  </if>
+                  <else>
+                    <text macro="title" prefix="" suffix=""/>
+                  </else>
+                </choose>
+                <text macro="edition" prefix="" suffix=""/>
+              </group>
+              <text macro="editor" prefix="" suffix=""/>
+            </group>
+            <choose>
+              <if type="chapter paper-conference" match="any">
+                <group>
+                  <label variable="page" form="short" suffix=" "/>
+                  <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+                </group>
+              </if>
+            </choose>
+            <text variable="collection-title" prefix="&lt;collection-title>" suffix="&lt;/collection-title>"/>
+            <text macro="publisher" prefix="" suffix=""/>
+            <text macro="locator" prefix="" suffix=""/>
+          </group>
+        </if>
+        <else-if type="personal_communication" match="any">
+          <!-- From http://www.jbc.org/content/289/44/30198.full.pdf
+            Darwin, C. (1871) Letter to J. D. Hooker, February 1, 1871
+          -->
+          <group delimiter=", ">
+            <group delimiter=" ">
+              <choose>
+                <if variable="genre" match="any">
+                  <text variable="genre" text-case="capitalize-first" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+                </if>
+                <else>
+                  <text term="letter" text-case="capitalize-first" prefix="" suffix=""/>
+                </else>
+              </choose>
+              <names variable="recipient" prefix="to &lt;recipient>" suffix="&lt;/recipient>">
+                <name and="text" initialize-with=". " delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+              </names>
+            </group>
+            <date variable="issued" form="text" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+            <text macro="access" prefix="" suffix=""/>
+          </group>
+        </else-if>
+        <else-if type="thesis" match="any">
+          <group delimiter=". ">
+            <text macro="title" prefix="" suffix=""/>
+            <group delimiter=", ">
+              <choose>
+                <if variable="genre" match="any">
+                  <group delimiter=" ">
+                    <text variable="genre" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+                    <text value="thesis" prefix="" suffix=""/>
+                  </group>
+                </if>
+                <else>
+                  <text value="Ph.D. thesis" prefix="" suffix=""/>
+                </else>
+              </choose>
+              <text macro="publisher" prefix="" suffix=""/>
+              <text macro="locator" prefix="" suffix=""/>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=". ">
+            <text macro="title" prefix="" suffix=""/>
+            <text variable="container-title" form="short" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            <text macro="locator" prefix="" suffix=""/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0">
+  <info>
+    <title>Invertebrate Biology</title>
+    <id>http://www.zotero.org/styles/invertebrate-biology</id>
+    <link href="http://www.zotero.org/styles/invertebrate-biology" rel="self"/>
+    <link href="http://www.zotero.org/styles/memorias-do-instituto-oswaldo-cruz" rel="template"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1111/%28ISSN%291744-7410/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>1077-8306</issn>
+    <eissn>1744-7410</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor-translator">
+    <names variable="editor translator" delimiter=", " prefix="&lt;editor translator>" suffix="&lt;/editor translator>">
+      <name delimiter=", " and="symbol" initialize-with="" name-as-sort-order="all" sort-separator=" "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name delimiter=", " and="symbol" initialize-with="" name-as-sort-order="all" sort-separator=" "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+        <text macro="title" prefix="" suffix=""/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="short" delimiter=", " and="symbol" initialize-with=". "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+        <text variable="title" form="short" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="genre" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+    </group>
+  </macro>
+  <citation collapse="year-suffix" et-al-min="3" et-al-use-first="1" year-suffix-delimiter=", ">
+    
+    <layout delimiter=", " prefix="(" suffix=")">
+      <group delimiter=" ">
+        <text macro="author-short" prefix="" suffix=""/>
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+        <group>
+          <label variable="locator" form="short"/>
+          <text variable="locator" prefix=" &lt;locator>" suffix="&lt;/locator>"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true" line-spacing="2">
+    
+    <layout suffix=".">
+      <text macro="author" prefix="" suffix=""/>
+      <date variable="issued" prefix=" &lt;issued>" suffix="&lt;/issued>.">
+        <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+      </date>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture report song thesis" match="any">
+          <group suffix=".">
+            <text macro="title" prefix=" " suffix=""/>
+            <text macro="editor-translator" prefix=" " suffix=""/>
+          </group>
+          <text prefix=" " macro="publisher" suffix=""/>
+          <text variable="number-of-pages" prefix=". &lt;number-of-pages>" suffix="&lt;/number-of-pages> pp"/>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <text macro="title" prefix=" " suffix=""/>
+          <group prefix=".">
+            <group prefix=" In:" delimiter=". ">
+              <text variable="container-title" form="short" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+              <text macro="editor-translator" prefix="" suffix=""/>
+            </group>
+            <label variable="page" form="short" prefix=", " suffix=" "/>
+            <text variable="page" suffix="&lt;/page>." prefix="&lt;page>"/>
+            <text macro="publisher" prefix=" " suffix=""/>
+          </group>
+        </else-if>
+        <else>
+          <group suffix=".">
+            <text macro="title" font-weight="normal" prefix=" " suffix=""/>
+            <text macro="editor-translator" font-weight="normal" prefix=" " suffix=""/>
+          </group>
+          <group prefix=" " suffix=".">
+            <text variable="container-title" form="short" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            <group prefix=" ">
+              <text variable="volume" form="long" font-weight="normal" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+            </group>
+            <text variable="page" prefix=": &lt;page>" suffix="&lt;/page>"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

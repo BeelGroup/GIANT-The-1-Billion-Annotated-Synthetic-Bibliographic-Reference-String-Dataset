@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Macromolecular Reaction Engineering</title>
+    <id>http://www.zotero.org/styles/macromolecular-reaction-engineering</id>
+    <link href="http://www.zotero.org/styles/macromolecular-reaction-engineering" rel="self"/>
+    <link href="http://www.zotero.org/styles/nature" rel="template"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1862-8338/homepage/2465_authors.html" rel="documentation"/>
+    <author>
+      <name>Charles Parnot</name>
+      <email>charles.parnot@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="science"/>
+    <issn>1862-832X</issn>
+    <eissn>1862-8338</eissn>
+    <updated>2014-06-03T22:14:43+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name sort-separator=", " initialize-with=". " delimiter-precedes-last="never"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="volume"/>
+      <else-if variable="DOI">
+        <text variable="DOI" prefix="doi:&lt;DOI>" suffix="&lt;/DOI>"/>
+      </else-if>
+      <else-if variable="URL">
+        <text term="at" prefix="" suffix=""/>
+        <text variable="URL" prefix=" &amp;amp;lt;&lt;URL>" suffix="&lt;/URL>&amp;amp;gt;"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="issuance">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout vertical-align="sup" delimiter="," prefix="[" suffix="]">
+      
+    </layout>
+  </citation>
+  <bibliography et-al-min="6" et-al-use-first="1" second-field-align="flush" entry-spacing="0" line-spacing="2">
+    <layout>
+      
+      <group delimiter=", " suffix=".">
+        <text macro="author" prefix="" suffix=""/>
+        <group delimiter=" ">
+          <text variable="container-title" font-style="italic" form="short" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          <text macro="issuance" font-weight="bold" prefix="" suffix=""/>
+        </group>
+        <text variable="volume" font-style="italic" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+        <choose>
+          <if variable="page-first">
+            <text variable="page-first" prefix="&lt;page-first>" suffix="&lt;/page-first>"/>
+          </if>
+          <else>
+            <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+          </else>
+        </choose>
+        <text macro="access" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

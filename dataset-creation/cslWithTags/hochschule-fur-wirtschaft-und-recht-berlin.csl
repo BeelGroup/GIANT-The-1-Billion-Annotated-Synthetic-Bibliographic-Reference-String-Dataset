@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note">
+  <info>
+    <title>Hochschule für Wirtschaft und Recht Berlin (German)</title>
+    <title-short>HWR Berlin</title-short>
+    <id>http://www.zotero.org/styles/hochschule-fur-wirtschaft-und-recht-berlin</id>
+    <link href="http://www.zotero.org/styles/hochschule-fur-wirtschaft-und-recht-berlin" rel="self"/>
+    <link href="http://www.hwr-berlin.de/" rel="documentation"/>
+    <author>
+      <name>Stanislaw Koltschin</name>
+      <email>kontakt@staniko.de</email>
+    </author>
+    <category citation-format="note"/>
+    <category field="social_science"/>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="de">
+    <terms>
+      <term name="et-al">u.a.</term>
+      <term name="and">und</term>
+      <term name="retrieved">zugegriffen am</term>
+      <term name="accessed">abgerufen am</term>
+      <term name="ibid">ebenda</term>
+      <term name="page" form="short">S.</term>
+      <term name="section" form="short">Abs.</term>
+      <term name="editor" form="verb-short">hrsg. von</term>
+      <term name="editor" form="short">(Hrsg.)</term>
+    </terms>
+  </locale>
+  <!--
+   macro definitions
+	author
+	editor
+	accessed
+	date
+	year-date
+	pages
+	point-locators
+	point-locators-subsequent
+        hasUrl
+  -->
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name and="text" name-as-sort-order="all" sort-separator=", " delimiter=", " delimiter-precedes-last="never"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" text-case="lowercase" strip-periods="true"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor translator" prefix="&lt;editor translator>" suffix="&lt;/editor translator>">
+      <name and="text" name-as-sort-order="all" sort-separator=", " delimiter=", " delimiter-precedes-last="never"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" " strip-periods="true"/>
+    </names>
+  </macro>
+  <macro name="accessed">
+    <text term="accessed" prefix="" suffix=""/>
+    <date variable="accessed" prefix=" &lt;accessed>" suffix="&lt;/accessed>">
+      <date-part form="numeric-leading-zeros" name="day" suffix="&lt;/day>." prefix="&lt;day>"/>
+      <date-part form="numeric-leading-zeros" name="month" suffix="&lt;/month>." prefix="&lt;month>"/>
+      <date-part form="long" name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part form="numeric-leading-zeros" name="day" suffix="&lt;/day>." prefix="&lt;day>"/>
+          <date-part form="numeric-leading-zeros" name="month" suffix="&lt;/month>." prefix="&lt;month>"/>
+          <date-part form="long" name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </if>
+      <else>
+        <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+          <date-part form="numeric-leading-zeros" name="day" suffix="&lt;/day>." prefix="&lt;day>"/>
+          <date-part form="numeric-leading-zeros" name="month" suffix="&lt;/month>." prefix="&lt;month>"/>
+          <date-part form="long" name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if type="webpage">
+        <choose>
+          <if variable="issued">
+            <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+              <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+            </date>
+          </if>
+          <else>
+            <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+              <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+            </date>
+          </else>
+        </choose>
+      </if>
+      <else>
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <label variable="locator" form="short" prefix=", " suffix=" "/>
+    <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+  </macro>
+  <macro name="point-locators">
+    <label variable="locator" form="short" prefix=", " suffix=" "/>
+    <text variable="locator" prefix="&lt;locator>" suffix="&lt;/locator>"/>
+  </macro>
+  <macro name="point-locators-subsequent">
+    <group>
+      <choose>
+        <if locator="page" match="none">
+          <choose>
+            <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+              <choose>
+                <if variable="volume">
+                  <group>
+                    <text term="volume" form="short" text-case="lowercase" suffix=" " prefix=""/>
+                    <number variable="volume" form="numeric"/>
+                    <label variable="locator" form="short" prefix=", "/>
+                  </group>
+                </if>
+                <else>
+                  <label variable="locator" form="short" suffix=" "/>
+                </else>
+              </choose>
+            </if>
+          </choose>
+        </if>
+        <else-if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <number variable="volume" form="numeric" suffix=":"/>
+        </else-if>
+      </choose>
+      <label variable="locator" form="short" suffix=" "/>
+      <text variable="locator" prefix="&lt;locator>" suffix="&lt;/locator>"/>
+    </group>
+  </macro>
+  <macro name="hasUrl">
+    <choose>
+      <if variable="URL" match="any">
+        <text value="yes" prefix="" suffix=""/>
+      </if>
+      <else>
+        <text value="no" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1">
+    <layout delimiter="; " suffix=".">
+      <choose>
+        <if position="ibid">
+          <text term="ibid" text-case="capitalize-first" prefix="" suffix=""/>
+          <text macro="point-locators-subsequent" prefix=", " suffix=""/>
+        </if>
+        <else>
+          <text macro="author" prefix="" suffix=""/>
+          <text macro="year-date" prefix=" (" suffix=")"/>
+          <text macro="point-locators" prefix="" suffix=""/>
+          <choose>
+            <if variable="URL" match="any">
+              <text value="(siehe Internet-/Intranetverzeichnis)" prefix=" " suffix=""/>
+            </if>
+          </choose>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography et-al-min="3" et-al-use-first="1" hanging-indent="true">
+    
+    <layout suffix=".">
+      <group font-weight="bold">
+        <text macro="author" prefix="" suffix=""/>
+        <text macro="year-date" prefix=" (" suffix="):" font-weight="bold"/>
+      </group>
+      <text variable="title" prefix=" &lt;title>" suffix="&lt;/title>"/>
+      <choose>
+        <if type="webpage">
+          <text macro="date" prefix=", " suffix=""/>
+        </if>
+        <else-if type="speech" match="any">
+          <text variable="publisher-place" prefix=", &lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+          <text macro="date" prefix=", " suffix=""/>
+          <text macro="accessed" prefix=", " suffix=""/>
+        </else-if>
+        <else-if type="article-newspaper article-magazine article-journal" match="any">
+          <text value=" In: " font-style="italic" prefix="" suffix=""/>
+          <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          <text variable="collection-title" prefix=", Reihe &lt;collection-title>" suffix="&lt;/collection-title>"/>
+          <text variable="volume" prefix=", Band &lt;volume>" suffix="&lt;/volume>"/>
+          <text variable="issue" prefix=", Ausgabe &lt;issue>" suffix="&lt;/issue>"/>
+          <text macro="date" prefix=", " suffix=""/>
+          <text macro="pages" prefix="" suffix=""/>
+        </else-if>
+        <else-if type="chapter paper-conference" match="any">
+          <text macro="editor" prefix=", in: " suffix=": "/>
+          <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          <text variable="publisher-place" prefix=", &lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+          <text variable="edition" prefix=", &lt;edition>" suffix="&lt;/edition>"/>
+          <text macro="year-date" prefix=", " suffix=""/>
+          <text macro="pages" prefix="" suffix=""/>
+        </else-if>
+        <else>
+          <text variable="publisher-place" prefix=", &lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+          <text variable="edition" prefix=", &lt;edition>" suffix="&lt;/edition>"/>
+          <text macro="year-date" prefix=", " suffix=""/>
+        </else>
+      </choose>
+      <choose>
+        <if variable="URL">
+          <text macro="accessed" prefix=", " suffix=""/>
+          <text variable="URL" prefix=", &lt;URL>" suffix="&lt;/URL>"/>
+        </if>
+      </choose>
+      <text variable="ISBN" prefix=", ISBN: &lt;ISBN>" suffix="&lt;/ISBN>"/>
+      <text variable="DOI" prefix=", DOI: &lt;DOI>" suffix="&lt;/DOI>"/>
+      <text variable="note" prefix=", &lt;note>" suffix="&lt;/note>"/>
+    </layout>
+  </bibliography>
+</style>

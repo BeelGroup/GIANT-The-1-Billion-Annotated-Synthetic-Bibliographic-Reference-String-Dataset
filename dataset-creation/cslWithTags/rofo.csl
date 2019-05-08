@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <!-- Polyglot; journal publishes in English and German -->
+  <!-- This style was created with the Visual CSL Editor (http://test.steveridout.com/csl/visualEditor/) -->
+  <info>
+    <title>RöFo: Fortschritte auf dem Gebiet der Röntgenstrahlen und bildgebenden Verfahren</title>
+    <title-short>RöFo</title-short>
+    <id>http://www.zotero.org/styles/rofo</id>
+    <link href="http://www.zotero.org/styles/rofo" rel="self"/>
+    <link href="http://roefo.thieme.de/c/document_library/get_file?uuid=45dabb23-098a-4981-8a4a-0f1d74a7f2c7&amp;groupId=10157" rel="documentation"/>
+    <author>
+      <name>Philipp Weisser, M.D.</name>
+      <uri>http://www.zotero.org/phweisser</uri>
+    </author>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>1438-9029</issn>
+    <eissn>1438-9010</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name initialize-with="" sort-separator=" " delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all" font-style="italic"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=", "/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name initialize-with="" sort-separator=" " delimiter=", " delimiter-precedes-last="always" name-as-sort-order="all"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <group delimiter=": ">
+        <text variable="publisher-place" form="long" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+        <text variable="publisher" form="long" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      </group>
+      <text macro="year-date" prefix="" suffix=""/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" prefix="&lt;edition>" suffix="&lt;/edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout prefix="[" suffix="]" delimiter=", ">
+      
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="3" second-field-align="margin" entry-spacing="0">
+    <layout>
+      
+      <text macro="author" suffix=". " prefix=""/>
+      <choose>
+        <if type="bill book graphic legal_case motion_picture report song" match="any">
+          <group delimiter=", ">
+            <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+            <text macro="edition" prefix="" suffix=""/>
+            <text macro="publisher" prefix="" suffix=""/>
+          </group>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <text variable="title" form="long" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <text term="in" form="long" plural="false" text-case="capitalize-first" suffix=": " prefix=""/>
+          <text macro="editor" suffix=". " prefix=""/>
+          <text variable="container-title" form="short" text-case="title" suffix="&lt;/container-title>. " prefix="&lt;container-title>"/>
+          <text macro="edition" suffix=", " prefix=""/>
+          <text macro="publisher" prefix="" suffix=""/>
+          <group delimiter=" " prefix=": ">
+            <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+          </group>
+        </else-if>
+        <else-if type="patent">
+          <group delimiter=", ">
+            <text macro="year-date" prefix="" suffix=""/>
+            <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+            <text variable="number" prefix="&lt;number>" suffix="&lt;/number>"/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <group delimiter=", ">
+            <text macro="year-date" prefix="" suffix=""/>
+            <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+            <text variable="genre" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+            <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+          </group>
+        </else-if>
+        <else>
+          <group>
+            <text variable="title" suffix="&lt;/title>. " prefix="&lt;title>"/>
+            <text variable="container-title" form="short" text-case="title" suffix="&lt;/container-title> " prefix="&lt;container-title>"/>
+            <text macro="year-date" suffix="; " prefix=""/>
+            <text variable="volume" suffix="&lt;/volume>:" prefix="&lt;volume>"/>
+            <text variable="page" form="short" prefix=" &lt;page>" suffix="&lt;/page>"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

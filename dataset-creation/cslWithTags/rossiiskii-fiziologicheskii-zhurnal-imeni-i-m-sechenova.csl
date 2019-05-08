@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Российский физиологический журнал им. И.М. Сеченова (Russian)</title>
+    <id>http://www.zotero.org/styles/rossiiskii-fiziologicheskii-zhurnal-imeni-i-m-sechenova</id>
+    <link href="http://www.zotero.org/styles/rossiiskii-fiziologicheskii-zhurnal-imeni-i-m-sechenova" rel="self"/>
+    <link href="http://www.zotero.org/styles/gost-r-7-0-5-2008-numeric" rel="template"/>
+    <link href="http://www.iephb.ru/rule_av_2013.pdf" rel="documentation"/>
+    <author>
+      <name>Valery Mukhin</name>
+      <email>Valery.Mukhin@gmail.com</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <category field="medicine"/>
+    <issn>0869-8139</issn>
+    <summary>The style fits the requirements of the journal. In the author rules there is a point that citations should be numbers separated by commas and these should be superscript symbols. I cannot be able to do this... To sort the bibliography so that Russian were before the English, you need to put any character in the "Advanced" field. Its value must be less than for the Russian records than for English ones.</summary>
+    <updated>2015-03-12T12:24:40+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="online">electronic resource</term>
+      <term name="letter" form="short">pat.</term>
+      <term name="editor" form="verb-short">ed.</term>
+      <term name="translator" form="verb-short">trans.</term>
+      <term name="issue" form="symbol">№</term>
+    </terms>
+  </locale>
+  <locale xml:lang="ru">
+    <terms>
+      <term name="online">электронный ресурс</term>
+      <term name="letter" form="short">Пат.</term>
+      <term name="accessed">дата обращения</term>
+      <term name="editor" form="verb-short">под ред.</term>
+      <term name="issue" form="symbol">№</term>
+    </terms>
+  </locale>
+  <macro name="editor-translator">
+    <names variable="editor translator" delimiter="; " prefix="&lt;editor translator>" suffix="&lt;/editor translator>">
+      <label form="verb-short" suffix=" "/>
+      <name name-as-sort-order="all" sort-separator=" " initialize-with="." delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name name-as-sort-order="all" sort-separator=" " initialize-with="." delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="webpage">
+        <text variable="title" suffix="&lt;/title> " prefix="&lt;title>"/>
+        <text term="online" text-case="sentence" prefix="[" suffix="]"/>
+      </if>
+      <else>
+        <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" prefix="&lt;edition>" suffix="&lt;/edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="type-number">
+    <choose>
+      <if type="patent">
+        <text term="letter" form="short" prefix="" suffix=""/>
+        <text variable="number" prefix=" &lt;number>" suffix="&lt;/number> USA"/>
+      </if>
+      <else>
+        <group delimiter=" ">
+          <text variable="genre" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+          <text variable="number" prefix="&lt;number>" suffix="&lt;/number>"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=". ">
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+    </group>
+  </macro>
+  <macro name="issued-year">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="locators">
+    <group delimiter=" ">
+      <group delimiter=" ">
+        <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+      </group>
+      <group delimiter=" " prefix="(" suffix=")">
+        <text variable="issue" prefix="&lt;issue>" suffix="&lt;/issue>"/>
+      </group>
+    </group>
+  </macro>
+  <macro name="page">
+    <group delimiter=" ">
+      <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if type="webpage">
+        <choose>
+          <if variable="URL">
+            <text variable="URL" prefix="URL: &lt;URL>" suffix="&lt;/URL>"/>
+            <group prefix=" (" suffix=")" delimiter=": ">
+              <text term="accessed" prefix="" suffix=""/>
+              <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+                <date-part name="day" suffix="&lt;/day>." form="numeric-leading-zeros" prefix="&lt;day>"/>
+                <date-part name="month" suffix="&lt;/month>." form="numeric-leading-zeros" prefix="&lt;month>"/>
+                <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+              </date>
+            </group>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout vertical-align="sup" delimiter=", " prefix="[" suffix="]">
+      
+    </layout>
+  </citation>
+  <bibliography second-field-align="flush" entry-spacing="0">
+    
+    <layout suffix=".">
+      
+      <group delimiter=". ">
+        <group>
+          <group delimiter=". " suffix=".">
+            <text macro="author" prefix="" suffix=""/>
+            <text macro="title" prefix="" suffix=""/>
+          </group>
+          <text macro="type-number" prefix=": " suffix=""/>
+          <text variable="container-title" form="short" prefix=" &lt;container-title>" suffix="&lt;/container-title>"/>
+          <text macro="edition" prefix=". " suffix=""/>
+          <text macro="editor-translator" prefix=" / " suffix=""/>
+        </group>
+        <group delimiter=", ">
+          <text macro="publisher" prefix="" suffix=""/>
+        </group>
+        <group delimiter=" : ">
+          <text macro="locators" prefix="" suffix=""/>
+          <text macro="page" prefix="" suffix=""/>
+        </group>
+        <text macro="issued-year" prefix="" suffix=""/>
+        <text macro="access" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

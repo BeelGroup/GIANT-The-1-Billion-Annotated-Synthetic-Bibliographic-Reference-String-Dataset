@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Journal of Thermal Spray Technology</title>
+    <title-short>J Therm Spray Tech</title-short>
+    <id>http://www.zotero.org/styles/journal-of-thermal-spray-technology</id>
+    <link href="http://www.zotero.org/styles/journal-of-thermal-spray-technology" rel="self"/>
+    <link href="http://www.zotero.org/styles/springer-physics-brackets" rel="template"/>
+    <link href="http://www.springer.com/cda/content/document/cda_downloaddocument/JTST+Author+Guidelines.pdf?SGWID=0-0-45-1510268-p173658292" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="physics"/>
+    <issn>1059-9630</issn>
+    <eissn>1544-1016</eissn>
+    <updated>2014-05-15T12:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name and="text" initialize-with="."><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" text-case="capitalize-first" prefix=", "/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name and="text" initialize-with="."><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" text-case="capitalize-first" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="article-journal chapter" match="any">
+        <text variable="title" text-case="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </if>
+      <else>
+        <text variable="title" quotes="true" text-case="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if type="article-journal">
+        <text variable="container-title" font-style="italic" form="short" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+      </if>
+      <else>
+        <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <choose>
+          <if variable="DOI">
+            <text variable="DOI" prefix="doi:&lt;DOI>" suffix="&lt;/DOI>"/>
+          </if>
+          <else>
+            <group delimiter=". ">
+              <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+              <group delimiter=" ">
+                <text term="accessed" text-case="capitalize-first" prefix="" suffix=""/>
+                <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+                  <date-part name="day" form="numeric" suffix="&lt;/day> " prefix="&lt;day>"/>
+                  <date-part name="month" suffix="&lt;/month> " prefix="&lt;month>"/>
+                  <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+                </date>
+              </group>
+            </group>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher-place" prefix="(&lt;publisher-place>" suffix="&lt;/publisher-place>)"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+    </group>
+  </macro>
+  <macro name="journal-locators">
+    <choose>
+      <if type="article-journal">
+        <group>
+          <text variable="volume" font-weight="bold" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+          <text variable="issue" prefix="(&lt;issue>" suffix="&lt;/issue>)"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <group delimiter=" ">
+      <text term="page" form="short" strip-periods="true" prefix="" suffix=""/>
+      <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" prefix="&lt;edition>" suffix="&lt;/edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout delimiter="," prefix="(Ref " suffix=")">
+      
+    </layout>
+  </citation>
+  <bibliography entry-spacing="0" second-field-align="flush" et-al-min="31" et-al-use-first="30">
+    <layout suffix=".">
+      
+      <group delimiter=", ">
+        <text macro="author" prefix="" suffix=""/>
+        <text macro="title" prefix="" suffix=""/>
+        <text macro="container-title" prefix="" suffix=""/>
+        <text macro="editor" prefix="" suffix=""/>
+        <text macro="edition" prefix="" suffix=""/>
+        <text macro="publisher" prefix="" suffix=""/>
+        <text macro="year-date" prefix="" suffix=""/>
+        <text macro="journal-locators" prefix="" suffix=""/>
+        <text macro="pages" prefix="" suffix=""/>
+        <text macro="access" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </bibliography>
+</style>

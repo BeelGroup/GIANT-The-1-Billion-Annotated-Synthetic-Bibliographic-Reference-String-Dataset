@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text">
+  <info>
+    <title>Molecular Biology of the Cell</title>
+    <title-short>MBoC</title-short>
+    <id>http://www.zotero.org/styles/molecular-biology-of-the-cell</id>
+    <link href="http://www.zotero.org/styles/molecular-biology-of-the-cell" rel="self"/>
+    <link href="http://www.zotero.org/styles/cell" rel="template"/>
+    <link href="https://www.molbiolcell.org/info-for-authors" rel="documentation"/>
+    <author>
+      <name>Dani Bodor</name>
+      <email>dbodor@igc.gulbenkian.pt</email>
+    </author>
+    <contributor>
+      <name>Jessica Polka</name>
+      <email>jessica.polka@gmail.com</email>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <issn>1059-1524</issn>
+    <eissn>1939-4586</eissn>
+    <summary>Molecular Biology of the Cell.</summary>
+    <updated>2018-05-20T23:35:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="no date">[no date]</term>
+    </terms>
+  </locale>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="short" and="text"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name name-as-sort-order="all" initialize-with=". " and="text" delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <et-al font-style="italic"/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name initialize-with=". " and="text" delimiter-precedes-last="always" prefix="ed. "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1" collapse="year">
+    
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short" prefix="" suffix=""/>
+        <text macro="issued" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="1">
+    
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix="" suffix=""/>
+        <text macro="issued" prefix="(" suffix=")."/>
+        <choose>
+          <if type="article article-magazine article-newspaper article-journal review" match="any">
+            <text variable="title" suffix="&lt;/title>." prefix="&lt;title>"/>
+            <group delimiter=", ">
+              <group delimiter=" ">
+                <text variable="container-title" form="short" text-case="title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+                <text variable="volume" font-style="italic" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+              </group>
+              <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+            </group>
+          </if>
+          <else-if type="chapter paper-conference" match="any">
+            <text variable="title" suffix="&lt;/title>." prefix="&lt;title>"/>
+            <group delimiter=", ">
+              <text variable="container-title" prefix="In: &lt;container-title>" text-case="title" suffix="&lt;/container-title>"/>
+              <text macro="editor" prefix="" suffix=""/>
+              <text macro="publisher" prefix="" suffix=""/>
+              <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+            </group>
+          </else-if>
+          <else-if type="thesis">
+            <group delimiter=". ">
+              <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+              <text variable="genre" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+              <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+            </group>
+          </else-if>
+          <else-if type="webpage">
+            <group delimiter=". ">
+              <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+              <text variable="container-title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+              <group delimiter=": ">
+                <text term="available at" text-case="capitalize-first" prefix="" suffix=""/>
+                <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+              </group>
+              <group delimiter=" ">
+                <text term="accessed" text-case="capitalize-first" prefix="" suffix=""/>
+                <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+                  <date-part name="month" suffix="&lt;/month> " prefix="&lt;month>"/>
+                  <date-part name="day" suffix="&lt;/day>, " prefix="&lt;day>"/>
+                  <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+                </date>
+              </group>
+            </group>
+          </else-if>
+          <else>
+            <group delimiter=", ">
+              <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+              <text macro="publisher" prefix="" suffix=""/>
+            </group>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

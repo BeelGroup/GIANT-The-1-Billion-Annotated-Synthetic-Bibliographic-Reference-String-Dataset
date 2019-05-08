@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text">
+  <info>
+    <title>European Retail Research</title>
+    <id>http://www.zotero.org/styles/european-retail-research</id>
+    <link href="http://www.zotero.org/styles/european-retail-research" rel="self"/>
+    <link href="http://unitrier.t3-hoster.com/produkt-1.html" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <contributor>
+      <name>Jens Allmer</name>
+      <email>jens@allmer.de</email>
+      <uri>http://jens.allmer.de</uri>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="sociology"/>
+    <issn>1867-8785</issn>
+    <summary>Author-date style for the journal European Retail Research</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="short" delimiter="/" delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name sort-separator=", " initialize-with=". " name-as-sort-order="all" delimiter="; " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <!--<et-al strip-periods="true"/> -->
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name sort-separator=", " initialize-with=". " name-as-sort-order="all" delimiter="; " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" strip-periods="true" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" prefix="&lt;edition>" suffix="&lt;/edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+  </macro>
+  <macro name="year-parenth">
+    <date prefix="(&lt;issued>" suffix="&lt;/issued>)" variable="issued">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="locator">
+    <group delimiter=" ">
+      <label variable="locator" form="short"/>
+      <text variable="locator" prefix="&lt;locator>" suffix="&lt;/locator>"/>
+    </group>
+  </macro>
+  <citation et-al-min="4" et-al-use-first="1">
+    
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=" ">
+        <text macro="author-short" prefix="" suffix=""/>
+        <text macro="year" prefix="" suffix=""/>
+      </group>
+      <text macro="locator" prefix=", " suffix=""/>
+    </layout>
+  </citation>
+  <bibliography et-al-min="5" et-al-use-first="3" hanging-indent="true">
+    
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix="" suffix=""/>
+        <text macro="year-parenth" suffix=": " prefix=""/>
+        <text macro="title" prefix="" suffix=""/>
+      </group>
+      <choose>
+        <if variable="page">
+          <choose>
+            <if type="chapter paper-conference" match="any">
+              <group delimiter=", " prefix=", ">
+                <group delimiter=": ">
+                  <text term="in" prefix="" suffix=""/>
+                  <text macro="editor" prefix="" suffix=""/>
+                </group>
+              </group>
+              <group delimiter=", " prefix=": ">
+                <text variable="container-title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+                <text macro="edition" prefix="" suffix=""/>
+                <text variable="volume" prefix=" Vol. &lt;volume>" suffix="&lt;/volume>"/>
+                <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+              </group>
+              <group delimiter=" " prefix=", ">
+                <label variable="page" form="short"/>
+                <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+              </group>
+            </if>
+            <else>
+              <group delimiter=", " prefix=", ">
+                <group delimiter=": ">
+                  <text term="in" prefix="" suffix=""/>
+                  <text variable="container-title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+                </group>
+                <text variable="volume" prefix=" Vol. &lt;volume>" suffix="&lt;/volume>"/>
+                <text variable="issue" prefix="No. &lt;issue>" suffix="&lt;/issue>"/>
+                <group delimiter=" ">
+                  <label variable="page" form="short"/>
+                  <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+                </group>
+              </group>
+            </else>
+          </choose>
+        </if>
+        <else-if variable="DOI">
+          <group delimiter=". ">
+            <text variable="container-title" form="short" strip-periods="true" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            <text prefix="doi: &lt;DOI>" variable="DOI" suffix="&lt;/DOI>"/>
+          </group>
+        </else-if>
+        <else-if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <group delimiter=", " prefix=", ">
+            <text macro="edition" prefix="" suffix=""/>
+            <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+          </group>
+        </else-if>
+        <else-if type="webpage">
+          <group>
+            <text prefix="In: &lt;container-title>" variable="container-title" suffix="&lt;/container-title>. " form="short"/>
+            <text variable="URL" prefix=", &lt;URL>" suffix="&lt;/URL>, "/>
+            <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+              <date-part prefix="accessed &lt;month>" name="month" suffix="&lt;/month> "/>
+              <date-part name="day" suffix="&lt;/day>, " prefix="&lt;day>"/>
+              <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+            </date>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <!--    Dissertation
+	       Trent JW (1975) Experimental acute renal failure. Dissertation, University of California       -->
+          <group delimiter=", ">
+            <text variable="genre" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+            <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+          </group>
+        </else-if>
+        <else>
+          <group>
+            <text variable="container-title" form="short" suffix="&lt;/container-title> " prefix="&lt;container-title>"/>
+            <text variable="volume" suffix="&lt;/volume>:" prefix="&lt;volume>"/>
+            <text variable="page" suffix="&lt;/page>." prefix="&lt;page>"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

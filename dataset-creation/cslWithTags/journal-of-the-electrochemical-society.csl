@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Journal of The Electrochemical Society</title>
+    <title-short>JES</title-short>
+    <id>http://www.zotero.org/styles/journal-of-the-electrochemical-society</id>
+    <link href="http://www.zotero.org/styles/journal-of-the-electrochemical-society" rel="self"/>
+    <link href="http://www.electrochem.org/dl/support/assets/jes_inst.pdf" rel="documentation"/>
+    <author>
+      <name>Julian Onions</name>
+      <email>julian.onions@gmail.com</email>
+    </author>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="chemistry"/>
+    <issn>0013-4651</issn>
+    <eissn>1945-7111</eissn>
+    <summary>Style for JES</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names variable="editor" delimiter=", " prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name initialize-with=". " delimiter=", " and="text"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="long" prefix=", " text-case="capitalize-first"/>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name sort-separator=", " initialize-with=". " and="text" delimiter=", "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=", " text-case="capitalize-first"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="bill book graphic legal_case motion_picture report song" match="any">
+        <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </if>
+      <else>
+        <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+    </group>
+  </macro>
+  <macro name="volume">
+    <text variable="volume" prefix="vol. &lt;volume>" suffix="&lt;/volume>"/>
+  </macro>
+  <macro name="pages">
+    <text variable="page" form="short" prefix="p. &lt;page>" suffix="&lt;/page>"/>
+  </macro>
+  <macro name="issued">
+    <date variable="issued" delimiter=" " prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix="&lt;/edition>." prefix="&lt;edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout vertical-align="sup" delimiter=",">
+      
+    </layout>
+  </citation>
+  <bibliography hanging-indent="false" et-al-min="6" et-al-use-first="1">
+    <layout suffix=".">
+      
+      <text macro="author" suffix="," prefix=""/>
+      <choose>
+        <if type="thesis">
+          <text value=" thesis, " prefix="" suffix=""/>
+          <text macro="publisher" prefix="" suffix=""/>
+          <text macro="issued" prefix=" (" suffix=")"/>
+        </if>
+        <else-if type="bill book graphic legal_case motion_picture report song" match="any">
+          <group>
+            <text macro="title" prefix=" " suffix=""/>
+            <text macro="editor" prefix=" " suffix=""/>
+          </group>
+          <group prefix=", " delimiter=", ">
+            <text macro="edition" prefix="" suffix=""/>
+            <text variable="number-of-pages" prefix="p. &lt;number-of-pages>" suffix="&lt;/number-of-pages>"/>
+            <text macro="publisher" prefix="" suffix=""/>
+            <text macro="issued" prefix="(" suffix=")"/>
+          </group>
+          <text macro="pages" prefix=", " suffix=""/>
+        </else-if>
+        <else-if type="chapter paper-conference" match="any">
+          <group prefix=" ">
+            <text term="in" prefix="" suffix=""/>
+            <text variable="container-title" font-style="italic" prefix=" &lt;container-title>" suffix="&lt;/container-title>,"/>
+            <text variable="collection-title" prefix=" &lt;collection-title>" suffix="&lt;/collection-title>."/>
+            <text macro="editor" prefix=" " suffix=""/>
+            <group delimiter=", " prefix=", ">
+              <text macro="volume" prefix="" suffix=""/>
+              <text macro="pages" prefix="" suffix=""/>
+              <text macro="publisher" prefix="" suffix=""/>
+            </group>
+            <text macro="issued" prefix=" (" suffix=")"/>
+          </group>
+        </else-if>
+        <else>
+          <group suffix=".">
+            <text macro="editor" prefix=" " suffix=""/>
+          </group>
+          <group prefix=" " delimiter=", ">
+            <text form="short" variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            <text variable="volume" font-weight="bold" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+            <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+            <!-- should only have starting page -->
+          </group>
+          <text macro="issued" prefix=" (" suffix=")"/>
+        </else>
+      </choose>
+      <text prefix=" " macro="access" suffix="."/>
+    </layout>
+  </bibliography>
+</style>

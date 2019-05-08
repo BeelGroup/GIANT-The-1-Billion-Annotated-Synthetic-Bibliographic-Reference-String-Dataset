@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Leidraad voor juridische auteurs (Dutch)</title>
+    <title-short>Leidraad</title-short>
+    <id>http://www.zotero.org/styles/leidraad-voor-juridische-auteurs</id>
+    <link href="http://www.zotero.org/styles/leidraad-voor-juridische-auteurs" rel="self"/>
+    <link href="http://auteur.kluwer.nl/auteursmiddelen-en-instructies" rel="documentation"/>
+    <author>
+      <name>Joël Hendriks</name>
+      <email>leidraad.csl@joelhendriks.nl</email>
+    </author>
+    <category citation-format="note"/>
+    <category field="law"/>
+    <updated>2014-03-10T19:41:30+01:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+    <!-- GENERAL COMMENTS
+			All comments below are in DUTCH since this is a Dutch reference-style. The comments are for further development of this style. 
+		-->
+    <!-- ENKELE ALGMENE OPMERKINGEN
+			01. Het veld 'editor' dient gebruikt te worden voor bewerkers.
+			02. Het veld 'editor-director' dient gebruikt te worden voor (eind)redacteuren. 
+			03. Het veld 'chapter' dient gebruikt te worden voor verwijzingen binnen boeken.
+		-->
+    <!-- BELANGRIJKE INFORMATIE VOOR HET MAKEN VAN UPDATES
+			01. Maak bij het bijwerken van deze stijl altijd gebruik van deze specificatie: http://citationstyles.org/downloads/specification.html 
+			Deze versie is gebaseerd op de versie van 2012-09-03
+			02. Vergeet niet de updatedatum in <updated> hierboven te vernieuwen in verband met versieconflicten.
+			03. Neem altijd contact op met Kluwer om te vragen naar welke uri er verwezen mag worden.
+		-->
+    <!-- VERSIESPECIFIEKE INFORMATIE
+			VERSIE 1.1 (UPDATE)
+      verscheen op: 10 maart 2014
+      - Geheel in overeenstemming met Leidraad 2013
+      - paginanummers kunnen nu ook worden toegevoegd via de daarvoor bedoelde Zotero-interface (als 'locator')
+      - Jurisprudentie krijgt standaard de titel mee als die is opgegeven
+      - Nu ook wetten, Kamerstukken, Handelingen, etc. conform Leidraad
+      - Verschillende taalfoutjes eruit gehaald
+      
+      VERSIE 1.0
+      - Eerste uitgave
+		-->
+  </info>
+  <locale xml:lang="nl-NL">
+    <terms>
+      <term name="et-al">e.a.</term>
+      <term name="editor">
+        <single>bewerker</single>
+        <multiple>bewerkers</multiple>
+      </term>
+      <term name="editorial-director">
+        <single>redacteur</single>
+        <multiple>redacteuren</multiple>
+      </term>
+      <term name="editorial-director" form="short">red.</term>
+      <term name="open-quote">‘</term>
+      <term name="close-quote">’</term>
+      <term name="accessed">laatst bijgewerkt op</term>
+      <term name="page">p.</term>
+    </terms>
+  </locale>
+  <!-- BLOK I: EERST VERMELDE NAAM/NAMEN -->
+  <!-- Eventuele benodigde labels worden niet hier, maar in het opmaakblok toegevoegd -->
+  <macro name="creator-long">
+    <choose>
+      <if variable="editor">
+        <names variable="author" suffix="&lt;/author>/" prefix="&lt;author>">
+          <name form="long" initialize="true" initialize-with="." and="symbol" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never">
+            <name-part name="family" text-case="capitalize-all" prefix="&lt;family>" suffix="&lt;/family>"/>
+          <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        </names>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+          <name form="long" initialize="true" initialize-with="." and="symbol" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never">
+            <name-part name="family" text-case="capitalize-all" prefix="&lt;family>" suffix="&lt;/family>"/>
+          <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        </names>
+      </if>
+      <else-if variable="editorial-director">
+        <names variable="editorial-director" prefix="&lt;editorial-director>" suffix="&lt;/editorial-director>">
+          <name form="long" initialize="true" initialize-with="." and="symbol" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never">
+            <name-part name="family" text-case="capitalize-all" prefix="&lt;family>" suffix="&lt;/family>"/>
+          <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          <label form="short" prefix=" (" suffix=")"/>
+        </names>
+      </else-if>
+      <else-if variable="author">
+        <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+          <name form="long" initialize="true" initialize-with="." and="symbol" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never">
+            <name-part name="family" text-case="capitalize-all" prefix="&lt;family>" suffix="&lt;/family>"/>
+          <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        </names>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="creator-short">
+    <choose>
+      <if variable="editor">
+        <names variable="author" suffix="&lt;/author>/" prefix="&lt;author>">
+          <name form="short" and="symbol" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never">
+            <name-part name="family" text-case="capitalize-all" prefix="&lt;family>" suffix="&lt;/family>"/>
+          <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        </names>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+          <name form="short" and="symbol" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never">
+            <name-part name="family" text-case="capitalize-all" prefix="&lt;family>" suffix="&lt;/family>"/>
+          <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        </names>
+      </if>
+      <else-if variable="editorial-director">
+        <names variable="editorial-director" prefix="&lt;editorial-director>" suffix="&lt;/editorial-director>">
+          <name form="short" and="symbol" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never">
+            <name-part name="family" text-case="capitalize-all" prefix="&lt;family>" suffix="&lt;/family>"/>
+          <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        </names>
+      </else-if>
+      <else-if variable="author">
+        <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+          <name form="short" and="symbol" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never">
+            <name-part name="family" text-case="capitalize-all" prefix="&lt;family>" suffix="&lt;/family>"/>
+          <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        </names>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="container-author">
+    <names variable="container-author" prefix="&lt;container-author>" suffix="&lt;/container-author>">
+      <name form="long" initialize="true" initialize-with="." and="symbol" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never">
+        <name-part name="family" text-case="capitalize-all" prefix="&lt;family>" suffix="&lt;/family>"/>
+      <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <macro name="name-translator">
+    <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>">
+      <name form="long" initialize="true" initialize-with="." and="symbol" delimiter=", " delimiter-precedes-et-al="never" delimiter-precedes-last="never">
+        <name-part name="family" text-case="capitalize-all" prefix="&lt;family>" suffix="&lt;/family>"/>
+      <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <!-- BLOK II: DATUM -->
+  <macro name="year-publication">
+    <choose>
+      <if variable="original-date">
+        <date variable="original-date" prefix="(&lt;original-date>" suffix="&lt;/original-date>)">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </if>
+      <else>
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </else>
+    </choose>
+  </macro>
+  <macro name="year-translation">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="year-original">
+    <date variable="original-date" prefix="&lt;original-date>" suffix="&lt;/original-date>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="date-accessed">
+    <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+      <date-part name="day" prefix="&lt;day>" suffix="&lt;/day>"/>
+      <date-part name="month" prefix=" &lt;month>" suffix="&lt;/month> "/>
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="date-legal-case">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="day" suffix="&lt;/day> " prefix="&lt;day>"/>
+      <date-part name="month" form="long" suffix="&lt;/month> " prefix="&lt;month>"/>
+      <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="legislation-issued-short">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <!-- BLOK III: VERWIJZINGEN NAAR (DIGITALE) LOCATIES -->
+  <macro name="locators">
+    <choose>
+      <if variable="page DOI URL" match="any">
+        <group prefix=", " suffix=". " delimiter=" ">
+          <group delimiter=" ">
+            <label variable="page"/>
+            <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+          </group>
+          <group delimiter=" ">
+            <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+            <text term="accessed" prefix="" suffix=""/>
+            <text macro="date-accessed" prefix="" suffix=""/>
+          </group>
+          <group delimiter=" ">
+            <text value="DOI: " prefix="" suffix=""/>
+            <text variable="DOI" prefix="&lt;DOI>" suffix="&lt;/DOI>"/>
+          </group>
+        </group>
+      </if>
+      <else>
+        <text value="." prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <!-- BLOK IV: LITERATUURLIJST -->
+  <!-- korte verwijzing -->
+  <macro name="reference-book-etc-short">
+    <choose>
+      <if variable="author editor editorial-director" match="any">
+        <text macro="creator-short" suffix=" " prefix=""/>
+      </if>
+      <else>
+        <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </else>
+    </choose>
+    <choose>
+      <if variable="volume issue" match="all">
+        <text variable="container-title" font-style="italic" suffix="&lt;/container-title> " prefix="&lt;container-title>"/>
+        <text variable="volume" suffix="&lt;/volume>/" prefix="&lt;volume>"/>
+        <text variable="issue" prefix="&lt;issue>" suffix="&lt;/issue>"/>
+      </if>
+      <else>
+        <text macro="year-publication" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <!-- lange verwijzing -->
+  <macro name="reference-book-etc-long">
+    <text macro="creator-long" suffix=" " prefix=""/>
+    <choose>
+      <if type="book report" match="any">
+        <choose>
+          <if variable="translator">
+            <text variable="title" font-style="italic" suffix="&lt;/title>, " prefix="&lt;title>"/>
+            <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+            <text variable="publisher" prefix=": &lt;publisher>" suffix="&lt;/publisher> "/>
+            <text macro="year-translation" prefix="" suffix=""/>
+            <group prefix=" (" suffix=")">
+              <text variable="original-title" font-style="italic" suffix="&lt;/original-title> " prefix="&lt;original-title>"/>
+              <text macro="year-original" suffix=", " prefix=""/>
+              <text macro="name-translator" prefix="vertaald door " suffix=""/>
+            </group>
+            <text macro="locators" prefix="" suffix=""/>
+          </if>
+          <else>
+            <text variable="title" font-style="italic" suffix="&lt;/title>, " prefix="&lt;title>"/>
+            <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+            <text variable="publisher" prefix=": &lt;publisher>" suffix="&lt;/publisher> "/>
+            <text macro="year-publication" prefix="" suffix=""/>
+            <text macro="locators" prefix="" suffix=""/>
+          </else>
+        </choose>
+      </if>
+      <else-if type="article article-magazine article-newspaper article-journal" match="any">
+        <text variable="title" quotes="true" suffix="&lt;/title>, " prefix="&lt;title>"/>
+        <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+        <choose>
+          <if variable="volume issue" match="all">
+            <text variable="volume" prefix=" &lt;volume>" suffix="&lt;/volume>/"/>
+            <text variable="issue" prefix="&lt;issue>" suffix="&lt;/issue>"/>
+          </if>
+          <else>
+            <text macro="year-publication" prefix=" " suffix=""/>
+            <text variable="page-first" prefix=", &lt;page-first>" suffix="&lt;/page-first>"/>
+          </else>
+        </choose>
+        <text macro="locators" prefix="" suffix=""/>
+      </else-if>
+      <else-if type="chapter">
+        <text variable="title" quotes="true" suffix="&lt;/title>, in: " prefix="&lt;title>"/>
+        <text macro="container-author" suffix=", " prefix=""/>
+        <text variable="container-title" font-style="italic" suffix="&lt;/container-title>, " prefix="&lt;container-title>"/>
+        <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+        <text variable="publisher" prefix=": &lt;publisher>" suffix="&lt;/publisher> "/>
+        <text macro="year-publication" prefix="" suffix=""/>
+        <text macro="locators" prefix="" suffix=""/>
+      </else-if>
+    </choose>
+  </macro>
+  <!-- BLOK V: BIBLIOGRAFIE DEEL 2: REGELGEVING EN PARLEMENTAIRE STUKKEN -->
+  <!-- korte verwijzing -->
+  <macro name="reference-legislative-short">
+    <choose>
+      <if type="bill">
+        <!-- Kamerstukken, etc. -->
+        <choose>
+          <if variable="title">
+            <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+          </if>
+          <else>
+            <text variable="container-title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            <text variable="number" prefix=" &lt;number>" suffix="&lt;/number>"/>
+          </else>
+        </choose>
+      </if>
+      <else-if type="legislation">
+        <!-- wetten -->
+        <choose>
+          <if variable="title-short title" match="any">
+            <choose>
+              <if variable="title">
+                <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+              </if>
+              <else>
+                <text variable="title-short" prefix="&lt;title-short>" suffix="&lt;/title-short>"/>
+              </else>
+            </choose>
+            <choose>
+              <if disambiguate="true">
+                <text macro="legislation-issued-short" prefix=" " suffix=""/>
+              </if>
+            </choose>
+          </if>
+          <else>
+            <text variable="container-title" suffix="&lt;/container-title> " font-style="italic" prefix="&lt;container-title>"/>
+            <text macro="legislation-issued-short" prefix="" suffix=""/>
+            <text variable="page" prefix=", &lt;page>" suffix="&lt;/page>"/>
+          </else>
+        </choose>
+      </else-if>
+    </choose>
+  </macro>
+  <!-- korte verwijzing voor voetnoot -->
+  <macro name="reference-legislative-footnote">
+    <choose>
+      <if type="bill">
+        <!-- Kamerstukken, etc. -->
+        <group suffix=".">
+          <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          <text variable="volume" prefix=" &lt;volume>" suffix="&lt;/volume>"/>
+          <text variable="number" prefix=", &lt;number>" suffix="&lt;/number>"/>
+          <text variable="page" prefix=", &lt;page>" suffix="&lt;/page>"/>
+          <choose>
+            <if locator="page">
+              <text variable="locator" prefix=", p. &lt;locator>" suffix="&lt;/locator>"/>
+            </if>
+          </choose>
+          <text variable="note" prefix=" (&lt;note>" suffix="&lt;/note>)"/>
+        </group>
+      </if>
+      <else-if type="legislation">
+        <!-- wetten -->
+        <choose>
+          <if locator="paragraph">
+            <text variable="locator" prefix="art. &lt;locator>" suffix="&lt;/locator> "/>
+            <text variable="title" form="short" prefix="&lt;title>" suffix="&lt;/title>"/>
+          </if>
+          <else>
+            <text variable="container-title" suffix="&lt;/container-title> " font-style="italic" prefix="&lt;container-title>"/>
+            <text macro="legislation-issued-short" suffix=", " prefix=""/>
+            <text variable="page" suffix="&lt;/page>." prefix="&lt;page>"/>
+          </else>
+        </choose>
+      </else-if>
+    </choose>
+  </macro>
+  <!-- lange verwijzing -->
+  <macro name="reference-legislative-long">
+    <choose>
+      <if type="bill">
+        <!-- Kamerstukken, etc. -->
+        <group suffix=".">
+          <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          <text variable="volume" prefix=" &lt;volume>" suffix="&lt;/volume>"/>
+          <text variable="number" prefix=", &lt;number>" suffix="&lt;/number>"/>
+          <choose>
+            <if locator="page">
+              <text variable="locator" prefix=", p. &lt;locator>" suffix="&lt;/locator>"/>
+            </if>
+          </choose>
+          <text variable="note" prefix=" (&lt;note>" suffix="&lt;/note>)"/>
+        </group>
+      </if>
+      <else-if type="legislation">
+        <!-- wetten -->
+        <group suffix=".">
+          <choose>
+            <if variable="title-short title" match="any">
+              <text variable="container-title" suffix="&lt;/container-title> " font-style="italic" prefix="&lt;container-title>"/>
+              <text macro="legislation-issued-short" suffix=", " prefix=""/>
+              <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+            </if>
+            <else>
+              <choose>
+                <if variable="title">
+                  <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+                </if>
+                <else>
+                  <text variable="title-short" prefix="&lt;title-short>" suffix="&lt;/title-short>"/>
+                </else>
+              </choose>
+            </else>
+          </choose>
+          <group prefix=" (" suffix=")">
+            <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+            <text macro="date-accessed" prefix=" geraadpleegd op " suffix=""/>
+          </group>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
+  <!-- BLOK VI: BIBLIOGRRAFIE DEEL 3: JURISPRUDENTIE -->
+  <!-- korte verwijzing -->
+  <macro name="reference-legal-short">
+    <text variable="authority" suffix="&lt;/authority> " prefix="&lt;authority>"/>
+    <text macro="date-legal-case" prefix="" suffix=""/>
+  </macro>
+  <!-- lange verwijzing -->
+  <macro name="reference-legal-long">
+    <group suffix=".">
+      <text variable="authority" suffix="&lt;/authority> " prefix="&lt;authority>"/>
+      <text macro="date-legal-case" prefix="" suffix=""/>
+      <choose>
+        <if variable="number volume container-title" match="all">
+          <text variable="number" prefix=", &lt;number>" suffix="&lt;/number>"/>
+          <choose>
+            <if locator="paragraph">
+              <text variable="locator" prefix=" &lt;locator>" suffix="&lt;/locator>"/>
+            </if>
+          </choose>
+          <text variable="container-title" prefix=", &lt;container-title>" suffix="&lt;/container-title> "/>
+          <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+        </if>
+        <else-if variable="number">
+          <text variable="number" prefix=", &lt;number>" suffix="&lt;/number>"/>
+          <choose>
+            <if locator="paragraph">
+              <text variable="locator" prefix=" &lt;locator>" suffix="&lt;/locator>"/>
+            </if>
+          </choose>
+        </else-if>
+        <else-if variable="volume container-title" match="all">
+          <text variable="container-title" prefix=", &lt;container-title>" suffix="&lt;/container-title> "/>
+          <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+          <choose>
+            <if locator="paragraph">
+              <text variable="locator" prefix=" &lt;locator>" suffix="&lt;/locator>"/>
+            </if>
+          </choose>
+        </else-if>
+      </choose>
+      <text variable="title" prefix=" (&lt;title>" suffix="&lt;/title>)" font-style="italic"/>
+    </group>
+  </macro>
+  <!-- BLOK VII: VERMELDINGEN VAN OVERIGE ZAKEN -->
+  <!-- korte verwijzing -->
+  <macro name="remains-short">
+    <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+  </macro>
+  <!-- lange verwijzing -->
+  <macro name="remains-long">
+    <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+    <text macro="year-publication" prefix=" " suffix=""/>
+    <text macro="locators" prefix="" suffix=""/>
+  </macro>
+  <!-- AFHANDELING WEERGAVE VERMELDINGEN -->
+  <!-- voetnoot: verwijzing -->
+  <macro name="footnote-reference">
+    <choose>
+      <!-- vermelding die in de literatuurlijst komt -->
+      <if type="article article-magazine article-newspaper article-journal book chapter paper-conference report review review-book thesis" match="any">
+        <text macro="reference-book-etc-short" prefix="" suffix=""/>
+        <choose>
+          <if locator="page">
+            <text variable="locator" prefix=", p. &lt;locator>" suffix="&lt;/locator>"/>
+          </if>
+          <else-if variable="page">
+            <text variable="page" prefix=", p. &lt;page>" suffix="&lt;/page>"/>
+          </else-if>
+        </choose>
+      </if>
+      <!-- vermelding van wetgeving, kamerstukken -->
+      <else-if type="bill legislation" match="any">
+        <text macro="reference-legislative-footnote" prefix="" suffix=""/>
+      </else-if>
+      <!-- vermelding die in de jurisprudentielijst komt -->
+      <else-if type="legal_case" match="any">
+        <text macro="reference-legal-long" prefix="" suffix=""/>
+      </else-if>
+      <!-- vermelding die in de overige bronnenlijst komt -->
+      <else>
+        <text macro="remains-long" prefix="" suffix=""/>
+      </else>
+    </choose>
+    <text value=" " prefix="" suffix=""/>
+  </macro>
+  <!-- biblografie: de korte vermelding -->
+  <macro name="bibliography-reference-title">
+    <choose>
+      <!-- titel van de vermelding in de literatuurlijst -->
+      <if type="article article-magazine article-newspaper article-journal book chapter paper-conference report review review-book thesis" match="any">
+        <text macro="reference-book-etc-short" prefix="" suffix=""/>
+      </if>
+      <!-- titel van de vermelding in de lijst met wetgeving, kamerstukken -->
+      <else-if type="bill legislation" match="any">
+        <text macro="reference-legislative-short" prefix="" suffix=""/>
+      </else-if>
+      <!-- titel van de vermelding in de jurisprudentielijst -->
+      <else-if type="legal_case" match="any">
+        <text macro="reference-legal-short" prefix="" suffix=""/>
+      </else-if>
+      <!-- titel van de vermelding in de overige bronnenlijst -->
+      <else>
+        <text macro="remains-short" prefix="" suffix=""/>
+      </else>
+    </choose>
+    <text value=" " prefix="" suffix=""/>
+  </macro>
+  <!-- biblografie: de lange vermelding -->
+  <macro name="bibliography-reference-long">
+    <choose>
+      <!-- uitgebreide omschrijving van de vermelding in de literatuurlijst -->
+      <if type="article article-magazine article-newspaper article-journal book chapter paper-conference report review review-book thesis" match="any">
+        <text macro="reference-book-etc-long" prefix="" suffix=""/>
+      </if>
+      <!-- uitgebreide van de vermelding in de lijst met wetgeving, kamerstukken -->
+      <else-if type="bill legislation" match="any">
+        <text macro="reference-legislative-long" prefix="" suffix=""/>
+      </else-if>
+      <!-- uitgebreide omschrijving van de vermelding in de jurisprudentielijst -->
+      <else-if type="legal_case" match="any">
+        <text macro="reference-legal-long" prefix="" suffix=""/>
+      </else-if>
+      <!-- uitgebreide omschrijving van de vermelding in de overige bronnenlijst -->
+      <else>
+        <text macro="remains-long" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <!-- SORTEREN VAN DEZELFDE TYPES VERWIJZINGEN-->
+  <macro name="sort-order-when-same-type">
+    <choose>
+      <!-- Onderdeel I: De literatuurlijst -->
+      <if type="article article-magazine article-newspaper article-journal book chapter paper-conference report review review-book thesis" match="any">
+        <text macro="footnote-reference" prefix="" suffix=""/>
+        <text macro="year-publication" prefix="" suffix=""/>
+      </if>
+      <!-- Onderdeel II: De lijst met regelgeving en parlementaire stukken -->
+      <else-if type="bill legislation" match="any">
+        <choose>
+          <if type="legislation">
+            <choose>
+              <if variable="title">
+                <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+              </if>
+              <else>
+                <text variable="title-short" prefix="&lt;title-short>" suffix="&lt;/title-short>"/>
+              </else>
+            </choose>
+            <choose>
+              <if disambiguate="true">
+                <text macro="legislation-issued-short" prefix=" " suffix=""/>
+              </if>
+            </choose>
+          </if>
+          <else-if type="bill">
+            <text variable="volume" prefix=" &lt;volume>" suffix="&lt;/volume>"/>
+            <text variable="number" prefix=", &lt;number>" suffix="&lt;/number>"/>
+            <text variable="page" prefix=", &lt;page>" suffix="&lt;/page>"/>
+          </else-if>
+        </choose>
+      </else-if>
+      <!-- Onderdeel III: De jurisprudentielijst -->
+      <else-if type="legal_case" match="any">
+        <text variable="authority" suffix="&lt;/authority> " prefix="&lt;authority>"/>
+        <text macro="date-legal-case" prefix="" suffix=""/>
+      </else-if>
+      <!-- Onderdeel IV: De overige bronnenlijst -->
+      <else>
+        <text macro="footnote-reference" prefix="" suffix=""/>
+        <text macro="year-publication" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <!-- SORTEREN VAN DE BRONNENLIJST -->
+  <macro name="display-order">
+    <choose>
+      <!-- Onderdeel I: De literatuurlijst -->
+      <if type="article article-magazine article-newspaper article-journal book chapter paper-conference report review review-book thesis" match="any">
+        <text value="10" prefix="" suffix=""/>
+      </if>
+      <!-- Onderdeel II: De lijst met regelgeving en parlementaire stukken -->
+      <else-if type="bill legislation" match="any">
+        <choose>
+          <if type="legislation">
+            <text value="21" prefix="" suffix=""/>
+          </if>
+          <else-if type="bill">
+            <text value="22" prefix="" suffix=""/>
+          </else-if>
+        </choose>
+      </else-if>
+      <!-- Onderdeel III: De jurisprudentielijst -->
+      <else-if type="legal_case" match="any">
+        <text value="30" prefix="" suffix=""/>
+      </else-if>
+      <!-- Onderdeel IV: De overige bronnenlijst -->
+      <else>
+        <text value="40" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <!-- VERMELDING ALS VOETNOOT -->
+  <citation initialize="true" initialize-with="." givenname-disambiguation-rule="by-cite" disambiguate-add-givenname="true" et-al-min="4" et-al-use-first="1">
+    
+    <layout>
+      <text macro="footnote-reference" prefix="" suffix=""/>
+    </layout>
+  </citation>
+  <!-- VERMELDING IN DE BRONVERMELDING -->
+  <bibliography et-al-min="4" et-al-use-first="1">
+    
+    <layout>
+      <group display="block" font-weight="bold">
+        <text macro="bibliography-reference-title" prefix="" suffix=""/>
+      </group>
+      <text macro="bibliography-reference-long" prefix="" suffix=""/>
+    </layout>
+  </bibliography>
+</style>

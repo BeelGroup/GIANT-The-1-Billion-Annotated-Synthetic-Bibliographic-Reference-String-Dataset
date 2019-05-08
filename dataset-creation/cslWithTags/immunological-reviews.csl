@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0">
+  <info>
+    <title>Immunological Reviews</title>
+    <id>http://www.zotero.org/styles/immunological-reviews</id>
+    <link href="http://www.zotero.org/styles/immunological-reviews" rel="self"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1111/(ISSN)1600-065X/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Lior Mayo</name>
+      <email>lior.mayo@gmail.com</email>
+    </author>
+    <contributor>
+      <name>Charles Parnot</name>
+      <uri>http://twitter.com/cparnot</uri>
+      <email>charles.parnot@gmail.com</email>
+    </contributor>
+    <category citation-format="numeric"/>
+    <issn>0105-2896</issn>
+    <eissn>1600-065X</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <citation collapse="citation-number">
+    
+    <layout prefix="(" suffix=")" delimiter=", ">
+      
+    </layout>
+  </citation>
+  <bibliography>
+    <layout>
+      <choose>
+        <if type="book">
+          <names variable="author" suffix="&lt;/author>. " prefix="&lt;author>">
+            <name et-al-min="7" et-al-use-first="1" delimiter=", " name-as-sort-order="all" sort-separator=", " form="long" initialize-with=""><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+          <text variable="title" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <text variable="edition" suffix="&lt;/edition>ed. " prefix="&lt;edition>"/>
+          <text variable="event-place" suffix="&lt;/event-place>: " prefix="&lt;event-place>"/>
+          <text variable="publisher" suffix="&lt;/publisher>, " prefix="&lt;publisher>"/>
+          <date variable="issued" suffix="&lt;/issued>. " prefix="&lt;issued>">
+            <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+        </if>
+        <else-if type="article-journal">
+          
+          <names variable="author" suffix="&lt;/author>. " prefix="&lt;author>">
+            <name et-al-min="7" et-al-use-first="3" delimiter=", " name-as-sort-order="all" sort-separator=", " form="long" initialize-with=""><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+          <text variable="title" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <text variable="container-title" form="short" suffix="&lt;/container-title> " prefix="&lt;container-title>"/>
+          <date variable="issued" suffix="&lt;/issued>; " prefix="&lt;issued>">
+            <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+          <text variable="volume" suffix="&lt;/volume>: " font-weight="bold" prefix="&lt;volume>"/>
+          <text variable="page" suffix="&lt;/page>. " prefix="&lt;page>"/>
+        </else-if>
+        <else>
+          <names variable="author" suffix="&lt;/author> " prefix="&lt;author>">
+            <name and="symbol" delimiter=", " name-as-sort-order="all" sort-separator=", " form="long" initialize-with="."><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+          <date variable="issued" prefix="(&lt;issued>" suffix="&lt;/issued>). ">
+            <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+          <text variable="title" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <group delimiter=", " suffix=". ">
+            <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            <group>
+              <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+              <text variable="issue" prefix="(&lt;issue>" suffix="&lt;/issue>) "/>
+            </group>
+            <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

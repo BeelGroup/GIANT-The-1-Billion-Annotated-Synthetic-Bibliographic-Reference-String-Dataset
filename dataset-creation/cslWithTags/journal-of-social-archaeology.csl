@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" page-range-format="expanded" demote-non-dropping-particle="never">
+  <!-- This style was created with the Visual CSL Editor (http://test.steveridout.com/csl/visualEditor/) -->
+  <info>
+    <title>Journal of Social Archaeology</title>
+    <id>http://www.zotero.org/styles/journal-of-social-archaeology</id>
+    <link href="http://www.zotero.org/styles/journal-of-social-archaeology" rel="self"/>
+    <link href="http://www.uk.sagepub.com/msg/jsa.htm#ReferenceStyle" rel="documentation"/>
+    <author>
+      <name>Greig</name>
+      <email>mcgreig2000@googlemail.com</email>
+    </author>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="anthropology"/>
+    <issn>1469-6053</issn>
+    <eissn>1741-2951</eissn>
+    <summary>Journal of Social Archaeology Style - this is based on the actual journal format, not the (misleading) instructions</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="editor" form="short">
+        <single>ed.</single>
+        <multiple>eds</multiple>
+      </term>
+    </terms>
+  </locale>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name delimiter=" " and="text" initialize-with="" name-as-sort-order="all" sort-separator=" "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="anon">
+    <text term="anonymous" form="short" text-case="capitalize-first" strip-periods="true" prefix="" suffix=""/>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name delimiter=", " and="text" delimiter-precedes-last="never" initialize-with="" name-as-sort-order="all" sort-separator=" "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" "/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <text macro="anon" prefix="" suffix=""/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="short" and="text" delimiter=", " delimiter-precedes-last="never" initialize-with=". "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+        <text macro="anon" prefix="" suffix=""/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if type="webpage">
+        <choose>
+          <if variable="URL">
+            <group prefix=" (consulted " suffix=")">
+              <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+                <date-part name="month" suffix="&lt;/month> " prefix="&lt;month>"/>
+                <date-part name="year" suffix="&lt;/year>: " prefix="&lt;year>"/>
+              </date>
+              <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+            </group>
+          </if>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="article-journal chapter" match="any">
+        <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </if>
+      <else>
+        <text variable="title" form="long" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+    </group>
+  </macro>
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </if>
+      <else>
+        <text term="forthcoming" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" " prefix=", ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" strip-periods="true" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" prefix="&lt;edition>" suffix="&lt;/edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <citation and="text" delimiter-precedes-last="never" et-al-min="3" et-al-use-first="1" collapse="year-suffix-ranged" year-suffix-delimiter="," after-collapse-delimiter="; ">
+    
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short" prefix="" suffix=""/>
+        <text macro="year-date" prefix="" suffix=""/>
+      </group>
+      <text variable="locator" prefix=": &lt;locator>" suffix="&lt;/locator>"/>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true" entry-spacing="0">
+    
+    <layout>
+      <text macro="author" prefix="" suffix=""/>
+      <choose>
+        <if variable="issued">
+          <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+            <date-part name="year" prefix=" (&lt;year>" suffix="&lt;/year>) "/>
+          </date>
+        </if>
+        <else>
+          <text term="forthcoming" prefix=" " suffix=". "/>
+        </else>
+      </choose>
+      <text macro="title" suffix="." prefix=""/>
+      <choose>
+        <if type="book report" match="any">
+          <group prefix=" " suffix=".">
+            <text macro="edition" prefix="" suffix=""/>
+            <text macro="editor" prefix="" suffix=""/>
+            <text prefix=" " suffix="." macro="publisher"/>
+          </group>
+        </if>
+        <else-if type="paper-conference" match="any">
+          <text macro="title" suffix="," prefix=""/>
+          <group prefix=" " delimiter=" ">
+            <text term="in" prefix="" suffix=""/>
+            <text variable="container-title" font-style="italic" text-case="title" prefix=" &lt;container-title>" suffix="&lt;/container-title>."/>
+            <text variable="event" suffix="&lt;/event>." prefix="&lt;event>"/>
+            <text variable="event-place" suffix="&lt;/event-place>." prefix="&lt;event-place>"/>
+          </group>
+        </else-if>
+        <else-if type="chapter" match="any">
+          <group delimiter=". ">
+            <group prefix=" " delimiter=" ">
+              <text term="in" form="long" plural="false" text-case="capitalize-first" prefix="" suffix=""/>
+              <text macro="editor" prefix=" " suffix=""/>
+              <text variable="container-title" form="long" text-case="title" font-style="italic" prefix=" &lt;container-title>" suffix="&lt;/container-title>"/>
+              <text variable="collection-title" prefix=" &lt;collection-title>" suffix="&lt;/collection-title>."/>
+              <text variable="event" suffix="&lt;/event>." prefix="&lt;event>"/>
+            </group>
+            <group delimiter=", ">
+              <text macro="publisher" prefix="" suffix=""/>
+              <text variable="page" suffix="&lt;/page>." prefix="&lt;page>"/>
+            </group>
+          </group>
+        </else-if>
+        <else-if type="article-journal" match="any">
+          <text variable="container-title" form="short" font-style="italic" prefix=" &lt;container-title>" suffix="&lt;/container-title>"/>
+          <text variable="volume" prefix=" &lt;volume>" suffix="&lt;/volume>"/>
+          <text variable="issue" form="short" prefix="(&lt;issue>" suffix="&lt;/issue>)"/>
+          <text variable="page" form="long" prefix=": &lt;page>" suffix="&lt;/page>."/>
+        </else-if>
+        <else-if type="thesis">
+          <group prefix=" " suffix="." delimiter=". ">
+            <text variable="genre" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+            <text macro="publisher" prefix="" suffix=""/>
+          </group>
+        </else-if>
+        <else-if type="webpage"/>
+        <else>
+          <text macro="editor" prefix=" " suffix=","/>
+          <group prefix=" " suffix=".">
+            <text variable="container-title" form="short" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            <group prefix=" ">
+              <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+            </group>
+            <group>
+              <label variable="locator" form="short"/>
+              <text variable="page" prefix=": &lt;page>" suffix="&lt;/page>"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+      <text prefix=" " macro="access" suffix=""/>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" page-range-format="minimal" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Spine</title>
+    <id>http://www.zotero.org/styles/spine</id>
+    <link href="http://www.zotero.org/styles/spine" rel="self"/>
+    <link href="http://www.zotero.org/styles/sage-vancouver" rel="template"/>
+    <link href="http://journals.lww.com/spinejournal/_layouts/15/1033/oaks.journals/informationforauthors.aspx" rel="documentation"/>
+    <author>
+      <name>Patrick O'Brien</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>0362-2436</issn>
+    <eissn>1528-1159</eissn>
+    <updated>2017-07-06T20:01:46+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" suffix="&lt;/author>. " prefix="&lt;author>">
+      <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")" strip-periods="true"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" suffix="&lt;/editor>." prefix="&lt;editor>">
+      <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" strip-periods="true" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="date">
+    <choose>
+      <if type="article-newspaper report" match="any">
+        <date variable="issued" form="text" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+      </if>
+      <else>
+        <date variable="issued" form="text" date-parts="year" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter="; ">
+      <group delimiter=" ">
+        <text variable="genre" text-case="title" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+        <text variable="number" prefix="&lt;number>" suffix="&lt;/number>"/>
+      </group>
+      <group delimiter=": ">
+        <choose>
+          <if type="thesis" match="none">
+            <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+          </if>
+        </choose>
+        <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      </group>
+      <choose>
+        <if variable="URL" match="none">
+          <text macro="date" prefix="" suffix=""/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="page" match="none">
+        <choose>
+          <if variable="DOI" match="any">
+            <group prefix=". " delimiter=". ">
+              <date variable="issued" form="text" prefix="Epub ahead of print &lt;issued>" suffix="&lt;/issued>"/>
+              <text variable="DOI" prefix="DOI: &lt;DOI>" suffix="&lt;/DOI>"/>
+            </group>
+          </if>
+          <else>
+            <group delimiter=". ">
+              <group delimiter=" " prefix=". ">
+                <text term="available at" text-case="capitalize-first" prefix="" suffix=""/>
+                <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+              </group>
+              <text macro="accessed-date" prefix="" suffix=""/>
+            </group>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="accessed-date">
+    <choose>
+      <if variable="URL">
+        <group delimiter=", ">
+          <text macro="date" prefix="" suffix=""/>
+          <group delimiter=" ">
+            <text term="accessed" text-case="capitalize-first" prefix="" suffix=""/>
+            <date variable="accessed" form="text" prefix="&lt;accessed>" suffix="&lt;/accessed>"/>
+          </group>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="container-title">
+    <choose>
+      <if type="article-journal" match="any">
+        <text variable="container-title" form="short" strip-periods="true" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+      </if>
+      <else>
+        <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="book patent report thesis" match="any">
+        <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </if>
+      <else>
+        <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="page">
+    <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix="&lt;/edition>." prefix="&lt;edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout delimiter="," vertical-align="sup">
+      
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="3" second-field-align="flush">
+    <layout suffix=".">
+      
+      <text macro="author" prefix="" suffix=""/>
+      <text macro="title" prefix="" suffix=""/>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture patent report song thesis" match="any">
+          <group delimiter=". " prefix=". ">
+            <text macro="edition" prefix="" suffix=""/>
+            <text macro="publisher" prefix="" suffix=""/>
+          </group>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <group delimiter=":" prefix=". ">
+            <group delimiter=". ">
+              <group delimiter=" ">
+                <text term="in" suffix=":" text-case="capitalize-first" prefix=""/>
+                <text macro="editor" prefix="" suffix=""/>
+                <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+              </group>
+              <text macro="publisher" prefix="" suffix=""/>
+            </group>
+            <text macro="page" prefix="" suffix=""/>
+          </group>
+        </else-if>
+        <else-if type="article-newspaper article-magazine" match="any">
+          <group delimiter=", " prefix=". ">
+            <text macro="container-title" prefix="" suffix=""/>
+            <text macro="date" prefix="" suffix=""/>
+            <text macro="page" prefix="" suffix=""/>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=";" prefix=". ">
+            <group delimiter=" ">
+              <text macro="container-title" prefix="" suffix=""/>
+              <choose>
+                <if variable="page" match="any">
+                  <text macro="date" prefix="" suffix=""/>
+                </if>
+              </choose>
+            </group>
+            <group delimiter=":">
+              <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+              <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+      <text macro="access" prefix="" suffix=""/>
+    </layout>
+  </bibliography>
+</style>

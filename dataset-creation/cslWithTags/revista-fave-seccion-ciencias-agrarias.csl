@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" name-as-sort-order="all" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Revista FAVE - Sección Ciencias Agrarias (Spanish)</title>
+    <title-short>FAVE</title-short>
+    <id>http://www.zotero.org/styles/revista-fave-seccion-ciencias-agrarias</id>
+    <link href="http://www.zotero.org/styles/revista-fave-seccion-ciencias-agrarias" rel="self"/>
+    <link href="http://www.zotero.org/styles/journal-of-tropical-ecology" rel="template"/>
+    <link href="http://www.fca.unl.edu.ar/pages/investigacion/revista-fave/normas-de-publicacion.php" rel="documentation"/>
+    <author>
+      <name>Agustín Alesso</name>
+      <email>calesso@fca.unl.edu.ar</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="biology"/>
+    <issn>1666-7719</issn>
+    <updated>2015-11-11T22:51:43+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="container-contributors">
+    <choose>
+      <if type="chapter" match="any">
+        <text term="in" text-case="capitalize-first" suffix=": " prefix=""/>
+        <names variable="editor translator" font-variant="normal" delimiter="; " prefix="&lt;editor translator>" suffix="&lt;/editor translator>">
+          <name delimiter="; " delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all">
+            <name-part name="family" text-case="capitalize-first" prefix="&lt;family>" suffix="&lt;/family>"/>
+            <name-part name="given" text-case="uppercase" prefix="&lt;given>" suffix="&lt;/given>"/>
+          </name>
+          <label form="short" text-case="lowercase" strip-periods="true" prefix=" (" suffix=".)."/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+  <macro name="secondary-contributors">
+    <choose>
+      <if type="chapter" match="none">
+        <names variable="editor translator" delimiter=", " prefix=" (&lt;editor translator>" suffix="&lt;/editor translator>)">
+          <name and="text" initialize-with=". " delimiter=", "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          <label form="short" prefix=", " text-case="capitalize-first"/>
+        </names>
+      </if>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name and="text" delimiter="; " delimiter-precedes-last="never" initialize-with="." name-as-sort-order="all">
+        <name-part name="family" text-case="capitalize-first" prefix="&lt;family>" suffix="&lt;/family>"/>
+        <name-part name="given" text-case="uppercase" prefix="&lt;given>" suffix="&lt;/given>"/>
+      </name>
+      <label form="short" text-case="lowercase" prefix=" (" suffix=")"/>
+      <et-al term="et-al" font-style="italic"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+        <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-count">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="count"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <text variable="genre" suffix="&lt;/genre>, " prefix="&lt;genre>"/>
+    <group delimiter=". ">
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+    </group>
+    <text variable="number-of-pages" prefix=". &lt;number-of-pages>" suffix="&lt;/number-of-pages> pp"/>
+  </macro>
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <group prefix=" " suffix=".">
+          <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+            <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+          <choose>
+            <if type="article-journal bill book chapter graphic legal_case legislation motion_picture paper-conference report song" match="none">
+              <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+                <date-part prefix=", &lt;month>" name="month" suffix="&lt;/month>"/>
+                <date-part prefix=" &lt;day>" name="day" suffix="&lt;/day>"/>
+              </date>
+            </if>
+          </choose>
+        </group>
+      </if>
+      <else>
+        <text prefix=" (" term="no date" suffix=")." form="short"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song" match="any">
+        <choose>
+          <if is-numeric="edition">
+            <number text-case="lowercase" vertical-align="baseline" variable="edition" form="ordinal"/>
+            <text term="edition" form="short" prefix=" " suffix=". "/>
+          </if>
+          <else>
+            <text variable="edition" prefix=" &lt;edition>" suffix="&lt;/edition>"/>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <macro name="locators">
+    <choose>
+      <if type="article-journal article-magazine article-newspaper" match="any">
+        <text variable="container-title" font-style="normal" prefix=". &lt;container-title>" suffix="&lt;/container-title>"/>
+        <text variable="volume" prefix=" &lt;volume>" suffix="&lt;/volume>"/>
+        <text variable="page" prefix=": &lt;page>" suffix="&lt;/page>"/>
+        <choose>
+          <if match="any" variable="URL">
+            <text term="online" prefix=" [" suffix="] "/>
+            <text term="available at" text-case="capitalize-first" suffix=": " prefix=""/>
+            <text variable="URL" suffix="&lt;/URL>. " prefix="&lt;URL>"/>
+            <text value="Acceso: " prefix="" suffix=""/>
+            <date form="numeric" variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>"/>
+          </if>
+        </choose>
+      </if>
+      <else-if type="bill book chapter graphic legal_case legislation motion_picture report song" match="any">
+        <group delimiter=". " prefix=". ">
+          <text macro="container-contributors" prefix="" suffix=""/>
+          <text macro="secondary-contributors" prefix="" suffix=""/>
+          <text variable="container-title" font-style="normal" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          <group delimiter=". ">
+            <text macro="publisher" prefix="" suffix=""/>
+          </group>
+          <group>
+            <label plural="never" text-case="lowercase" variable="page" form="short"/>
+            <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+          </group>
+        </group>
+      </else-if>
+      <else-if type="paper-conference" match="any">
+        <group delimiter=". ">
+          <text variable="container-title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+          <group>
+            <label plural="always" suffix=" " variable="page" form="short"/>
+            <text variable="page" form="short" prefix="&lt;page>" suffix="&lt;/page>"/>
+          </group>
+        </group>
+      </else-if>
+      <else-if type="webpage" match="any">
+        <text term="in" text-case="capitalize-first" suffix=": " prefix=""/>
+        <text variable="URL" suffix="&lt;/URL>. " prefix="&lt;URL>"/>
+        <text value="Acceso: " text-case="capitalize-first" prefix="" suffix=""/>
+        <date form="numeric" variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>"/>
+      </else-if>
+      <else-if type="thesis" match="any">
+        <group delimiter=". " prefix=". ">
+          <text variable="genre" text-case="title" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+          <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+          <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout prefix="(" suffix=")" delimiter=", ">
+      
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true" entry-spacing="0">
+    
+    <layout suffix=".">
+      
+      <text macro="author" suffix="." prefix=""/>
+      <text macro="issued" suffix=" " prefix=""/>
+      <text macro="edition" prefix="" suffix=""/>
+      <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      <text macro="locators" prefix="" suffix=""/>
+    </layout>
+  </bibliography>
+</style>

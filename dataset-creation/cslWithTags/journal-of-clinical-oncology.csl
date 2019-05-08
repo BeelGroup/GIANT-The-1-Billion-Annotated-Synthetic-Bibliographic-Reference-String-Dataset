@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Journal of Clinical Oncology</title>
+    <id>http://www.zotero.org/styles/journal-of-clinical-oncology</id>
+    <link href="http://www.zotero.org/styles/journal-of-clinical-oncology" rel="self"/>
+    <link href="http://jco.ascopubs.org/site/ifc/prepguide.xhtml#Reference_Instructions" rel="documentation"/>
+    <author>
+      <name>Sebastian Karcher</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>0732-183X</issn>
+    <eissn>1527-7755</eissn>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="et-al">et al</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")" strip-periods="true"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")" strip-periods="true"/>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+        <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+      </date>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL">
+        <group delimiter=" ">
+          <group prefix="[" suffix="]" delimiter=" ">
+            <text term="cited" prefix="" suffix=""/>
+            <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+              <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+              <date-part name="month" prefix=" &lt;month>" form="short" strip-periods="true" suffix="&lt;/month>"/>
+              <date-part name="day" prefix=" &lt;day>" suffix="&lt;/day>"/>
+            </date>
+          </group>
+          <group>
+            <text value="Available from: " prefix="" suffix=""/>
+            <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+          </group>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <group delimiter=" ">
+      <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      <choose>
+        <if variable="URL">
+          <text term="internet" prefix="[" suffix="]" text-case="capitalize-first"/>
+        </if>
+      </choose>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" " prefix="(" suffix=")">
+          <text term="edition" form="short" strip-periods="true" prefix="" suffix=""/>
+          <number variable="edition"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix="&lt;/edition>." prefix="&lt;edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="pages">
+    <label variable="page" form="short" suffix=" " strip-periods="true"/>
+    <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout delimiter=", " vertical-align="sup">
+      
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="3" line-spacing="2">
+    <layout>
+      
+      <text macro="author" suffix=": " prefix=""/>
+      <text macro="title" prefix="" suffix=""/>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <text macro="edition" prefix=" " suffix=""/>
+          <text macro="publisher" prefix=". " suffix=""/>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <text term="in" suffix=" " prefix=", "/>
+          <group delimiter=" " suffix=". ">
+            <group delimiter=": ">
+              <text macro="editor" prefix="" suffix=""/>
+              <text variable="container-title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            </group>
+            <text macro="edition" prefix="" suffix=""/>
+          </group>
+          <text macro="publisher" prefix="" suffix=""/>
+          <text macro="pages" prefix=", " suffix=""/>
+        </else-if>
+        <else>
+          <text variable="container-title" suffix="&lt;/container-title> " prefix=". &lt;container-title>" form="short" strip-periods="true"/>
+          <group delimiter=":">
+            <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+            <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+          </group>
+          <date variable="issued" prefix=", &lt;issued>" suffix="&lt;/issued>">
+            <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+        </else>
+      </choose>
+      <text macro="access" prefix="" suffix=""/>
+    </layout>
+  </bibliography>
+</style>

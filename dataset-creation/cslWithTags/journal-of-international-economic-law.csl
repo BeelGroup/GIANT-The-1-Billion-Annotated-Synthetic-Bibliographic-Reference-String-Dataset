@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="note">
+  <info>
+    <title>Journal of International Economic Law</title>
+    <id>http://www.zotero.org/styles/journal-of-international-economic-law</id>
+    <link href="http://www.zotero.org/styles/journal-of-international-economic-law" rel="self"/>
+    <link href="http://www.zotero.org/styles/mcgill-en" rel="template"/>
+    <link href="http://www.oxfordjournals.org/our_journals/jielaw/for_authors/stylesheet_2.pdf" rel="documentation"/>
+    <author>
+      <name>Catherine Brendow</name>
+      <email>catherine.brendow@graduateinstitute.ch</email>
+    </author>
+    <category citation-format="note"/>
+    <category field="law"/>
+    <issn>1369-3034</issn>
+    <summary>According to the style sheet of the Journal of International Economic Law</summary>
+    <updated>2016-06-21T14:55:22+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="et-al">et al</term>
+      <term name="ordinal">th</term>
+      <term name="ordinal-01">st</term>
+      <term name="ordinal-02">d</term>
+      <term name="ordinal-03">d</term>
+      <term name="ordinal-11">th</term>
+      <term name="ordinal-12">th</term>
+      <term name="ordinal-13">th</term>
+      <term name="paragraph" form="short">
+        <single>para</single>
+        <multiple>paras</multiple>
+      </term>
+      <term name="accessed">visited</term>
+    </terms>
+  </locale>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name and="text" delimiter-precedes-last="never"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <et-al term="et-al"/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="container-title">
+    <text variable="container-title" form="short" strip-periods="true" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+  </macro>
+  <macro name="author-bib">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name and="text" name-as-sort-order="all"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+          <name and="text" name-as-sort-order="all"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        </names>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-note">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name and="text" delimiter-precedes-last="never"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <substitute>
+        <text macro="editor" prefix="" suffix=""/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="internet-location">
+    <text variable="URL" prefix=" &lt;URL>" suffix="&lt;/URL>"/>
+  </macro>
+  <macro name="issued-long">
+    <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+    <date delimiter=" " variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="day" prefix="&lt;day>" suffix="&lt;/day>"/>
+      <date-part name="month" form="long" prefix="&lt;month>" suffix="&lt;/month>"/>
+      <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="edition">
+    <number variable="edition" form="ordinal" suffix=" "/>
+    <choose>
+      <if match="any" is-numeric="edition">
+        <text term="edition" form="short" strip-periods="true" suffix="." prefix=""/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="sort-by-type">
+    <choose>
+      <if type="bill legislation" match="any">
+        <text value="1" prefix="" suffix=""/>
+      </if>
+      <else-if type="legal_case">
+        <text value="2" prefix="" suffix=""/>
+      </else-if>
+      <else-if type="book thesis" match="any">
+        <text value="3" prefix="" suffix=""/>
+      </else-if>
+      <else-if type="article-journal chapter article-newspaper" match="any">
+        <text value="4" prefix="" suffix=""/>
+      </else-if>
+      <else>
+        <text value="5" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="render-chapter">
+    <group>
+      <text variable="title" strip-periods="true" quotes="true" suffix="&lt;/title>, " prefix="&lt;title>"/>
+      <text term="in" form="short" suffix=" " prefix=""/>
+      <text macro="editor" strip-periods="true" suffix=", " prefix=""/>
+    </group>
+    <text macro="container-title" font-style="italic" prefix="" suffix=""/>
+    <text macro="edition" prefix=", " suffix=""/>
+    <text macro="publisher-place-year" prefix="" suffix=""/>
+    <text variable="page" prefix=" &lt;page>" suffix="&lt;/page>"/>
+  </macro>
+  <macro name="render-article-journal">
+    <group delimiter=" ">
+      <text variable="title" quotes="true" suffix="&lt;/title>," prefix="&lt;title>"/>
+      <text variable="issue" prefix="&lt;issue>" suffix="&lt;/issue>"/>
+      <text macro="container-title" prefix="" suffix=""/>
+      <number variable="volume"/>
+      <date date-parts="year" form="text" variable="issued" prefix="(&lt;issued>" suffix="&lt;/issued>),"/>
+      <text term="at" prefix="" suffix=""/>
+      <text variable="page-first" prefix="&lt;page-first>" suffix="&lt;/page-first>"/>
+    </group>
+    <text macro="internet-location" prefix="" suffix=""/>
+  </macro>
+  <macro name="render-book">
+    <group delimiter=", ">
+      <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+      <text macro="edition" prefix="" suffix=""/>
+      <text macro="editor" prefix="" suffix=""/>
+    </group>
+    <text macro="publisher-place-year" prefix="" suffix=""/>
+  </macro>
+  <macro name="render-report">
+    <group delimiter=", ">
+      <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+      <group delimiter=" ">
+        <text variable="collection-title" strip-periods="true" prefix="&lt;collection-title>" suffix="&lt;/collection-title>"/>
+        <text variable="genre" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+        <text variable="number" prefix="&lt;number>" suffix="&lt;/number>"/>
+      </group>
+    </group>
+    <text macro="publisher-place-year" prefix="" suffix=""/>
+    <text macro="internet-location" prefix="" suffix=""/>
+  </macro>
+  <macro name="render-thesis">
+    <group delimiter=" ">
+      <text variable="title" quotes="true" prefix="&lt;title>" suffix="&lt;/title>"/>
+      <group delimiter=" " prefix="(" suffix=")">
+        <text variable="genre" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+        <text term="available at" prefix="" suffix=""/>
+        <text variable="publisher" suffix="&lt;/publisher>," prefix="&lt;publisher>"/>
+        <text variable="publisher-place" suffix="&lt;/publisher-place>, " prefix="&lt;publisher-place>"/>
+        <date date-parts="year" form="text" variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+      </group>
+    </group>
+  </macro>
+  <macro name="render-article-newspaper">
+    <group delimiter=", ">
+      <text variable="title" quotes="true" prefix="&lt;title>" suffix="&lt;/title>"/>
+      <text macro="container-title" font-style="italic" prefix="" suffix=""/>
+      <text macro="issued-long" suffix="," prefix=""/>
+      <text variable="page-first" prefix="&lt;page-first>" suffix="&lt;/page-first>"/>
+    </group>
+    <text macro="internet-location" prefix="" suffix=""/>
+  </macro>
+  <macro name="render-webpage">
+    <group delimiter=" " suffix=",">
+      <text variable="title" quotes="true" prefix="&lt;title>" suffix="&lt;/title>"/>
+      <text macro="issued-long" prefix="(" suffix=")"/>
+    </group>
+    <group delimiter=" " prefix=" ">
+      <text macro="container-title" font-style="italic" prefix="" suffix=""/>
+      <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+      <group delimiter=" " prefix="(" suffix=")">
+        <text term="accessed" prefix="" suffix=""/>
+        <date delimiter=" " variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+          <date-part name="day" prefix="&lt;day>" suffix="&lt;/day>"/>
+          <date-part name="month" prefix="&lt;month>" suffix="&lt;/month>"/>
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </group>
+    </group>
+  </macro>
+  <macro name="render-bill">
+    <group delimiter=" ">
+      <group delimiter=", ">
+        <group>
+          <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+          <text variable="title-short" prefix=" (&lt;title-short>" suffix="&lt;/title-short>)"/>
+        </group>
+        <text macro="author-note" strip-periods="true" prefix="" suffix=""/>
+        <text macro="issued-long" prefix="" suffix=""/>
+        <text variable="container-title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+      </group>
+    </group>
+  </macro>
+  <macro name="render-case">
+    <choose>
+      <if match="any" position="first">
+        <group delimiter=" ">
+          <text variable="authority" suffix="&lt;/authority>," prefix="&lt;authority>"/>
+          <group delimiter=" " suffix=",">
+            <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+            <text variable="title-short" font-style="italic" prefix="(&lt;title-short>" suffix="&lt;/title-short>)"/>
+          </group>
+          <text variable="container-title" suffix="&lt;/container-title>," prefix="&lt;container-title>"/>
+          <date delimiter=" " variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+            <date-part name="day" prefix="&lt;day>" suffix="&lt;/day>"/>
+            <date-part name="month" prefix="&lt;month>" suffix="&lt;/month>"/>
+            <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+        </group>
+      </if>
+      <else>
+        <group delimiter=", ">
+          <text variable="authority" prefix="&lt;authority>" suffix="&lt;/authority>"/>
+          <text variable="title-short" font-style="italic" prefix="&lt;title-short>" suffix="&lt;/title-short>"/>
+          <text variable="first-reference-note-number" form="short" prefix="above n &lt;first-reference-note-number>" suffix="&lt;/first-reference-note-number>"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="pinpoint">
+    <group delimiter=" " prefix=", ">
+      <choose>
+        <if locator="page">
+          <choose>
+            <if variable="locator">
+              <text term="at" prefix="" suffix=""/>
+            </if>
+          </choose>
+        </if>
+        <else-if match="any" locator="paragraph">
+          <choose>
+            <if match="any" variable="locator">
+              <text term="paragraph" form="short" prefix="" suffix=""/>
+            </if>
+          </choose>
+        </else-if>
+        <else>
+          <label variable="locator" form="short" strip-periods="true" prefix=", "/>
+        </else>
+      </choose>
+      <text variable="locator" prefix="&lt;locator>" suffix="&lt;/locator>"/>
+    </group>
+  </macro>
+  <macro name="publisher-place-year">
+    <group delimiter=", " prefix=" (" suffix=")">
+      <group delimiter=": ">
+        <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+        <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      </group>
+      <date form="text" variable="issued" date-parts="year" prefix="&lt;issued>" suffix="&lt;/issued>"/>
+    </group>
+  </macro>
+  <citation et-al-min="4" et-al-use-first="1">
+    <layout delimiter="; " suffix=".">
+      <choose>
+        <if match="any" position="first">
+          <group>
+            <group delimiter=", ">
+              <choose>
+                <if type="bill legislation treaty" match="any">
+                  <text macro="render-bill" prefix="" suffix=""/>
+                </if>
+                <else-if type="legal_case">
+                  <text macro="render-case" prefix="" suffix=""/>
+                </else-if>
+                <else>
+                  <text macro="author-note" strip-periods="true" prefix="" suffix=""/>
+                  <choose>
+                    <if type="article-journal">
+                      <text macro="render-article-journal" prefix="" suffix=""/>
+                    </if>
+                    <else-if type="chapter">
+                      <text macro="render-chapter" prefix="" suffix=""/>
+                    </else-if>
+                    <else-if type="thesis">
+                      <text macro="render-thesis" prefix="" suffix=""/>
+                    </else-if>
+                    <else-if type="article-newspaper article-magazine" match="any">
+                      <text macro="render-article-newspaper" prefix="" suffix=""/>
+                    </else-if>
+                    <else-if type="webpage post-weblog" match="any">
+                      <text macro="render-webpage" prefix="" suffix=""/>
+                    </else-if>
+                    <else-if type="book">
+                      <text macro="render-book" prefix="" suffix=""/>
+                    </else-if>
+                    <else-if type="report">
+                      <text macro="render-report" prefix="" suffix=""/>
+                    </else-if>
+                    <else>
+                      <group delimiter=" ">
+                        <group delimiter=", ">
+                          <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+                          <text macro="edition" prefix="" suffix=""/>
+                        </group>
+                        <text macro="publisher-place-year" prefix="" suffix=""/>
+                      </group>
+                    </else>
+                  </choose>
+                </else>
+              </choose>
+            </group>
+            <text macro="pinpoint" prefix="" suffix=""/>
+          </group>
+        </if>
+        <else-if match="any" position="ibid">
+          <text term="ibid" prefix="" suffix=""/>
+          <text macro="pinpoint" prefix="" suffix=""/>
+        </else-if>
+        <else-if match="any" position="subsequent">
+          <group delimiter=", ">
+            <names variable="author" prefix="See &lt;author>" suffix="&lt;/author>">
+              <name form="short" and="text"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+            </names>
+            <text variable="authority" prefix="&lt;authority>" suffix="&lt;/authority>"/>
+            <text variable="first-reference-note-number" prefix="above n &lt;first-reference-note-number>" suffix="&lt;/first-reference-note-number>"/>
+            <text variable="title-short" prefix="&lt;title-short>" suffix="&lt;/title-short>"/>
+          </group>
+          <text macro="pinpoint" prefix="" suffix=""/>
+        </else-if>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="1">
+    
+    <layout suffix=".">
+      <choose>
+        <if type="bill legal_case legislation" match="any">
+          <choose>
+            <if type="bill legislation" match="any">
+              <text macro="render-bill" prefix="" suffix=""/>
+            </if>
+            <else-if type="legal_case">
+              <group delimiter=" ">
+                <text variable="authority" suffix="&lt;/authority>," prefix="&lt;authority>"/>
+                <group delimiter=" " suffix=",">
+                  <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+                  <text variable="title-short" font-style="italic" prefix="(&lt;title-short>" suffix="&lt;/title-short>)"/>
+                </group>
+                <text variable="container-title" suffix="&lt;/container-title>," prefix="&lt;container-title>"/>
+                <date delimiter=" " variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+                  <date-part name="day" prefix="&lt;day>" suffix="&lt;/day>"/>
+                  <date-part name="month" prefix="&lt;month>" suffix="&lt;/month>"/>
+                  <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+                </date>
+              </group>
+            </else-if>
+          </choose>
+        </if>
+        <else>
+          <group delimiter=", ">
+            <text macro="author-bib" strip-periods="true" prefix="" suffix=""/>
+            <choose>
+              <if type="article-journal">
+                <text macro="render-article-journal" prefix="" suffix=""/>
+              </if>
+              <else-if type="chapter">
+                <text macro="render-chapter" prefix="" suffix=""/>
+              </else-if>
+              <else-if type="thesis">
+                <text macro="render-thesis" prefix="" suffix=""/>
+              </else-if>
+              <else-if type="article-newspaper article-magazine" match="any">
+                <text macro="render-article-newspaper" prefix="" suffix=""/>
+              </else-if>
+              <else-if type="book">
+                <text macro="render-book" prefix="" suffix=""/>
+              </else-if>
+              <else-if type="webpage post-weblog" match="any">
+                <text macro="render-webpage" prefix="" suffix=""/>
+              </else-if>
+              <else-if type="report">
+                <text macro="render-report" prefix="" suffix=""/>
+              </else-if>
+              <else>
+                <group>
+                  <group delimiter=", ">
+                    <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+                    <text macro="edition" prefix="" suffix=""/>
+                    <text macro="editor" prefix="" suffix=""/>
+                  </group>
+                  <text macro="publisher-place-year" prefix="" suffix=""/>
+                </group>
+              </else>
+            </choose>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

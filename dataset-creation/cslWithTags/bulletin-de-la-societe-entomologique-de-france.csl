@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Bulletin de la Société Entomologique de France</title>
+    <title-short>bsef</title-short>
+    <id>http://www.zotero.org/styles/bulletin-de-la-societe-entomologique-de-france</id>
+    <link href="http://www.zotero.org/styles/bulletin-de-la-societe-entomologique-de-france" rel="self"/>
+    <link href="http://www.zotero.org/styles/bmj" rel="template"/>
+    <link href="http://www.lasef.org/publications/le-bulletin-de-la-sef/" rel="documentation"/>
+    <author>
+      <name>Quentin Rome</name>
+      <email>rome@mnhn.fr</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="zoology"/>
+    <category field="biology"/>
+    <issn>0037-928X</issn>
+    <updated>2016-11-11T17:22:46+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale>
+    <terms>
+      <term name="in">dans</term>
+      <term name="from">de</term>
+      <term name="retrieved">récupéré</term>
+      <term name="accessed">consulté le</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author" font-variant="small-caps" suffix="&lt;/author>." prefix="&lt;author>">
+      <name font-variant="normal" suffix="." and="symbol" delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="19" et-al-use-first="15" initialize-with=". " name-as-sort-order="all" sort-separator=" ">
+        <name-part name="family" text-case="capitalize-first" font-variant="small-caps" prefix="&lt;family>" suffix="&lt;/family>"/>
+      <name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" suffix="&lt;/editor>. " prefix="&lt;editor>">
+      <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=" : ">
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+    </group>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="DOI">
+        <text variable="DOI" prefix=" doi : &lt;DOI>" suffix="&lt;/DOI>"/>
+      </if>
+      <else-if type="webpage" match="any">
+        <group delimiter=" ">
+          <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+          <group>
+            <text term="accessed" text-case="capitalize-first" suffix=" " prefix=""/>
+            <date variable="accessed" prefix="&lt;accessed>" suffix="&lt;/accessed>">
+              <date-part name="day" suffix="&lt;/day>/" prefix="&lt;day>"/>
+              <date-part name="month" form="numeric" text-case="lowercase" suffix="&lt;/month>/" prefix="&lt;month>"/>
+              <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+            </date>
+          </group>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" suffix="." strip-periods="true" prefix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix="&lt;/edition>." prefix="&lt;edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="point-locators">
+    <group>
+      <choose>
+        <if locator="page" match="none">
+          <label variable="locator" form="short" suffix=" "/>
+        </if>
+      </choose>
+      <text variable="locator" prefix="&lt;locator>" suffix="&lt;/locator>"/>
+    </group>
+  </macro>
+  <macro name="contributors-short">
+    <names variable="author" suffix="&lt;/author>," prefix="&lt;author>">
+      <name form="short" font-variant="small-caps" and="symbol" initialize="false" sort-separator=" ; "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <et-al font-style="italic" font-variant="normal"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+        <text macro="title" prefix="" suffix=""/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="date-reference">
+    <choose>
+      <if variable="issued">
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short" text-case="lowercase" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <citation name-form="short" and="text" et-al-min="3" et-al-use-first="1" disambiguate-add-names="false" disambiguate-add-givenname="false">
+    
+    <layout delimiter=" ; " prefix="(" suffix=")">
+      <group delimiter=":">
+        <group delimiter=" ">
+          <text macro="contributors-short" prefix="" suffix=""/>
+          <text macro="date-reference" prefix="" suffix=""/>
+        </group>
+        <text macro="point-locators" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography delimiter-precedes-et-al="never" delimiter-precedes-last="never" et-al-min="12" et-al-use-first="6" subsequent-author-substitute="–––">
+    
+    <layout suffix=".">
+      <text macro="author" suffix=", " prefix=""/>
+      <date date-parts="year" form="text" variable="issued" suffix="&lt;/issued>. – " prefix="&lt;issued>">
+        <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+      </date>
+      <choose>
+        <if type="bill book graphic legal_case report thesis" match="any">
+          <text macro="title" font-style="italic" suffix="." prefix=""/>
+          <text macro="edition" prefix=" " suffix=","/>
+          <text macro="publisher" prefix=" " suffix=""/>
+          <text variable="number-of-pages" prefix=", &lt;number-of-pages>" suffix="&lt;/number-of-pages> p."/>
+          <text variable="page" prefix=", &lt;page>" suffix="&lt;/page> p."/>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <text macro="title" font-style="italic" suffix=". " prefix=""/>
+          <group suffix=". " delimiter=" ">
+            <text term="in" text-case="capitalize-first" suffix=" :" prefix=""/>
+            <text macro="editor" prefix="" suffix=""/>
+            <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          </group>
+          <text macro="publisher" prefix=" " suffix=""/>
+          <text variable="page" prefix=", p. &lt;page>" suffix="&lt;/page>."/>
+        </else-if>
+        <else>
+          <text macro="title" suffix=". " prefix=""/>
+          <text variable="container-title" font-style="italic" suffix="&lt;/container-title>, " prefix="&lt;container-title>"/>
+          <text variable="volume" font-weight="bold" suffix="&lt;/volume> " prefix="&lt;volume>"/>
+          <text variable="issue" prefix="(&lt;issue>" suffix="&lt;/issue>) "/>
+          <text variable="page" prefix=": &lt;page>" suffix="&lt;/page>"/>
+        </else>
+      </choose>
+      <text macro="access" prefix="" suffix=""/>
+    </layout>
+  </bibliography>
+</style>

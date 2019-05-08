@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" page-range-format="expanded">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Human Reproduction</title>
+    <id>http://www.zotero.org/styles/human-reproduction</id>
+    <link href="http://www.zotero.org/styles/human-reproduction" rel="self"/>
+    <link href="http://www.oxfordjournals.org/our_journals/humrep/for_authors/rct.html" rel="documentation"/>
+    <author>
+      <name>Julie Courraud</name>
+    </author>
+    <contributor>
+      <name>Peter Hedlund</name>
+      <email>peter.hedlund@me.com</email>
+    </contributor>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="psychology"/>
+    <category field="medicine"/>
+    <issn>0268-1161</issn>
+    <eissn>1460-2350</eissn>
+    <updated>2013-07-23T14:30:16+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="title">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+        <text variable="title" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+        <choose>
+          <if variable="URL">
+            <text value="Internet" prefix=" [" suffix="]"/>
+          </if>
+        </choose>
+      </if>
+      <else>
+        <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author" suffix="&lt;/author>." prefix="&lt;author>">
+      <name delimiter-precedes-last="always" initialize-with="" name-as-sort-order="all" sort-separator=" "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label prefix=", "/>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix=" In &lt;editor>" suffix="&lt;/editor>">
+      <name sort-separator=" " delimiter=", " initialize-with="" delimiter-precedes-last="always" name-as-sort-order="all"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label prefix=", "/>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="short" and="text" initialize-with=""><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <et-al font-style="italic"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+        <choose>
+          <if type="book">
+            <text variable="title" form="short" font-style="italic" prefix="&lt;title>" suffix="&lt;/title>"/>
+          </if>
+          <else>
+            <text variable="title" form="short" quotes="true" prefix="&lt;title>" suffix="&lt;/title>"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="volume"/>
+      <else-if variable="URL">
+        <text value="Available from: " prefix="" suffix=""/>
+        <text variable="URL" prefix="&lt;URL>" suffix="&lt;/URL>"/>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+    </group>
+  </macro>
+  <macro name="page">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <text variable="page" prefix=", p. &lt;page>" suffix="&lt;/page>"/>
+      </if>
+      <else>
+        <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="issued-year">
+    <choose>
+      <if variable="issued">
+        <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+          <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short" prefix="" suffix=""/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="year" et-al-min="3" et-al-use-first="1">
+    
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short" prefix="" suffix=""/>
+        <text macro="issued-year" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="11" et-al-use-first="10" entry-spacing="0" hanging-indent="true" line-spacing="2">
+    
+    <layout suffix=".">
+      <text macro="author" prefix="" suffix=""/>
+      <group delimiter=". " prefix=" ">
+        <text macro="title" prefix=" " suffix=""/>
+        <text macro="editor" prefix="" suffix=""/>
+        <group>
+          <group>
+            <group>
+              <text variable="container-title" font-style="italic" form="short" strip-periods="true" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+              <choose>
+                <if variable="URL">
+                  <text value="Internet" prefix=" [" suffix="]"/>
+                </if>
+              </choose>
+            </group>
+            <date variable="issued" prefix=" &lt;issued>" suffix="&lt;/issued>;">
+              <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+            </date>
+            <text variable="volume" suffix="&lt;/volume>:" font-weight="bold" prefix="&lt;volume>"/>
+          </group>
+          <text macro="page" prefix="" suffix=""/>
+        </group>
+        <text macro="publisher" prefix="" suffix=""/>
+      </group>
+      <text macro="access" prefix="" suffix=""/>
+    </layout>
+  </bibliography>
+</style>

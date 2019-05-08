@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
+  <info>
+    <title>Ophthalmology Retina</title>
+    <id>http://www.zotero.org/styles/ophthalmology-retina</id>
+    <link href="http://www.zotero.org/styles/ophthalmology-retina" rel="self"/>
+    <link href="http://www.zotero.org/styles/ophthalmology" rel="template"/>
+    <link href="https://www.elsevier.com/journals/ophthalmology-retina/2468-6530/guide-for-authors" rel="documentation"/>
+    <author>
+      <name>Troels Brynskov</name>
+      <email>tbr@brynskov.com</email>
+    </author>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <contributor>
+      <name>Julian Onions</name>
+      <email>julian.onions@gmail.com</email>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>2468-7219</issn>
+    <eissn>2468-6530</eissn>
+    <summary>Style for Ophthamology Retina</summary>
+    <updated>2018-04-22T18:47:59+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name name-as-sort-order="all" sort-separator=" " initialize-with="" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <macro name="author">
+    <group suffix=".">
+      <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+        <name name-as-sort-order="all" sort-separator=" " initialize-with="" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+        <label form="short" prefix=" " strip-periods="true"/>
+        <substitute>
+          <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        </substitute>
+      </names>
+    </group>
+  </macro>
+  <macro name="title">
+    <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": ">
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix="&lt;/edition>." prefix="&lt;edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout delimiter="," vertical-align="sup">
+      
+      <group prefix="(" suffix=")">
+        <label variable="locator" form="short" strip-periods="true"/>
+        <text variable="locator" prefix="&lt;locator>" suffix="&lt;/locator>"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="false" et-al-min="5" et-al-use-first="3">
+    <layout>
+      
+      <text macro="author" prefix="" suffix=""/>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <group suffix=".">
+            <text macro="title" prefix=" " suffix="."/>
+            <text macro="edition" prefix=" " suffix=""/>
+            <text macro="editor" prefix=" (" suffix=")"/>
+          </group>
+          <text prefix=" " macro="publisher" suffix=""/>
+          <group suffix="." prefix="; ">
+            <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+              <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+            </date>
+            <text variable="page" prefix=":&lt;page>" suffix="&lt;/page>"/>
+          </group>
+        </if>
+        <else-if type="webpage" match="any">
+          <text variable="title" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <text variable="URL" suffix="&lt;/URL> ; " prefix="&lt;URL>"/>
+          <date date-parts="year" form="numeric" variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+            <date-part name="year" range-delimiter="" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+          <group prefix=" ">
+            <text term="accessed" text-case="capitalize-first" suffix=" " prefix=""/>
+            <date delimiter="." variable="accessed" suffix="&lt;/accessed>." prefix="&lt;accessed>">
+              <date-part name="day" form="numeric-leading-zeros" range-delimiter="" prefix="&lt;day>" suffix="&lt;/day>"/>
+              <date-part name="month" form="numeric-leading-zeros" range-delimiter="" prefix="&lt;month>" suffix="&lt;/month>"/>
+              <date-part name="year" form="short" range-delimiter="" prefix="&lt;year>" suffix="&lt;/year>"/>
+            </date>
+          </group>
+        </else-if>
+        <else-if type="chapter paper-conference" match="any">
+          <text macro="title" prefix=" " suffix="."/>
+          <group prefix=" ">
+            <text term="in" text-case="capitalize-first" suffix=": " prefix=""/>
+            <text macro="editor" prefix="" suffix=""/>
+            <text variable="container-title" font-style="normal" prefix=" &lt;container-title>" suffix="&lt;/container-title>."/>
+            <text variable="volume" prefix="Vol &lt;volume>" suffix="&lt;/volume>."/>
+            <text macro="edition" prefix=" " suffix=""/>
+            <text variable="collection-title" prefix=" &lt;collection-title>" suffix="&lt;/collection-title>."/>
+            <group suffix=".">
+              <text macro="publisher" prefix=" " suffix=""/>
+              <group suffix="." prefix="; ">
+                <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+                  <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+                </date>
+                <text variable="page" prefix=":&lt;page>" suffix="&lt;/page>"/>
+              </group>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group suffix=".">
+            <text macro="title" prefix=" " suffix=""/>
+            <text macro="editor" prefix=" " suffix=""/>
+          </group>
+          <group prefix=" " suffix=".">
+            <text variable="container-title" form="short" strip-periods="true" font-style="italic" suffix="&lt;/container-title>." prefix="&lt;container-title>"/>
+            <group font-style="italic" delimiter=";" prefix=" ">
+              <date variable="issued" font-style="normal" prefix="&lt;issued>" suffix="&lt;/issued>">
+                <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+              </date>
+              <group>
+                <text variable="volume" font-style="normal" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+              </group>
+            </group>
+            <text variable="page" prefix=":&lt;page>" suffix="&lt;/page>"/>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Journal of Atrial Fibrillation</title>
+    <title-short>JAFIB</title-short>
+    <id>http://www.zotero.org/styles/journal-of-atrial-fibrillation</id>
+    <link href="http://www.zotero.org/styles/journal-of-atrial-fibrillation" rel="self"/>
+    <link href="http://www.jafib.com/index.php?cont=author_submit" rel="documentation"/>
+    <author>
+      <name>Dennis Lau</name>
+    </author>
+    <contributor>
+      <name>Pawel Kuklik</name>
+      <email>pawel.kuklik@gmail.com</email>
+    </contributor>
+    <category citation-format="numeric"/>
+    <category field="medicine"/>
+    <issn>1941-6911</issn>
+    <summary>Style for the Journal of Atrial Fibrillation, no et al. and no month/issue number</summary>
+    <updated>2013-03-08T13:20:16+01:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <citation collapse="citation-number">
+    
+    <layout prefix="[" suffix="]" delimiter=", ">
+      
+    </layout>
+  </citation>
+  <bibliography>
+    <layout>
+      <choose>
+        <if type="article-journal">
+          
+          <names variable="author" suffix="&lt;/author>. " prefix="&lt;author>">
+            <name delimiter=", " name-as-sort-order="all" sort-separator=" " form="long" initialize-with=""><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+          <text variable="title" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <text variable="container-title" form="short" suffix="&lt;/container-title> " prefix="&lt;container-title>"/>
+          <date variable="issued" suffix="&lt;/issued>; " prefix="&lt;issued>">
+            <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+          <text variable="volume" suffix="&lt;/volume>: " prefix="&lt;volume>"/>
+          <text variable="page" suffix="&lt;/page>. " prefix="&lt;page>"/>
+        </if>
+        <else-if type="book">
+          
+          <names variable="author" suffix="&lt;/author>. " prefix="&lt;author>">
+            <name delimiter=", " name-as-sort-order="all" sort-separator=" " form="long" initialize-with=""><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+          <text variable="title" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <text variable="edition" suffix="&lt;/edition>., " prefix="&lt;edition>"/>
+          <text variable="publisher-place" suffix="&lt;/publisher-place>, " prefix="&lt;publisher-place>"/>
+          <text variable="publisher" suffix="&lt;/publisher>. " prefix="&lt;publisher>">
+          </text>
+          <date variable="issued" suffix="&lt;/issued>; " prefix="&lt;issued>">
+            <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+          <text variable="page" suffix="&lt;/page>. " prefix="&lt;page>"/>
+        </else-if>
+        <else-if type="chapter">
+          
+          <names variable="author" suffix="&lt;/author>. " prefix="&lt;author>">
+            <name delimiter=", " name-as-sort-order="all" sort-separator=" " form="long" initialize-with=""><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+          <text variable="title" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <text value="In:" suffix=" " prefix=""/>
+          <names variable="editor" suffix="&lt;/editor>, " prefix="&lt;editor>">
+            <name delimiter="," form="long" initialize-with=""><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+          <text value="eds" suffix=". " prefix=""/>
+          <text variable="collection-title" suffix="&lt;/collection-title>. " prefix="&lt;collection-title>"/>
+          <text variable="edition" suffix="&lt;/edition>., " prefix="&lt;edition>"/>
+          <text variable="publisher-place" suffix="&lt;/publisher-place>, " prefix="&lt;publisher-place>"/>
+          <text variable="publisher" suffix="&lt;/publisher>. " prefix="&lt;publisher>">
+          </text>
+          <date variable="issued" suffix="&lt;/issued>; " prefix="&lt;issued>">
+            <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+          <text variable="page" suffix="&lt;/page>. " prefix="&lt;page>"/>
+        </else-if>
+        <else-if type="webpage">
+          
+          <names variable="author" suffix="&lt;/author>. " prefix="&lt;author>">
+            <name delimiter=", " name-as-sort-order="all" sort-separator=" " form="long" initialize-with=""><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+          <text variable="title" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <text variable="URL" suffix="&lt;/URL> " prefix="&lt;URL>"/>
+          <date variable="accessed" prefix="(accessed &lt;accessed>" suffix="&lt;/accessed>). ">
+            <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+            <date-part name="month" form="long" prefix="&lt;month>" suffix="&lt;/month>"/>
+          </date>
+        </else-if>
+        <else>
+          
+          <names variable="author" suffix="&lt;/author>. " prefix="&lt;author>">
+            <name delimiter=", " name-as-sort-order="all" sort-separator=" " form="long" initialize-with=""><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+          <text variable="title" suffix="&lt;/title>. " prefix="&lt;title>"/>
+          <text variable="container-title" suffix="&lt;/container-title> " prefix="&lt;container-title>"/>
+          <date variable="issued" suffix="&lt;/issued>; " prefix="&lt;issued>">
+            <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+          </date>
+          <text variable="volume" suffix="&lt;/volume>: " prefix="&lt;volume>"/>
+          <text variable="page" suffix="&lt;/page>. " prefix="&lt;page>"/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>

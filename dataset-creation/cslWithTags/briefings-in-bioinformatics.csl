@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Briefings in Bioinformatics</title>
+    <id>http://www.zotero.org/styles/briefings-in-bioinformatics</id>
+    <link href="http://www.zotero.org/styles/briefings-in-bioinformatics" rel="self"/>
+    <link href="http://www.oxfordjournals.org/our_journals/bib/for_authors/msprep_submission.html" rel="documentation"/>
+    <author>
+      <name>Malay K Basu</name>
+      <email>malay@bioinformatics.org</email>
+    </author>
+    <category citation-format="numeric"/>
+    <issn>1467-5463</issn>
+    <eissn>1477-4054</eissn>
+    <summary>The Briefings in Bioinformatics Journal style</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name sort-separator=" " delimiter=", " initialize-with="" delimiter-precedes-last="never" name-as-sort-order="all"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout prefix="[" suffix="]" delimiter=",">
+      
+    </layout>
+  </citation>
+  <bibliography et-al-min="4" et-al-use-first="3" entry-spacing="0">
+    <layout>
+      
+      <text macro="author" prefix="" suffix=""/>
+      <text variable="title" prefix=". &lt;title>" suffix="&lt;/title>. "/>
+      <text variable="container-title" form="short" suffix="&lt;/container-title> " prefix="&lt;container-title>"/>
+      <date variable="issued" suffix="&lt;/issued>; " prefix="&lt;issued>">
+        <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+      </date>
+      <text variable="volume" suffix="&lt;/volume>:" prefix="&lt;volume>"/>
+      <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+    </layout>
+  </bibliography>
+</style>

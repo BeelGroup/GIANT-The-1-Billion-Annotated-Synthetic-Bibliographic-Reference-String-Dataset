@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0">
+  <info>
+    <title>British Journal of Pharmacology</title>
+    <title-short>BJP</title-short>
+    <id>http://www.zotero.org/styles/british-journal-of-pharmacology</id>
+    <link href="http://www.zotero.org/styles/british-journal-of-pharmacology" rel="self"/>
+    <link href="http://www.zotero.org/styles/cell" rel="template"/>
+    <link href="http://onlinelibrary.wiley.com/journal/10.1111/(ISSN)1476-5381/homepage/ForAuthors.html" rel="documentation"/>
+    <author>
+      <name>Charles Parnot</name>
+      <uri>http://twitter.com/cparnot</uri>
+      <email>charles.parnot@gmail.com</email>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <category field="medicine"/>
+    <issn>0007-1188</issn>
+    <eissn>1476-5381</eissn>
+    <updated>2012-09-09T21:58:08+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author-short">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="short" and="text"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <macro name="author">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name name-as-sort-order="all" initialize-with="." and="text" delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="publisher">
+    <group prefix="(" delimiter=": " suffix=")">
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+    </group>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name initialize-with="." and="text" delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=", "/>
+    </names>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1" collapse="year">
+    
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short" prefix="" suffix=""/>
+        <text macro="issued" prefix="" suffix=""/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography et-al-min="7" et-al-use-first="6">
+    
+    <layout suffix=".">
+      <group delimiter=" ">
+        <text macro="author" prefix="" suffix=""/>
+        <text macro="issued" prefix="(" suffix=")."/>
+        <choose>
+          <if type="article article-magazine article-newspaper article-journal review" match="any">
+            <text variable="title" suffix="&lt;/title>." prefix="&lt;title>"/>
+            <text variable="container-title" form="short" text-case="title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            <text variable="volume" font-style="italic" suffix="&lt;/volume>:" prefix="&lt;volume>"/>
+            <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+          </if>
+          <else-if type="chapter paper-conference" match="any">
+            <text variable="title" suffix="&lt;/title>." prefix="&lt;title>"/>
+            <text variable="container-title" prefix="In &lt;container-title>" suffix="&lt;/container-title>," text-case="title"/>
+            <text macro="editor" prefix="" suffix=""/>
+            <text macro="publisher" suffix="," prefix=""/>
+            <label variable="page" form="short" strip-periods="true"/>
+            <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+          </else-if>
+          <else-if type="thesis">
+            <text variable="title" suffix="&lt;/title>." prefix="&lt;title>"/>
+            <text variable="genre" suffix="&lt;/genre>." prefix="&lt;genre>"/>
+            <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+          </else-if>
+          <else>
+            <text variable="title" prefix="&lt;title>" suffix="&lt;/title>"/>
+            <text macro="publisher" prefix="" suffix=""/>
+          </else>
+        </choose>
+      </group>
+    </layout>
+  </bibliography>
+</style>

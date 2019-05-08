@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>World Congress on Engineering Asset Management 2010</title>
+    <title-short>WCEAM</title-short>
+    <id>http://www.zotero.org/styles/world-congress-on-engineering-asset-management</id>
+    <link href="http://www.zotero.org/styles/world-congress-on-engineering-asset-management" rel="self"/>
+    <link href="http://wceam.com/" rel="documentation"/>
+    <author>
+      <name>Lubos</name>
+      <email>zothero@hotmail.com</email>
+    </author>
+    <contributor>
+      <name>Julian Onions</name>
+      <email>julian.onions@gmail.com</email>
+    </contributor>
+    <category citation-format="numeric"/>
+    <summary>Citation style for the World Congress for Engineering Asset Management (WCEAM)</summary>
+    <updated>2012-09-27T22:06:38+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="author">
+    <names variable="author" suffix="&lt;/author>. " prefix="&lt;author>">
+      <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="editor">
+    <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>">
+      <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")" strip-periods="true"/>
+    </names>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=": " suffix=".">
+      <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+      <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+    </group>
+  </macro>
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number variable="edition" form="ordinal"/>
+          <text term="edition" form="short" prefix="" suffix=""/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" suffix="&lt;/edition>." prefix="&lt;edition>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="URL accessed" match="all">
+        <date variable="accessed" prefix=" Retrieved &lt;accessed>" suffix="&lt;/accessed>">
+          <date-part name="month" form="long" suffix="&lt;/month> " prefix="&lt;month>"/>
+          <date-part name="day" form="numeric" suffix="&lt;/day>, " prefix="&lt;day>"/>
+          <date-part name="year" form="long" prefix="&lt;year>" suffix="&lt;/year>"/>
+        </date>
+        <text variable="URL" prefix=", from &lt;URL>" suffix="&lt;/URL>"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="genre">
+    <choose>
+      <if type="thesis">
+        <text variable="genre" suffix="&lt;/genre> thesis." prefix="&lt;genre>"/>
+      </if>
+      <else>
+        <group delimiter=" " suffix=".">
+          <text variable="genre" prefix="&lt;genre>" suffix="&lt;/genre>"/>
+          <text variable="number" prefix="&lt;number>" suffix="&lt;/number>"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <citation collapse="citation-number">
+    
+    <layout prefix="[" suffix="]" delimiter=", ">
+      
+    </layout>
+  </citation>
+  <bibliography et-al-min="7" et-al-use-first="6" second-field-align="flush" entry-spacing="0" line-spacing="1">
+    <layout>
+      
+      <text macro="author" prefix="" suffix=""/>
+      <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+        <date-part name="year" prefix="(&lt;year>" suffix="&lt;/year>)"/>
+      </date>
+      <text variable="title" prefix=" &lt;title>" suffix="&lt;/title>."/>
+      <choose>
+        <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+          <text macro="edition" prefix=" " suffix=""/>
+          <text macro="publisher" prefix=" " suffix=""/>
+          <text macro="genre" prefix=" " suffix=""/>
+        </if>
+        <else-if type="chapter paper-conference" match="any">
+          <group delimiter="," suffix=".">
+            <group prefix=" " delimiter=" ">
+              <text term="in" text-case="capitalize-first" prefix="" suffix=""/>
+              <text macro="editor" suffix="." prefix=""/>
+              <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            </group>
+            <group>
+              <text macro="publisher" prefix=" " suffix=""/>
+              <label variable="page" form="short" prefix=" "/>
+              <text variable="page" suffix="&lt;/page>." prefix="&lt;page>"/>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group prefix=" " delimiter=", " suffix=".">
+            <text variable="container-title" form="short" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+            <group>
+              <text variable="volume" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+              <text variable="issue" prefix="(&lt;issue>" suffix="&lt;/issue>)"/>
+            </group>
+            <text variable="page" suffix="&lt;/page>." prefix="&lt;page>"/>
+          </group>
+          <text macro="genre" prefix=" " suffix=""/>
+          <text macro="publisher" prefix=" " suffix=""/>
+        </else>
+      </choose>
+      <text macro="access" prefix="" suffix=""/>
+    </layout>
+  </bibliography>
+</style>

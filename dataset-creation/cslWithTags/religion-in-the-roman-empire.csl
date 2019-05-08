@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Religion in the Roman Empire</title>
+    <title-short>RRE</title-short>
+    <id>http://www.zotero.org/styles/religion-in-the-roman-empire</id>
+    <link href="http://www.zotero.org/styles/religion-in-the-roman-empire" rel="self"/>
+    <link href="https://www.mohr.de/fileadmin/user_upload/Zeitschriften/Richtlinien_Autoren/2016/RRE_Style_sheet-neu.pdf" rel="documentation"/>
+    <author>
+      <name>Carl Johan Berglund</name>
+      <email>cajo@cajo.nu</email>
+    </author>
+    <category citation-format="note"/>
+    <category field="theology"/>
+    <issn>2199-4463</issn>
+    <eissn>2199-4471</eissn>
+    <updated>2017-12-19T11:40:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en-GB">
+    <terms>
+      <term name="editor" form="verb-short">ed.</term>
+      <term name="translator" form="verb-short">trans.</term>
+    </terms>
+  </locale>
+  <macro name="originators">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name name-as-sort-order="all" delimiter="; "><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="sortnames">
+    <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+      <name form="short" name-as-sort-order="all"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+      <substitute>
+        <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+        <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="year">
+    <date variable="issued" prefix="&lt;issued>" suffix="&lt;/issued>">
+      <date-part name="year" prefix="&lt;year>" suffix="&lt;/year>"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="book">
+        <text variable="title" text-case="title" font-style="italic" suffix="&lt;/title>. " prefix="&lt;title>"/>
+      </if>
+      <else-if type="chapter paper-conference" match="any">
+        <text variable="title" text-case="title" suffix="&lt;/title>. " quotes="true" prefix="&lt;title>"/>
+      </else-if>
+      <else>
+        <text variable="title" text-case="title" suffix="&lt;/title>, " quotes="true" prefix="&lt;title>"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="container">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <text term="in" text-case="capitalize-first" suffix=" " prefix=""/>
+        <group delimiter=", " suffix=". ">
+          <text variable="container-title" font-style="italic" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          <names variable="container-author editor" prefix="&lt;container-author editor>" suffix="&lt;/container-author editor>">
+            <label form="verb-short" suffix=" "/>
+            <name><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+        </group>
+      </if>
+      <else-if type="article-journal">
+        <group delimiter=" ">
+          <text variable="container-title" font-style="italic" text-case="title" prefix="&lt;container-title>" suffix="&lt;/container-title>"/>
+          <group delimiter=". ">
+            <text variable="volume" font-style="italic" prefix="&lt;volume>" suffix="&lt;/volume>"/>
+            <text variable="page" prefix="&lt;page>" suffix="&lt;/page>"/>
+          </group>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="extras">
+    <group delimiter=". ">
+      <choose>
+        <if type="book">
+          <names variable="editor translator" prefix="&lt;editor translator>" suffix="&lt;/editor translator>">
+            <label form="verb-short" suffix=" "/>
+            <name><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+          </names>
+        </if>
+      </choose>
+      <choose>
+        <if is-numeric="edition">
+          <group delimiter=" ">
+            <number variable="edition" form="ordinal"/>
+            <text term="edition" form="short" prefix="" suffix=""/>
+          </group>
+        </if>
+      </choose>
+      <group delimiter=" ">
+        <text variable="collection-title" prefix="&lt;collection-title>" suffix="&lt;/collection-title>"/>
+        <text variable="collection-number" prefix="&lt;collection-number>" suffix="&lt;/collection-number>"/>
+      </group>
+      <group delimiter=": ">
+        <text variable="publisher-place" prefix="&lt;publisher-place>" suffix="&lt;/publisher-place>"/>
+        <text variable="publisher" prefix="&lt;publisher>" suffix="&lt;/publisher>"/>
+      </group>
+    </group>
+  </macro>
+  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-names="true" disambiguate-add-givenname="true">
+    <layout suffix="." delimiter="; ">
+      <group delimiter=", ">
+        <group delimiter=" ">
+          <names variable="author" prefix="&lt;author>" suffix="&lt;/author>">
+            <name form="short"><name-part name="family" prefix="&lt;family>" suffix="&lt;/family>"/><name-part name="given" prefix="&lt;given>" suffix="&lt;/given>"/></name>
+            <substitute>
+              <names variable="editor" prefix="&lt;editor>" suffix="&lt;/editor>"/>
+              <names variable="translator" prefix="&lt;translator>" suffix="&lt;/translator>"/>
+            </substitute>
+          </names>
+          <text macro="year" prefix="" suffix=""/>
+        </group>
+        <text variable="locator" prefix="&lt;locator>" suffix="&lt;/locator>"/>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true" et-al-min="6" et-al-use-first="3" entry-spacing="0">
+    
+    <layout suffix=".">
+      <text macro="originators" suffix=" " prefix=""/>
+      <text macro="year" suffix=". " prefix=""/>
+      <text macro="title" prefix="" suffix=""/>
+      <text macro="container" prefix="" suffix=""/>
+      <text macro="extras" prefix="" suffix=""/>
+    </layout>
+  </bibliography>
+</style>
