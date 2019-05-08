@@ -35,6 +35,5 @@ while i < 6000:
     i += 1
     time.sleep(0.5)
 
-
 end = time.time()
 print("Time: ", end - start)
