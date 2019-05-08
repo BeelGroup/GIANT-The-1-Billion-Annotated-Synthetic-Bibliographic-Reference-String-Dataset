@@ -1,0 +1,10 @@
+Reading input file: sampleCrossref.json
+Writing file: output_sampleCrossref.csv
+
+The following citation styles failed:
+gost-r-7-0-5-2008-numeric
+university-of-south-australia-harvard-2011
+university-of-south-australia-harvard-2013
+
+Time taken: 2.376133333333333 mins
+-----------------------------------------
