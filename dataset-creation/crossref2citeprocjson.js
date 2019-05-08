@@ -30,7 +30,7 @@ for (var i = 0; i < lines.length; i++) {
   //delete empty authors
   if(line.author != undefined){
     for(var a = 0; a < line["author"].length; a++){
-     
+
       //delete affiliation if it's empty
       if(line["author"][a]["affiliation"].length == 0){
         delete line["author"][a]["affiliation"];
@@ -66,7 +66,7 @@ for (var i = 0; i < lines.length; i++) {
       } else if (type == field.NAME_LIST && typeof line[prop] == "object") {
         citations[citationcounter][newprop] = line[prop]
       } else {
-        console.log("Unknown format: "+type + ";" + typeof line[prop] + ";" + newprop + ";" + line[prop]);
+        console.log("Unknown format: "+ type + ";" + typeof line[prop] + ";" + newprop + ";" + line[prop]);
       }
 
       unknowns[newprop] = true;
@@ -78,8 +78,8 @@ for (var i = 0; i < lines.length; i++) {
 }
 
 //console.log(unknowns);
-var newFile = "./output/cslciteproc.json";
-//fs.writeFileSync(newFile, JSON.stringify(citations));
-//console.log('Saved JSON to ' + newFile);
+var newFile = "./cslCiteprocOutput/cslciteproc.json";
+fs.writeFileSync(newFile, JSON.stringify(citations));
+console.log('Saved JSON to ' + newFile);
 return citations;
 }}
