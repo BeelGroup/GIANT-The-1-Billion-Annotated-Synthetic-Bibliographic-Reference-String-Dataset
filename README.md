@@ -7,40 +7,26 @@ This script takes as input JSON files from CrossRef https://www.crossref.org/ an
 
  💻Terminal (preferably 🐧Linux)
 
-##### 1. nodejs
-
-Install node
+1. Install nodejs
 
 `curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash`
 
 `sudo apt-get install -y nodejs`
 
-##### 2. Node Modules
+2. Node Modules
 
 Citeproc and citeproc-js-node are required for this script. Working versions of these libraries are contained in this repo under /dataset-creation/node_modules. It is recommended to use these versions.
 
 The folder /node_modules containing citeproc and citeproc-js-node must be placed under home directory if not already present there.
 
-##### 3. Required libraries
-
-- Install npmlog
+3. Required libraries
 
 `cd node_modules`
 
-`npm install npmlog`
-
-- Install xmldom
-
-`cd node_modules`
-
-`npm install xmldom`
-
+- Install npmlog `npm install npmlog`
+- Install xmldom `npm install xmldom`
 - fs - for reading files
-- zip and unzip (optional)
-
-`sudo apt install zip`
-
-`sudo apt install unzip`
+- zip and unzip (optional) `sudo apt install zip` `sudo apt install unzip`
 
 ## Input
 
