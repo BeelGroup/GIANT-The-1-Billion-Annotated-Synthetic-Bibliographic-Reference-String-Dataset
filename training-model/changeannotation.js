@@ -15,7 +15,7 @@ var replacetags = {
       page: 'biblScope unit="page"',
       volume: 'biblScope unit="volume"',
       issue: 'biblScope unit="issue"',
-      "orgName" : 'orgName',// ?????
+      "orgName" : 'orgName',
       publisher : 'publisher',
       "publisher-place": 'pubPlace',
       "editor translator" : 'editor',
@@ -108,9 +108,12 @@ fs.createReadStream(fileName)
         }
       }
 
-      // to do: remove brackets if present in date
-
       output = output.replace(/<\/?[^>]+(>|$)/g, "");
+
+      // remove brackets if present in date
+      output = output.replace(/{{date}}\(|{{date}}.\(|{{date}}..\(|{{date}}...\(/g, "({{date}}");
+      output = output.replace(/\){{\/date}}|\).{{\/date}}|\)..{{\/date}}|\)...{{\/date}}/g, "{{/date}})");
+
       output = output.replace(/{{(\/)?([^}]+)}}/g, "<$1$2>").replace(/&/g,"&amp;");
       fs.appendFileSync(outputFile,'<bibl>' + output + '</bibl>'+"\n");
     }
