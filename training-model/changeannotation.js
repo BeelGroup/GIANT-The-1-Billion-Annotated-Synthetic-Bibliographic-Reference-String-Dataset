@@ -115,6 +115,12 @@ fs.createReadStream(fileName)
       output = output.replace(/\){{\/date}}|\).{{\/date}}|\)..{{\/date}}|\)...{{\/date}}/g, "{{/date}})");
 
       output = output.replace(/{{(\/)?([^}]+)}}/g, "<$1$2>").replace(/&/g,"&amp;");
+
+      // remove identifier string in front of author
+      if (process.argv[2] == 'cora'){
+        output = output.replace(/.*<author>/, "<author>")
+      }
+
       fs.appendFileSync(outputFile,'<bibl>' + output + '</bibl>'+"\n");
     }
     catch(err) {
