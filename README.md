@@ -69,12 +69,12 @@ articleType and citationStyle are indexes and the appropriate index file is loca
 
 MIT License
 
-## Acknowledgements
+## Main Authors and Contributors 
 
-- Joeran Beel
+- Mark Grennan grennama (@) tcd.ie
+- Joeran Beel beelj (@) tcd.ie.
+- Martin Schibel
 - Andrew Collins
 - Dominika Tkaczyk
-- Martin Schibel
 
-## Author
-grennama (@) tcd.ie
+
