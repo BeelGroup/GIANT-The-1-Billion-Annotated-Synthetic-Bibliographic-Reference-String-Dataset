@@ -1,3 +1,5 @@
+Dowload the dataset on Harvard's Dataverse https://doi.org/10.7910/DVN/LXQXAO (27.5 GB compressed; 500 GB uncompressed)
+
 # CitationDataset
 
 ## Introduction
